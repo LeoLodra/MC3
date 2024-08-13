@@ -14,6 +14,7 @@
 		766986F02C6B6B5C000838A3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 766986EF2C6B6B5C000838A3 /* Preview Assets.xcassets */; };
 		766986FC2C6B6BA8000838A3 /* GoalsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766986FB2C6B6BA8000838A3 /* GoalsScreenView.swift */; };
 		766986FE2C6B6EE7000838A3 /* InitialScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766986FD2C6B6EE7000838A3 /* InitialScreenView.swift */; };
+		766987102C6B725A000838A3 /* ModelSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7669870F2C6B725A000838A3 /* ModelSample.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		766986EF2C6B6B5C000838A3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		766986FB2C6B6BA8000838A3 /* GoalsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsScreenView.swift; sourceTree = "<group>"; };
 		766986FD2C6B6EE7000838A3 /* InitialScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialScreenView.swift; sourceTree = "<group>"; };
+		7669870F2C6B725A000838A3 /* ModelSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSample.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 		7669870E2C6B721B000838A3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7669870F2C6B725A000838A3 /* ModelSample.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				766986E92C6B6B5B000838A3 /* ContentView.swift in Sources */,
+				766987102C6B725A000838A3 /* ModelSample.swift in Sources */,
 				766986FE2C6B6EE7000838A3 /* InitialScreenView.swift in Sources */,
 				766986FC2C6B6BA8000838A3 /* GoalsScreenView.swift in Sources */,
 				766986EB2C6B6B5B000838A3 /* Item.swift in Sources */,
