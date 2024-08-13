@@ -15,6 +15,8 @@
 		766986FC2C6B6BA8000838A3 /* GoalsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766986FB2C6B6BA8000838A3 /* GoalsScreenView.swift */; };
 		766986FE2C6B6EE7000838A3 /* InitialScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766986FD2C6B6EE7000838A3 /* InitialScreenView.swift */; };
 		766987102C6B725A000838A3 /* ModelSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7669870F2C6B725A000838A3 /* ModelSample.swift */; };
+		766987122C6B727E000838A3 /* ViewSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766987112C6B727E000838A3 /* ViewSample.swift */; };
+		766987142C6B728A000838A3 /* ViewModelSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766987132C6B728A000838A3 /* ViewModelSample.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		766986FB2C6B6BA8000838A3 /* GoalsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsScreenView.swift; sourceTree = "<group>"; };
 		766986FD2C6B6EE7000838A3 /* InitialScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialScreenView.swift; sourceTree = "<group>"; };
 		7669870F2C6B725A000838A3 /* ModelSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSample.swift; sourceTree = "<group>"; };
+		766987112C6B727E000838A3 /* ViewSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSample.swift; sourceTree = "<group>"; };
+		766987132C6B728A000838A3 /* ViewModelSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelSample.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +96,7 @@
 		7669870B2C6B7200000838A3 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				766987132C6B728A000838A3 /* ViewModelSample.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -99,6 +104,7 @@
 		7669870C2C6B720A000838A3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				766987112C6B727E000838A3 /* ViewSample.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -187,6 +193,8 @@
 				766986FC2C6B6BA8000838A3 /* GoalsScreenView.swift in Sources */,
 				766986EB2C6B6B5B000838A3 /* Item.swift in Sources */,
 				766986E72C6B6B5B000838A3 /* MC3App.swift in Sources */,
+				766987142C6B728A000838A3 /* ViewModelSample.swift in Sources */,
+				766987122C6B727E000838A3 /* ViewSample.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
