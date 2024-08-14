@@ -7,74 +7,6 @@
 
 import Foundation
 
-struct User: Codable, Equatable, Identifiable {
-    let id: Int
-    let fullName: String
-    let createdAt: Date
-    
-    // Pregnancy
-    let lastHaidAt: Date
-    let fetusCount: Int
-    
-    // Physical
-    let weight: Float
-    let height: Int
-    let birthday: Date
-    
-    enum CodingKeys: String, CodingKey {
-        case id, fullName, createdAt, lastHaidAt, fetusCount, weight, height, birthday
-    }
-    
-    init(id: Int, fullName: String, createdAt: Date, lastHaidAt: Date, fetusCount: Int = 1, weight: Float, height: Int, birthday: Date) {
-        self.id = id
-        self.fullName = fullName
-        self.createdAt = createdAt
-        self.lastHaidAt = lastHaidAt
-        self.fetusCount = fetusCount
-        self.weight = weight
-        self.height = height
-        self.birthday = birthday
-    }
-}
-
-struct WeightLog: Codable, Equatable, Identifiable {
-    let id: Int
-    let userId: Int
-    let weight: Float
-    let logDate: Date
-    
-    enum CodingKeys: String, CodingKey {
-        case id, userId, weight, logDate
-    }
-    
-    init(id: Int, userId: Int, weight: Float, logDate: Date) {
-        self.id = id
-        self.userId = userId
-        self.weight = weight
-        self.logDate = logDate
-    }
-}
-
-struct FoodIntake: Codable, Equatable, Identifiable {
-    let id: Int
-    let userId: Int
-    let foodId: Int
-    let intakeAt: Date
-    let intakeAmount: Int
-    
-    enum CodingKeys: String, CodingKey {
-        case id, userId, foodId, intakeAt, intakeAmount
-    }
-    
-    init(id: Int, userId: Int, foodId: Int, intakeAt: Date, intakeAmount: Int) {
-        self.id = id
-        self.userId = userId
-        self.foodId = foodId
-        self.intakeAt = intakeAt
-        self.intakeAmount = intakeAmount
-    }
-}
-
 // MARK: JSON
 
 struct Food: Codable, Identifiable {
@@ -115,4 +47,74 @@ struct FoodTag: Codable, Identifiable {
     let id: Int
     let title: String
 }
+
+// MARK: Deprecated
+
+//struct UserStruct: Codable, Equatable, Identifiable {
+//    let id: UUID
+//    let fullName: String
+//
+//    // Pregnancy
+//    let lastHaidAt: Date
+//    let fetusCount: Int
+//
+//    // Physical
+//    let weight: Float
+//    let height: Int
+//    let birthday: Date
+//
+//    enum CodingKeys: String, CodingKey {
+//        case id, fullName, lastHaidAt, fetusCount, weight, height, birthday
+//    }
+//
+//    init(fullName: String, lastHaidAt: Date, fetusCount: Int = 1, weight: Float, height: Int, birthday: Date) {
+//        self.id = UUID()
+//        self.fullName = fullName
+//        self.lastHaidAt = lastHaidAt
+//        self.fetusCount = fetusCount
+//        self.weight = weight
+//        self.height = height
+//        self.birthday = birthday
+//    }
+//}
+//
+//struct WeightLogStruct: Codable, Equatable, Identifiable {
+//    let id: UUID
+//    let userId: Int
+//
+//    let weight: Float
+//    let logDate: Date
+//
+//    enum CodingKeys: String, CodingKey {
+//        case id, userId, weight, logDate
+//    }
+//
+//    init(userId: Int, weight: Float, logDate: Date) {
+//        self.id = UUID()
+//        self.userId = userId
+//        self.weight = weight
+//        self.logDate = logDate
+//    }
+//}
+//
+//struct FoodIntakeStruct: Codable, Equatable, Identifiable {
+//    let id: Int
+//    let userId: Int
+//
+//    let foodId: Int
+//    let intakeAt: Date
+//    let intakeAmount: Int
+//
+//    enum CodingKeys: String, CodingKey {
+//        case id, userId, foodId, intakeAt, intakeAmount
+//    }
+//
+//    init(id: Int, userId: Int, foodId: Int, intakeAt: Date, intakeAmount: Int) {
+//        self.id = id
+//        self.userId = userId
+//        self.foodId = foodId
+//        self.intakeAt = intakeAt
+//        self.intakeAmount = intakeAmount
+//    }
+//}
 

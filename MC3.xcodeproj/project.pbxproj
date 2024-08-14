@@ -25,6 +25,15 @@
 		FFACC9022C6C9EE400FC3A82 /* Foods.json in Resources */ = {isa = PBXBuildFile; fileRef = FFACC9012C6C9EE400FC3A82 /* Foods.json */; };
 		FFACC9052C6C9F3800FC3A82 /* FoodTags.json in Resources */ = {isa = PBXBuildFile; fileRef = FFACC9042C6C9F3800FC3A82 /* FoodTags.json */; };
 		FFACC9072C6CA0DC00FC3A82 /* ExampleFoodListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC9062C6CA0DC00FC3A82 /* ExampleFoodListView.swift */; };
+		FFACC90A2C6CA4C300FC3A82 /* db_model_v1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FFACC9082C6CA4C300FC3A82 /* db_model_v1.xcdatamodeld */; };
+		FFACC9112C6CB6E600FC3A82 /* FoodIntake+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC90B2C6CB6E600FC3A82 /* FoodIntake+CoreDataClass.swift */; };
+		FFACC9122C6CB6E600FC3A82 /* FoodIntake+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC90C2C6CB6E600FC3A82 /* FoodIntake+CoreDataProperties.swift */; };
+		FFACC9132C6CB6E600FC3A82 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC90D2C6CB6E600FC3A82 /* User+CoreDataClass.swift */; };
+		FFACC9142C6CB6E600FC3A82 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC90E2C6CB6E600FC3A82 /* User+CoreDataProperties.swift */; };
+		FFACC9152C6CB6E600FC3A82 /* WeightLog+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC90F2C6CB6E600FC3A82 /* WeightLog+CoreDataClass.swift */; };
+		FFACC9162C6CB6E600FC3A82 /* WeightLog+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC9102C6CB6E600FC3A82 /* WeightLog+CoreDataProperties.swift */; };
+		FFACC91E2C6CBB8500FC3A82 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC91D2C6CBB8500FC3A82 /* PersistenceController.swift */; };
+		FFACC9202C6CC00000FC3A82 /* ExampleOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC91F2C6CC00000FC3A82 /* ExampleOnboardingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +56,15 @@
 		FFACC9012C6C9EE400FC3A82 /* Foods.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Foods.json; sourceTree = "<group>"; };
 		FFACC9042C6C9F3800FC3A82 /* FoodTags.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FoodTags.json; sourceTree = "<group>"; };
 		FFACC9062C6CA0DC00FC3A82 /* ExampleFoodListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleFoodListView.swift; sourceTree = "<group>"; };
+		FFACC9092C6CA4C300FC3A82 /* db_model_v1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = db_model_v1.xcdatamodel; sourceTree = "<group>"; };
+		FFACC90B2C6CB6E600FC3A82 /* FoodIntake+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FoodIntake+CoreDataClass.swift"; sourceTree = "<group>"; };
+		FFACC90C2C6CB6E600FC3A82 /* FoodIntake+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FoodIntake+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		FFACC90D2C6CB6E600FC3A82 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
+		FFACC90E2C6CB6E600FC3A82 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		FFACC90F2C6CB6E600FC3A82 /* WeightLog+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeightLog+CoreDataClass.swift"; sourceTree = "<group>"; };
+		FFACC9102C6CB6E600FC3A82 /* WeightLog+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeightLog+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		FFACC91D2C6CBB8500FC3A82 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		FFACC91F2C6CC00000FC3A82 /* ExampleOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleOnboardingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +107,7 @@
 				766986E62C6B6B5B000838A3 /* MC3App.swift */,
 				766986E82C6B6B5B000838A3 /* ContentView.swift */,
 				FFACC9062C6CA0DC00FC3A82 /* ExampleFoodListView.swift */,
+				FFACC91F2C6CC00000FC3A82 /* ExampleOnboardingView.swift */,
 				766986EA2C6B6B5B000838A3 /* Item.swift */,
 				766986EC2C6B6B5C000838A3 /* Assets.xcassets */,
 				766986EE2C6B6B5C000838A3 /* Preview Content */,
@@ -132,6 +151,7 @@
 		7669870E2C6B721B000838A3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FFACC9182C6CB71600FC3A82 /* Core Data */,
 				7669870F2C6B725A000838A3 /* ModelSample.swift */,
 				FFACC8BA2C6C966300FC3A82 /* Models.swift */,
 			);
@@ -143,6 +163,8 @@
 			children = (
 				FFACC8F82C6C9AA500FC3A82 /* CoreDataStack.swift */,
 				FFACC8FA2C6C9AC500FC3A82 /* CoreDataHelpers.swift */,
+				FFACC91D2C6CBB8500FC3A82 /* PersistenceController.swift */,
+				FFACC9082C6CA4C300FC3A82 /* db_model_v1.xcdatamodeld */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -163,6 +185,19 @@
 				FFACC9042C6C9F3800FC3A82 /* FoodTags.json */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		FFACC9182C6CB71600FC3A82 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				FFACC90C2C6CB6E600FC3A82 /* FoodIntake+CoreDataProperties.swift */,
+				FFACC90D2C6CB6E600FC3A82 /* User+CoreDataClass.swift */,
+				FFACC90E2C6CB6E600FC3A82 /* User+CoreDataProperties.swift */,
+				FFACC90F2C6CB6E600FC3A82 /* WeightLog+CoreDataClass.swift */,
+				FFACC90B2C6CB6E600FC3A82 /* FoodIntake+CoreDataClass.swift */,
+				FFACC9102C6CB6E600FC3A82 /* WeightLog+CoreDataProperties.swift */,
+			);
+			path = "Core Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,9 +282,18 @@
 				766986EB2C6B6B5B000838A3 /* Item.swift in Sources */,
 				FFACC8F92C6C9AA500FC3A82 /* CoreDataStack.swift in Sources */,
 				766986E72C6B6B5B000838A3 /* MC3App.swift in Sources */,
+				FFACC90A2C6CA4C300FC3A82 /* db_model_v1.xcdatamodeld in Sources */,
 				FFACC8BB2C6C966300FC3A82 /* Models.swift in Sources */,
 				FFACC8FE2C6C9AFC00FC3A82 /* LazyList.swift in Sources */,
 				766987142C6B728A000838A3 /* ViewModelSample.swift in Sources */,
+				FFACC91E2C6CBB8500FC3A82 /* PersistenceController.swift in Sources */,
+				FFACC9112C6CB6E600FC3A82 /* FoodIntake+CoreDataClass.swift in Sources */,
+				FFACC9122C6CB6E600FC3A82 /* FoodIntake+CoreDataProperties.swift in Sources */,
+				FFACC9132C6CB6E600FC3A82 /* User+CoreDataClass.swift in Sources */,
+				FFACC9142C6CB6E600FC3A82 /* User+CoreDataProperties.swift in Sources */,
+				FFACC9152C6CB6E600FC3A82 /* WeightLog+CoreDataClass.swift in Sources */,
+				FFACC9162C6CB6E600FC3A82 /* WeightLog+CoreDataProperties.swift in Sources */,
+				FFACC9202C6CC00000FC3A82 /* ExampleOnboardingView.swift in Sources */,
 				766987122C6B727E000838A3 /* ViewSample.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -456,6 +500,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FFACC9082C6CA4C300FC3A82 /* db_model_v1.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FFACC9092C6CA4C300FC3A82 /* db_model_v1.xcdatamodel */,
+			);
+			currentVersion = FFACC9092C6CA4C300FC3A82 /* db_model_v1.xcdatamodel */;
+			name = db_model_v1.xcdatamodeld;
+			path = /Users/notwatermango/Developer/Code/appledev/MC3/MC3/Persistence/db_model_v1.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 766986DB2C6B6B5B000838A3 /* Project object */;
 }
