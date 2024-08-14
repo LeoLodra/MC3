@@ -17,6 +17,14 @@
 		766987102C6B725A000838A3 /* ModelSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7669870F2C6B725A000838A3 /* ModelSample.swift */; };
 		766987122C6B727E000838A3 /* ViewSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766987112C6B727E000838A3 /* ViewSample.swift */; };
 		766987142C6B728A000838A3 /* ViewModelSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766987132C6B728A000838A3 /* ViewModelSample.swift */; };
+		FFACC8BB2C6C966300FC3A82 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC8BA2C6C966300FC3A82 /* Models.swift */; };
+		FFACC8F92C6C9AA500FC3A82 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC8F82C6C9AA500FC3A82 /* CoreDataStack.swift */; };
+		FFACC8FB2C6C9AC500FC3A82 /* CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC8FA2C6C9AC500FC3A82 /* CoreDataHelpers.swift */; };
+		FFACC8FE2C6C9AFC00FC3A82 /* LazyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC8FD2C6C9AFC00FC3A82 /* LazyList.swift */; };
+		FFACC9002C6C9DB600FC3A82 /* JSONLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC8FF2C6C9DB600FC3A82 /* JSONLoader.swift */; };
+		FFACC9022C6C9EE400FC3A82 /* Foods.json in Resources */ = {isa = PBXBuildFile; fileRef = FFACC9012C6C9EE400FC3A82 /* Foods.json */; };
+		FFACC9052C6C9F3800FC3A82 /* FoodTags.json in Resources */ = {isa = PBXBuildFile; fileRef = FFACC9042C6C9F3800FC3A82 /* FoodTags.json */; };
+		FFACC9072C6CA0DC00FC3A82 /* ExampleFoodListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC9062C6CA0DC00FC3A82 /* ExampleFoodListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +39,14 @@
 		7669870F2C6B725A000838A3 /* ModelSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSample.swift; sourceTree = "<group>"; };
 		766987112C6B727E000838A3 /* ViewSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSample.swift; sourceTree = "<group>"; };
 		766987132C6B728A000838A3 /* ViewModelSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelSample.swift; sourceTree = "<group>"; };
+		FFACC8BA2C6C966300FC3A82 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		FFACC8F82C6C9AA500FC3A82 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		FFACC8FA2C6C9AC500FC3A82 /* CoreDataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelpers.swift; sourceTree = "<group>"; };
+		FFACC8FD2C6C9AFC00FC3A82 /* LazyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyList.swift; sourceTree = "<group>"; };
+		FFACC8FF2C6C9DB600FC3A82 /* JSONLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONLoader.swift; sourceTree = "<group>"; };
+		FFACC9012C6C9EE400FC3A82 /* Foods.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Foods.json; sourceTree = "<group>"; };
+		FFACC9042C6C9F3800FC3A82 /* FoodTags.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FoodTags.json; sourceTree = "<group>"; };
+		FFACC9062C6CA0DC00FC3A82 /* ExampleFoodListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleFoodListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,12 +79,16 @@
 		766986E52C6B6B5B000838A3 /* MC3 */ = {
 			isa = PBXGroup;
 			children = (
+				FFACC9032C6C9EF600FC3A82 /* Resources */,
+				FFACC8FC2C6C9AF300FC3A82 /* Utilities */,
+				FFACC8F72C6C9A8000FC3A82 /* Persistence */,
 				7669870E2C6B721B000838A3 /* Models */,
 				7669870C2C6B720A000838A3 /* Views */,
 				7669870B2C6B7200000838A3 /* ViewModels */,
 				766986F62C6B6B69000838A3 /* Screens */,
 				766986E62C6B6B5B000838A3 /* MC3App.swift */,
 				766986E82C6B6B5B000838A3 /* ContentView.swift */,
+				FFACC9062C6CA0DC00FC3A82 /* ExampleFoodListView.swift */,
 				766986EA2C6B6B5B000838A3 /* Item.swift */,
 				766986EC2C6B6B5C000838A3 /* Assets.xcassets */,
 				766986EE2C6B6B5C000838A3 /* Preview Content */,
@@ -113,8 +133,36 @@
 			isa = PBXGroup;
 			children = (
 				7669870F2C6B725A000838A3 /* ModelSample.swift */,
+				FFACC8BA2C6C966300FC3A82 /* Models.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		FFACC8F72C6C9A8000FC3A82 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				FFACC8F82C6C9AA500FC3A82 /* CoreDataStack.swift */,
+				FFACC8FA2C6C9AC500FC3A82 /* CoreDataHelpers.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		FFACC8FC2C6C9AF300FC3A82 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				FFACC8FD2C6C9AFC00FC3A82 /* LazyList.swift */,
+				FFACC8FF2C6C9DB600FC3A82 /* JSONLoader.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		FFACC9032C6C9EF600FC3A82 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FFACC9012C6C9EE400FC3A82 /* Foods.json */,
+				FFACC9042C6C9F3800FC3A82 /* FoodTags.json */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,6 +223,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFACC9052C6C9F3800FC3A82 /* FoodTags.json in Resources */,
+				FFACC9022C6C9EE400FC3A82 /* Foods.json in Resources */,
 				766986F02C6B6B5C000838A3 /* Preview Assets.xcassets in Resources */,
 				766986ED2C6B6B5C000838A3 /* Assets.xcassets in Resources */,
 			);
@@ -190,9 +240,15 @@
 				766986E92C6B6B5B000838A3 /* ContentView.swift in Sources */,
 				766987102C6B725A000838A3 /* ModelSample.swift in Sources */,
 				766986FE2C6B6EE7000838A3 /* InitialScreenView.swift in Sources */,
+				FFACC9002C6C9DB600FC3A82 /* JSONLoader.swift in Sources */,
+				FFACC8FB2C6C9AC500FC3A82 /* CoreDataHelpers.swift in Sources */,
+				FFACC9072C6CA0DC00FC3A82 /* ExampleFoodListView.swift in Sources */,
 				766986FC2C6B6BA8000838A3 /* GoalsScreenView.swift in Sources */,
 				766986EB2C6B6B5B000838A3 /* Item.swift in Sources */,
+				FFACC8F92C6C9AA500FC3A82 /* CoreDataStack.swift in Sources */,
 				766986E72C6B6B5B000838A3 /* MC3App.swift in Sources */,
+				FFACC8BB2C6C966300FC3A82 /* Models.swift in Sources */,
+				FFACC8FE2C6C9AFC00FC3A82 /* LazyList.swift in Sources */,
 				766987142C6B728A000838A3 /* ViewModelSample.swift in Sources */,
 				766987122C6B727E000838A3 /* ViewSample.swift in Sources */,
 			);
