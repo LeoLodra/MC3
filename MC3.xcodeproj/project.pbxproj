@@ -17,6 +17,7 @@
 		766987102C6B725A000838A3 /* ModelSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7669870F2C6B725A000838A3 /* ModelSample.swift */; };
 		766987122C6B727E000838A3 /* ViewSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766987112C6B727E000838A3 /* ViewSample.swift */; };
 		766987142C6B728A000838A3 /* ViewModelSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766987132C6B728A000838A3 /* ViewModelSample.swift */; };
+		FF51EE722C6DED6D00025469 /* db_model_v1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FFACC9082C6CA4C300FC3A82 /* db_model_v1.xcdatamodeld */; };
 		FFACC8BB2C6C966300FC3A82 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC8BA2C6C966300FC3A82 /* Models.swift */; };
 		FFACC8F92C6C9AA500FC3A82 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC8F82C6C9AA500FC3A82 /* CoreDataStack.swift */; };
 		FFACC8FB2C6C9AC500FC3A82 /* CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC8FA2C6C9AC500FC3A82 /* CoreDataHelpers.swift */; };
@@ -25,7 +26,6 @@
 		FFACC9022C6C9EE400FC3A82 /* Foods.json in Resources */ = {isa = PBXBuildFile; fileRef = FFACC9012C6C9EE400FC3A82 /* Foods.json */; };
 		FFACC9052C6C9F3800FC3A82 /* FoodTags.json in Resources */ = {isa = PBXBuildFile; fileRef = FFACC9042C6C9F3800FC3A82 /* FoodTags.json */; };
 		FFACC9072C6CA0DC00FC3A82 /* ExampleFoodListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC9062C6CA0DC00FC3A82 /* ExampleFoodListView.swift */; };
-		FFACC90A2C6CA4C300FC3A82 /* db_model_v1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FFACC9082C6CA4C300FC3A82 /* db_model_v1.xcdatamodeld */; };
 		FFACC9112C6CB6E600FC3A82 /* FoodIntake+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC90B2C6CB6E600FC3A82 /* FoodIntake+CoreDataClass.swift */; };
 		FFACC9122C6CB6E600FC3A82 /* FoodIntake+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC90C2C6CB6E600FC3A82 /* FoodIntake+CoreDataProperties.swift */; };
 		FFACC9132C6CB6E600FC3A82 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC90D2C6CB6E600FC3A82 /* User+CoreDataClass.swift */; };
@@ -34,6 +34,7 @@
 		FFACC9162C6CB6E600FC3A82 /* WeightLog+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC9102C6CB6E600FC3A82 /* WeightLog+CoreDataProperties.swift */; };
 		FFACC91E2C6CBB8500FC3A82 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC91D2C6CBB8500FC3A82 /* PersistenceController.swift */; };
 		FFACC9202C6CC00000FC3A82 /* ExampleOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC91F2C6CC00000FC3A82 /* ExampleOnboardingView.swift */; };
+		FFACC9222C6CD2C700FC3A82 /* FoodListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC9212C6CD2C700FC3A82 /* FoodListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		FFACC9102C6CB6E600FC3A82 /* WeightLog+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeightLog+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FFACC91D2C6CBB8500FC3A82 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		FFACC91F2C6CC00000FC3A82 /* ExampleOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleOnboardingView.swift; sourceTree = "<group>"; };
+		FFACC9212C6CD2C700FC3A82 /* FoodListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				766986E82C6B6B5B000838A3 /* ContentView.swift */,
 				FFACC9062C6CA0DC00FC3A82 /* ExampleFoodListView.swift */,
 				FFACC91F2C6CC00000FC3A82 /* ExampleOnboardingView.swift */,
+				FFACC9212C6CD2C700FC3A82 /* FoodListView.swift */,
 				766986EA2C6B6B5B000838A3 /* Item.swift */,
 				766986EC2C6B6B5C000838A3 /* Assets.xcassets */,
 				766986EE2C6B6B5C000838A3 /* Preview Content */,
@@ -276,14 +279,15 @@
 				766987102C6B725A000838A3 /* ModelSample.swift in Sources */,
 				766986FE2C6B6EE7000838A3 /* InitialScreenView.swift in Sources */,
 				FFACC9002C6C9DB600FC3A82 /* JSONLoader.swift in Sources */,
+				FF51EE722C6DED6D00025469 /* db_model_v1.xcdatamodeld in Sources */,
 				FFACC8FB2C6C9AC500FC3A82 /* CoreDataHelpers.swift in Sources */,
 				FFACC9072C6CA0DC00FC3A82 /* ExampleFoodListView.swift in Sources */,
 				766986FC2C6B6BA8000838A3 /* GoalsScreenView.swift in Sources */,
 				766986EB2C6B6B5B000838A3 /* Item.swift in Sources */,
 				FFACC8F92C6C9AA500FC3A82 /* CoreDataStack.swift in Sources */,
 				766986E72C6B6B5B000838A3 /* MC3App.swift in Sources */,
-				FFACC90A2C6CA4C300FC3A82 /* db_model_v1.xcdatamodeld in Sources */,
 				FFACC8BB2C6C966300FC3A82 /* Models.swift in Sources */,
+				FFACC9222C6CD2C700FC3A82 /* FoodListView.swift in Sources */,
 				FFACC8FE2C6C9AFC00FC3A82 /* LazyList.swift in Sources */,
 				766987142C6B728A000838A3 /* ViewModelSample.swift in Sources */,
 				FFACC91E2C6CBB8500FC3A82 /* PersistenceController.swift in Sources */,
@@ -509,7 +513,7 @@
 			);
 			currentVersion = FFACC9092C6CA4C300FC3A82 /* db_model_v1.xcdatamodel */;
 			name = db_model_v1.xcdatamodeld;
-			path = /Users/notwatermango/Developer/Code/appledev/MC3/MC3/Persistence/db_model_v1.xcdatamodeld;
+			path = db_model_v1.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
