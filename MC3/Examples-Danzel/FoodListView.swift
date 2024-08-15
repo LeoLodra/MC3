@@ -95,3 +95,25 @@ class ExampleFoodListViewController: UIViewController, UITableViewDelegate, UITa
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
+
+#if DEBUG
+import SwiftUI
+
+struct ExampleFoodListViewController_Previews: PreviewProvider {
+    static var previews: some View {
+        ExampleFoodListViewPreview()
+            .edgesIgnoringSafeArea(.all)
+    }
+}
+
+struct ExampleFoodListViewPreview: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> ExampleFoodListViewController {
+        let viewContext = PersistenceController.shared.container.viewContext
+        return ExampleFoodListViewController(viewContext: viewContext)
+    }
+
+    func updateUIViewController(_ uiViewController: ExampleFoodListViewController, context: Context) {
+        // No update needed for static preview
+    }
+}
+#endif
