@@ -25,9 +25,20 @@ struct MC3App: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            UIKitHostingController()
         }
         .modelContainer(sharedModelContainer)
+    }
+}
+
+struct UIKitHostingController: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> UIViewController {
+        // Return your UIKit view controller here
+        return InitialScreenView()
+    }
+    
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+        // No updates needed here
     }
 }
 
