@@ -30,3 +30,21 @@ struct MC3App: App {
         .modelContainer(sharedModelContainer)
     }
 }
+
+
+// MARK: Running the Example App with CoreData, uncomment this
+//import SwiftUI
+//import CoreData
+//
+//@main
+//struct MC3App: App {
+//    let persistenceController = PersistenceController.shared
+//
+//    var body: some Scene {
+//        WindowGroup {
+//            ExampleOnboardingView()
+//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+//        }
+//    }
+//}
+//

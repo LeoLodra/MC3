@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "title": "Protein"
+    },
+    {
+        "id": 2,
+        "title": "Vegetable"
+    },
+    {
+        "id": 3,
+        "title": "Fish"
+    },
+    {
+        "id": 4,
+        "title": "Fruit"
+    },
+    {
+        "id": 5,
+        "title": "Dairy"
+    },
+    {
+        "id": 6,
+        "title": "Nuts"
+    },
+    {
+        "id": 7,
+        "title": "Meat"
+    },
+    {
+        "id": 8,
+        "title": "Carbohydrate"
+    },
+    {
+        "id": 9,
+        "title": "Vegetarian"
+    },
+    {
+        "id": 10,
+        "title": "Omega-3"
+    }
+]
