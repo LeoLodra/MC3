@@ -23,6 +23,19 @@
 		766987102C6B725A000838A3 /* ModelSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7669870F2C6B725A000838A3 /* ModelSample.swift */; };
 		766987122C6B727E000838A3 /* ViewSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766987112C6B727E000838A3 /* ViewSample.swift */; };
 		766987142C6B728A000838A3 /* ViewModelSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766987132C6B728A000838A3 /* ViewModelSample.swift */; };
+		768367A82C73611C00FBDC95 /* HeightInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768367A72C73611C00FBDC95 /* HeightInputView.swift */; };
+		768367AA2C73613000FBDC95 /* WeightInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768367A92C73613000FBDC95 /* WeightInputView.swift */; };
+		768367B82C7362A000FBDC95 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 768367AC2C73629F00FBDC95 /* Lato-Black.ttf */; };
+		768367B92C7362A000FBDC95 /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 768367AD2C73629F00FBDC95 /* Lato-BlackItalic.ttf */; };
+		768367BA2C7362A000FBDC95 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 768367AE2C73629F00FBDC95 /* Lato-Bold.ttf */; };
+		768367BB2C7362A000FBDC95 /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 768367AF2C73629F00FBDC95 /* Lato-BoldItalic.ttf */; };
+		768367BC2C7362A000FBDC95 /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 768367B02C73629F00FBDC95 /* Lato-Italic.ttf */; };
+		768367BD2C7362A000FBDC95 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 768367B12C73629F00FBDC95 /* Lato-Light.ttf */; };
+		768367BE2C7362A000FBDC95 /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 768367B22C73629F00FBDC95 /* Lato-LightItalic.ttf */; };
+		768367BF2C7362A000FBDC95 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 768367B32C73629F00FBDC95 /* Lato-Regular.ttf */; };
+		768367C02C7362A000FBDC95 /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 768367B42C73629F00FBDC95 /* Lato-Thin.ttf */; };
+		768367C12C7362A000FBDC95 /* Lato-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 768367B52C73629F00FBDC95 /* Lato-ThinItalic.ttf */; };
+		768367C22C7362A000FBDC95 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 768367B62C73629F00FBDC95 /* OFL.txt */; };
 		FF51EE722C6DED6D00025469 /* db_model_v1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FFACC9082C6CA4C300FC3A82 /* db_model_v1.xcdatamodeld */; };
 		FFACC8BB2C6C966300FC3A82 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC8BA2C6C966300FC3A82 /* Models.swift */; };
 		FFACC8F92C6C9AA500FC3A82 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC8F82C6C9AA500FC3A82 /* CoreDataStack.swift */; };
@@ -61,6 +74,20 @@
 		7669870F2C6B725A000838A3 /* ModelSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSample.swift; sourceTree = "<group>"; };
 		766987112C6B727E000838A3 /* ViewSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSample.swift; sourceTree = "<group>"; };
 		766987132C6B728A000838A3 /* ViewModelSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelSample.swift; sourceTree = "<group>"; };
+		768367A72C73611C00FBDC95 /* HeightInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeightInputView.swift; sourceTree = "<group>"; };
+		768367A92C73613000FBDC95 /* WeightInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightInputView.swift; sourceTree = "<group>"; };
+		768367AC2C73629F00FBDC95 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
+		768367AD2C73629F00FBDC95 /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BlackItalic.ttf"; sourceTree = "<group>"; };
+		768367AE2C73629F00FBDC95 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
+		768367AF2C73629F00FBDC95 /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
+		768367B02C73629F00FBDC95 /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Italic.ttf"; sourceTree = "<group>"; };
+		768367B12C73629F00FBDC95 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
+		768367B22C73629F00FBDC95 /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-LightItalic.ttf"; sourceTree = "<group>"; };
+		768367B32C73629F00FBDC95 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		768367B42C73629F00FBDC95 /* Lato-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Thin.ttf"; sourceTree = "<group>"; };
+		768367B52C73629F00FBDC95 /* Lato-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-ThinItalic.ttf"; sourceTree = "<group>"; };
+		768367B62C73629F00FBDC95 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		768367C32C7362AD00FBDC95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FFACC8BA2C6C966300FC3A82 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		FFACC8F82C6C9AA500FC3A82 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		FFACC8FA2C6C9AC500FC3A82 /* CoreDataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelpers.swift; sourceTree = "<group>"; };
@@ -122,6 +149,8 @@
 		766986E52C6B6B5B000838A3 /* MC3 */ = {
 			isa = PBXGroup;
 			children = (
+				768367C32C7362AD00FBDC95 /* Info.plist */,
+				768367AB2C73628500FBDC95 /* Fonts */,
 				FFACC9032C6C9EF600FC3A82 /* Resources */,
 				FFACC8FC2C6C9AF300FC3A82 /* Utilities */,
 				FFACC8F72C6C9A8000FC3A82 /* Persistence */,
@@ -171,6 +200,8 @@
 			children = (
 				5B1554EE2C6C93FC00D0B3C3 /* Components */,
 				766987112C6B727E000838A3 /* ViewSample.swift */,
+				768367A72C73611C00FBDC95 /* HeightInputView.swift */,
+				768367A92C73613000FBDC95 /* WeightInputView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -183,6 +214,33 @@
 				FFACC8BA2C6C966300FC3A82 /* Models.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		768367AB2C73628500FBDC95 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				768367B72C73629F00FBDC95 /* Lato */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		768367B72C73629F00FBDC95 /* Lato */ = {
+			isa = PBXGroup;
+			children = (
+				768367AC2C73629F00FBDC95 /* Lato-Black.ttf */,
+				768367AD2C73629F00FBDC95 /* Lato-BlackItalic.ttf */,
+				768367AE2C73629F00FBDC95 /* Lato-Bold.ttf */,
+				768367AF2C73629F00FBDC95 /* Lato-BoldItalic.ttf */,
+				768367B02C73629F00FBDC95 /* Lato-Italic.ttf */,
+				768367B12C73629F00FBDC95 /* Lato-Light.ttf */,
+				768367B22C73629F00FBDC95 /* Lato-LightItalic.ttf */,
+				768367B32C73629F00FBDC95 /* Lato-Regular.ttf */,
+				768367B42C73629F00FBDC95 /* Lato-Thin.ttf */,
+				768367B52C73629F00FBDC95 /* Lato-ThinItalic.ttf */,
+				768367B62C73629F00FBDC95 /* OFL.txt */,
+			);
+			name = Lato;
+			path = ../../../../Downloads/Lato;
 			sourceTree = "<group>";
 		};
 		FF51EE752C6DF9C900025469 /* Examples-Danzel */ = {
@@ -295,10 +353,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				768367C22C7362A000FBDC95 /* OFL.txt in Resources */,
+				768367BE2C7362A000FBDC95 /* Lato-LightItalic.ttf in Resources */,
+				768367C12C7362A000FBDC95 /* Lato-ThinItalic.ttf in Resources */,
+				768367BA2C7362A000FBDC95 /* Lato-Bold.ttf in Resources */,
 				FFACC9052C6C9F3800FC3A82 /* FoodTags.json in Resources */,
 				FFACC9022C6C9EE400FC3A82 /* Foods.json in Resources */,
+				768367BB2C7362A000FBDC95 /* Lato-BoldItalic.ttf in Resources */,
+				768367B92C7362A000FBDC95 /* Lato-BlackItalic.ttf in Resources */,
+				768367BD2C7362A000FBDC95 /* Lato-Light.ttf in Resources */,
+				768367BF2C7362A000FBDC95 /* Lato-Regular.ttf in Resources */,
 				766986F02C6B6B5C000838A3 /* Preview Assets.xcassets in Resources */,
+				768367B82C7362A000FBDC95 /* Lato-Black.ttf in Resources */,
+				768367BC2C7362A000FBDC95 /* Lato-Italic.ttf in Resources */,
 				766986ED2C6B6B5C000838A3 /* Assets.xcassets in Resources */,
+				768367C02C7362A000FBDC95 /* Lato-Thin.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +384,7 @@
 				766987102C6B725A000838A3 /* ModelSample.swift in Sources */,
 				766986FE2C6B6EE7000838A3 /* InitialScreenView.swift in Sources */,
 				5B1555012C724A0A00D0B3C3 /* FoodInputSheetComponentView.swift in Sources */,
+				768367AA2C73613000FBDC95 /* WeightInputView.swift in Sources */,
 				FFACC9002C6C9DB600FC3A82 /* JSONLoader.swift in Sources */,
 				FF51EE722C6DED6D00025469 /* db_model_v1.xcdatamodeld in Sources */,
 				FFACC8FB2C6C9AC500FC3A82 /* CoreDataHelpers.swift in Sources */,
@@ -338,6 +408,7 @@
 				FFACC9162C6CB6E600FC3A82 /* WeightLog+CoreDataProperties.swift in Sources */,
 				FFACC9202C6CC00000FC3A82 /* ExampleOnboardingView.swift in Sources */,
 				766987122C6B727E000838A3 /* ViewSample.swift in Sources */,
+				768367A82C73611C00FBDC95 /* HeightInputView.swift in Sources */,
 				5B1554F02C6C945A00D0B3C3 /* CaloriesTargetView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -475,6 +546,7 @@
 				DEVELOPMENT_TEAM = NRAJG6453M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MC3/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -504,6 +576,7 @@
 				DEVELOPMENT_TEAM = NRAJG6453M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MC3/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
