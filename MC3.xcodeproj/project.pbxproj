@@ -108,9 +108,7 @@
 				766986F62C6B6B69000838A3 /* Screens */,
 				766986E62C6B6B5B000838A3 /* MC3App.swift */,
 				766986E82C6B6B5B000838A3 /* ContentView.swift */,
-				FFACC9062C6CA0DC00FC3A82 /* ExampleFoodListView.swift */,
-				FFACC91F2C6CC00000FC3A82 /* ExampleOnboardingView.swift */,
-				FFACC9212C6CD2C700FC3A82 /* FoodListView.swift */,
+				FF51EE752C6DF9C900025469 /* Examples-Danzel */,
 				766986EA2C6B6B5B000838A3 /* Item.swift */,
 				766986EC2C6B6B5C000838A3 /* Assets.xcassets */,
 				766986EE2C6B6B5C000838A3 /* Preview Content */,
@@ -159,6 +157,16 @@
 				FFACC8BA2C6C966300FC3A82 /* Models.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		FF51EE752C6DF9C900025469 /* Examples-Danzel */ = {
+			isa = PBXGroup;
+			children = (
+				FFACC9062C6CA0DC00FC3A82 /* ExampleFoodListView.swift */,
+				FFACC91F2C6CC00000FC3A82 /* ExampleOnboardingView.swift */,
+				FFACC9212C6CD2C700FC3A82 /* FoodListView.swift */,
+			);
+			path = "Examples-Danzel";
 			sourceTree = "<group>";
 		};
 		FFACC8F72C6C9A8000FC3A82 /* Persistence */ = {
@@ -512,7 +520,6 @@
 				FFACC9092C6CA4C300FC3A82 /* db_model_v1.xcdatamodel */,
 			);
 			currentVersion = FFACC9092C6CA4C300FC3A82 /* db_model_v1.xcdatamodel */;
-			name = db_model_v1.xcdatamodeld;
 			path = db_model_v1.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
