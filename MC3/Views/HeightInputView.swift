@@ -21,6 +21,9 @@ class HeightInputView: UIView {
     
     private let heightInput: UITextField = {
         let input = UITextField()
+        input.layer.borderWidth = 1
+        input.layer.cornerRadius = 10
+        input.layer.borderColor = UIColor.systemGray4.cgColor
         input.placeholder = "0"
         input.borderStyle = .roundedRect
         input.translatesAutoresizingMaskIntoConstraints = false

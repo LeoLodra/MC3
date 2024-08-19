@@ -5,12 +5,13 @@
 //  Created by Leonardo Marhan on 17/08/24.
 //
 
+//MARK: Can't interact
 import UIKit
 
 class CustomDatePickerView: UIView {
     
-    let containerView: UIStackView = {
-        let view = UIStackView()
+    let containerView: UIView = {
+        let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.borderWidth = 1
         view.layer.cornerRadius = 10
@@ -46,8 +47,8 @@ class CustomDatePickerView: UIView {
     
     private func setupView() {
         addSubview(containerView)
-        containerView.addArrangedSubview(calendarIcon)
-        containerView.addArrangedSubview(lmpInput)
+        containerView.addSubview(calendarIcon)
+        containerView.addSubview(lmpInput)
         
         NSLayoutConstraint.activate([
             containerView.heightAnchor.constraint(equalToConstant: 44),
