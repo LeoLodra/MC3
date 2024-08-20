@@ -45,6 +45,7 @@
 		7683680E2C75CD0700FBDC95 /* FoodInfoScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7683680D2C75CD0700FBDC95 /* FoodInfoScreenView.swift */; };
 		768368102C75D1FA00FBDC95 /* NutrientInfoComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7683680F2C75D1FA00FBDC95 /* NutrientInfoComponentView.swift */; };
 		FF3357522C73417600C3D829 /* WeightScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3357512C73417600C3D829 /* WeightScreenView.swift */; };
+		7683680C2C74986700FBDC95 /* AddLogComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7683680B2C74986700FBDC95 /* AddLogComponentView.swift */; };
 		FF51EE722C6DED6D00025469 /* db_model_v1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FFACC9082C6CA4C300FC3A82 /* db_model_v1.xcdatamodeld */; };
 		FFACC8BB2C6C966300FC3A82 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC8BA2C6C966300FC3A82 /* Models.swift */; };
 		FFACC8F92C6C9AA500FC3A82 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC8F82C6C9AA500FC3A82 /* CoreDataStack.swift */; };
@@ -107,6 +108,7 @@
 		7683680D2C75CD0700FBDC95 /* FoodInfoScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodInfoScreenView.swift; sourceTree = "<group>"; };
 		7683680F2C75D1FA00FBDC95 /* NutrientInfoComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientInfoComponentView.swift; sourceTree = "<group>"; };
 		FF3357512C73417600C3D829 /* WeightScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightScreenView.swift; sourceTree = "<group>"; };
+		7683680B2C74986700FBDC95 /* AddLogComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLogComponentView.swift; sourceTree = "<group>"; };
 		FFACC8BA2C6C966300FC3A82 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		FFACC8F82C6C9AA500FC3A82 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		FFACC8FA2C6C9AC500FC3A82 /* CoreDataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelpers.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				5B3CF6E82C74C1BD007622BC /* FoodLogSheetComponentView.swift */,
 				5B3CF6EA2C75C125007622BC /* FoodLogListCardComponentView.swift */,
 				7683680F2C75D1FA00FBDC95 /* NutrientInfoComponentView.swift */,
+				7683680B2C74986700FBDC95 /* AddLogComponentView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 				768368102C75D1FA00FBDC95 /* NutrientInfoComponentView.swift in Sources */,
 				5B1554F02C6C945A00D0B3C3 /* CaloriesTargetView.swift in Sources */,
 				5B3CF6E72C7499F9007622BC /* NutrientIntakeProgressComponentView.swift in Sources */,
+				7683680C2C74986700FBDC95 /* AddLogComponentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
