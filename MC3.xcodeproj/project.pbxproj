@@ -44,6 +44,7 @@
 		FFACC9202C6CC00000FC3A82 /* ExampleOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC91F2C6CC00000FC3A82 /* ExampleOnboardingView.swift */; };
 		FFE788EC2C75EF64007868F2 /* WeightWheelPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE788EB2C75EF64007868F2 /* WeightWheelPicker.swift */; };
 		FFE788EE2C75F362007868F2 /* WeightUpdateSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE788ED2C75F362007868F2 /* WeightUpdateSheet.swift */; };
+		FFACC9222C6CD2C700FC3A82 /* ExperimentFoodListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC9212C6CD2C700FC3A82 /* ExperimentFoodListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +86,7 @@
 		FFACC91F2C6CC00000FC3A82 /* ExampleOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleOnboardingView.swift; sourceTree = "<group>"; };
 		FFE788EB2C75EF64007868F2 /* WeightWheelPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightWheelPicker.swift; sourceTree = "<group>"; };
 		FFE788ED2C75F362007868F2 /* WeightUpdateSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightUpdateSheet.swift; sourceTree = "<group>"; };
+		FFACC9212C6CD2C700FC3A82 /* ExperimentFoodListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperimentFoodListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +202,7 @@
 				FFACC9062C6CA0DC00FC3A82 /* ExampleFoodListView.swift */,
 				FF33574F2C733FF200C3D829 /* ExampleFoodListViewController.swift */,
 				FFACC91F2C6CC00000FC3A82 /* ExampleOnboardingView.swift */,
+				FFACC9212C6CD2C700FC3A82 /* ExperimentFoodListView.swift */,
 			);
 			path = "Examples-Danzel";
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				766986E72C6B6B5B000838A3 /* MC3App.swift in Sources */,
 				5B1554FB2C6E033C00D0B3C3 /* DailyandWeeklyNutrientComponentView.swift in Sources */,
 				FFACC8BB2C6C966300FC3A82 /* Models.swift in Sources */,
+				FFACC9222C6CD2C700FC3A82 /* ExperimentFoodListView.swift in Sources */,
 				FFACC8FE2C6C9AFC00FC3A82 /* LazyList.swift in Sources */,
 				766987142C6B728A000838A3 /* ViewModelSample.swift in Sources */,
 				FF3357522C73417600C3D829 /* WeightScreenView.swift in Sources */,
