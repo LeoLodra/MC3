@@ -10,7 +10,7 @@ import SwiftUI
 struct FoodInputSheetComponentView: View {
     
     var food:Food
-    @State private var foodPortion:Int = 0
+    @State private var foodPortion:Int = 1
     @State private var foodLogDate:Date = Date()
     @Binding var showingSheet:Bool
     @Environment(\.managedObjectContext) private var viewContext
@@ -47,8 +47,8 @@ struct FoodInputSheetComponentView: View {
                             .foregroundStyle(.yellowprimary)
                         
                         VStack{
-                            Text("\(food.calories)Kcal")
-                                .font(.title3)
+                            Text("\(food.calories * foodPortion)Kcal")
+                                .font(.headline)
                                 .fontWeight(.semibold)
                             Text("Calorie")
                         }
@@ -62,8 +62,9 @@ struct FoodInputSheetComponentView: View {
                         
                         HStack{
                             VStack{
-                                Text("\(food.protein)g")
-                                    .font(.title3)
+                                Text("\(food.protein * Float(foodPortion), specifier: "%.2f")g")
+                                    .fixedSize(horizontal: false, vertical: true)
+                                    .font(.subheadline)
                                     .fontWeight(.semibold)
                                 Text("Protein")
                             }
@@ -71,8 +72,9 @@ struct FoodInputSheetComponentView: View {
                             Divider()
                             
                             VStack{
-                                Text("\(food.folate)mg")
-                                    .font(.title3)
+                                Text("\(food.folate * Float(foodPortion), specifier: "%.2f")mg")
+                                    .fixedSize(horizontal: false, vertical: true)
+                                    .font(.subheadline)
                                     .fontWeight(.semibold)
                                 Text("Folate")
                             }
@@ -80,8 +82,9 @@ struct FoodInputSheetComponentView: View {
                             Divider()
                             
                             VStack{
-                                Text("\(food.calcium)mg")
-                                    .font(.title3)
+                                Text("\(food.calcium * Float(foodPortion), specifier: "%.2f")mg")
+                                    .fixedSize(horizontal: false, vertical: true)
+                                    .font(.subheadline)
                                     .fontWeight(.semibold)
                                 Text("Calcium")
                             }
