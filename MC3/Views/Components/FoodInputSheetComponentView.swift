@@ -8,14 +8,12 @@
 import SwiftUI
 
 struct FoodInputSheetComponentView: View {
-    var foodName:String
-    var foodServingPortion:Int
-    var foodCalorie:Int
-    var foodProtein:Int
-    var foodFolicAcid:Int
-    var foodCalcium:Int
-    @State private var foodPortion:Int = 0
+    
+    var food:Food
+    @State private var foodPortion:Int = 1
     @State private var foodLogDate:Date = Date()
+    @Binding var showingSheet:Bool
+    @Environment(\.managedObjectContext) private var viewContext
     
     var body: some View {
         ZStack{
@@ -32,13 +30,13 @@ struct FoodInputSheetComponentView: View {
                     .padding(.top, 40)
                 
                 HStack(alignment: .bottom){
-                    Text(foodName)
+                    Text(food.title)
                         .font(.title2)
                         .fontWeight(.bold)
                     
                     Spacer()
                     
-                    Text("\(foodServingPortion)gr/portion")
+                    Text("\(food.servingSize)gr/portion")
                         .foregroundStyle(.darkgraytext)
                 }
                 
@@ -49,8 +47,8 @@ struct FoodInputSheetComponentView: View {
                             .foregroundStyle(.yellowprimary)
                         
                         VStack{
-                            Text("\(foodCalorie)Kcal")
-                                .font(.title3)
+                            Text("\(food.calories * foodPortion)Kcal")
+                                .font(.headline)
                                 .fontWeight(.semibold)
                             Text("Calorie")
                         }
@@ -64,8 +62,9 @@ struct FoodInputSheetComponentView: View {
                         
                         HStack{
                             VStack{
-                                Text("\(foodProtein)g")
-                                    .font(.title3)
+                                Text("\(food.protein * Float(foodPortion), specifier: "%.2f")g")
+                                    .fixedSize(horizontal: false, vertical: true)
+                                    .font(.subheadline)
                                     .fontWeight(.semibold)
                                 Text("Protein")
                             }
@@ -73,8 +72,9 @@ struct FoodInputSheetComponentView: View {
                             Divider()
                             
                             VStack{
-                                Text("\(foodFolicAcid)mg")
-                                    .font(.title3)
+                                Text("\(food.folate * Float(foodPortion), specifier: "%.2f")mg")
+                                    .fixedSize(horizontal: false, vertical: true)
+                                    .font(.subheadline)
                                     .fontWeight(.semibold)
                                 Text("Folate")
                             }
@@ -82,8 +82,9 @@ struct FoodInputSheetComponentView: View {
                             Divider()
                             
                             VStack{
-                                Text("\(foodCalcium)mg")
-                                    .font(.title3)
+                                Text("\(food.calcium * Float(foodPortion), specifier: "%.2f")mg")
+                                    .fixedSize(horizontal: false, vertical: true)
+                                    .font(.subheadline)
                                     .fontWeight(.semibold)
                                 Text("Calcium")
                             }
@@ -122,7 +123,8 @@ struct FoodInputSheetComponentView: View {
                 .padding(.top, 20)
                 
                 Button(action: {
-                    
+                    logFoodIntake(food: food)
+                    showingSheet = false
                 }, label: {
                     ZStack{
                         RoundedRectangle(cornerRadius: 9999)
@@ -143,8 +145,24 @@ struct FoodInputSheetComponentView: View {
             
         }
     }
+    
+    private func logFoodIntake(food: Food) {
+        let newFoodIntake = FoodIntake(context: viewContext)
+        newFoodIntake.intakeAt = foodLogDate
+        newFoodIntake.foodId = Int64(food.id)
+        newFoodIntake.intakeAmount = Int64(foodPortion)
+        newFoodIntake.id = UUID()
+        
+        do {
+            try viewContext.save()
+            print("Food intake logged successfully")
+        } catch {
+            // Handle the error, e.g., show an alert
+            print("Failed to save food intake: \(error.localizedDescription)")
+        }
+    }
 }
 
-#Preview {
-    FoodInputSheetComponentView(foodName: "Rujak Cingur Vegetarian Khas Surabaya Barat Daya", foodServingPortion: 299, foodCalorie: 300, foodProtein: 1, foodFolicAcid: 39, foodCalcium: 39)
-}
+//#Preview {
+//    FoodInputSheetComponentView()
+//}

@@ -9,14 +9,23 @@ import SwiftUI
 
 struct FoodListView: View {
     
+    @State private var foods:[Food] = []
+    
     var body: some View {
         ScrollView{
-            VStack{
-                FoodCardViewComponent(foodName: "Pizza", foodStatus: "Restricted", foodCalorie: 300, foodServing: 500, foodProtein: 1, foodFolicAcid: 39, foodCalcium: 39)
-                
-                FoodCardViewComponent(foodName: "Martabak", foodStatus: "Limited Consumption", foodCalorie: 300, foodServing: 500, foodProtein: 1, foodFolicAcid: 39, foodCalcium: 39)
+            VStack(spacing: -16){
+                ForEach(foods){food in
+                    FoodCardViewComponent(food: food)
+                }
             }
         }
+        .onAppear(perform: {
+            loadFoods()
+        })
+    }
+    
+    private func loadFoods() {
+        foods = JSONLoader.loadFoods()
     }
 }
 
