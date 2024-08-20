@@ -80,30 +80,7 @@ class InitialScreenView: UIViewController {
         return label
     }()
     
-    let lmpInputContainer: UIView = {
-        let view = UIView()
-        view.layer.borderWidth = 1
-        view.layer.cornerRadius = 10
-        view.layer.borderColor = UIColor.systemGray4.cgColor
-        return view
-    }()
-    
-    let calendarIcon: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "calendar")
-        imageView.tintColor = .gray
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
-    
-    let lmpInput: UIDatePicker = {
-        let input = UIDatePicker()
-        input.sizeToFit()
-        input.preferredDatePickerStyle = .compact
-        input.datePickerMode = .date
-        input.backgroundColor = .clear
-        return input
-    }()
+    let lmpInput = DateInputView()
     
     let dobLabel: UILabel = {
         let label = UILabel()
@@ -114,30 +91,7 @@ class InitialScreenView: UIViewController {
         return label
     }()
     
-    let dobInputContainer: UIView = {
-        let view = UIView()
-        view.layer.borderWidth = 1
-        view.layer.cornerRadius = 10
-        view.layer.borderColor = UIColor.systemGray4.cgColor
-        return view
-    }()
-    
-    let calendarIcon2: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "calendar")
-        imageView.tintColor = .gray
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
-    
-    let dobInput: UIDatePicker = {
-        let input = UIDatePicker()
-        input.sizeToFit()
-        input.preferredDatePickerStyle = .compact
-        input.datePickerMode = .date
-        input.backgroundColor = .clear
-        return input
-    }()
+    let dobInput = DateInputView()
     
 //    let allergiesLabel: UILabel = {
 //        let label = UILabel()
@@ -177,7 +131,7 @@ class InitialScreenView: UIViewController {
         button.setTitle("Start my journey", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont(name: "Lato-Bold", size: 17)
-        button.backgroundColor = .systemCyan
+        button.backgroundColor = .blueprimary
         
         button.layer.cornerRadius = 20
         return button
@@ -201,14 +155,10 @@ class InitialScreenView: UIViewController {
         view.addSubview(heightInput)
         
         view.addSubview(lmpLabel)
-        view.addSubview(lmpInputContainer)
-        lmpInputContainer.addSubview(calendarIcon)
-        lmpInputContainer.addSubview(lmpInput)
+        view.addSubview(lmpInput)
         
         view.addSubview(dobLabel)
-        view.addSubview(dobInputContainer)
-        dobInputContainer.addSubview(calendarIcon2)
-        dobInputContainer.addSubview(dobInput)
+        view.addSubview(dobInput)
         
 //        view.addSubview(allergiesLabel)
 //        view.addSubview(allergiesInput)
@@ -236,13 +186,9 @@ class InitialScreenView: UIViewController {
         heightInput.translatesAutoresizingMaskIntoConstraints = false
         
         lmpLabel.translatesAutoresizingMaskIntoConstraints = false
-        lmpInputContainer.translatesAutoresizingMaskIntoConstraints = false
-        calendarIcon.translatesAutoresizingMaskIntoConstraints = false
         lmpInput.translatesAutoresizingMaskIntoConstraints = false
         
         dobLabel.translatesAutoresizingMaskIntoConstraints = false
-        dobInputContainer.translatesAutoresizingMaskIntoConstraints = false
-        calendarIcon2.translatesAutoresizingMaskIntoConstraints = false
         dobInput.translatesAutoresizingMaskIntoConstraints = false
         
 //        allergiesLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -297,37 +243,19 @@ class InitialScreenView: UIViewController {
             lmpLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             lmpLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             
-            lmpInputContainer.centerYAnchor.constraint(equalTo: lmpLabel.bottomAnchor, constant: 30),
-            lmpInputContainer.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            lmpInputContainer.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            lmpInputContainer.heightAnchor.constraint(equalToConstant: 44),
+            lmpInput.centerYAnchor.constraint(equalTo: lmpLabel.bottomAnchor, constant: 30),
+            lmpInput.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            lmpInput.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            lmpInput.heightAnchor.constraint(equalToConstant: 44),
             
-            calendarIcon.leadingAnchor.constraint(equalTo: lmpInputContainer.leadingAnchor, constant: 10),
-            calendarIcon.centerYAnchor.constraint(equalTo: lmpInputContainer.centerYAnchor),
-            calendarIcon.widthAnchor.constraint(equalToConstant: 24),
-            calendarIcon.heightAnchor.constraint(equalToConstant: 24),
-            
-            lmpInput.leadingAnchor.constraint(equalTo: calendarIcon.trailingAnchor, constant: 10),
-            lmpInput.centerYAnchor.constraint(equalTo: lmpInputContainer.centerYAnchor),
-            lmpInput.trailingAnchor.constraint(equalTo: lmpInputContainer.trailingAnchor, constant: -10),
-            
-            dobLabel.centerYAnchor.constraint(equalTo: lmpInputContainer.bottomAnchor, constant: 25),
+            dobLabel.centerYAnchor.constraint(equalTo: lmpInput.bottomAnchor, constant: 25),
             dobLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             dobLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             
-            dobInputContainer.centerYAnchor.constraint(equalTo: dobLabel.bottomAnchor, constant: 30),
-            dobInputContainer.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            dobInputContainer.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            dobInputContainer.heightAnchor.constraint(equalToConstant: 44),
-            
-            calendarIcon2.leadingAnchor.constraint(equalTo: dobInputContainer.leadingAnchor, constant: 10),
-            calendarIcon2.centerYAnchor.constraint(equalTo: dobInputContainer.centerYAnchor),
-            calendarIcon2.widthAnchor.constraint(equalToConstant: 24),
-            calendarIcon2.heightAnchor.constraint(equalToConstant: 24),
-            
-            dobInput.leadingAnchor.constraint(equalTo: calendarIcon2.trailingAnchor, constant: 10),
-            dobInput.centerYAnchor.constraint(equalTo: dobInputContainer.centerYAnchor),
-            dobInput.trailingAnchor.constraint(equalTo: dobInputContainer.trailingAnchor, constant: -10),
+            dobInput.centerYAnchor.constraint(equalTo: dobLabel.bottomAnchor, constant: 30),
+            dobInput.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            dobInput.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            dobInput.heightAnchor.constraint(equalToConstant: 44),
             
 //            allergiesLabel.centerYAnchor.constraint(equalTo: dobInput.bottomAnchor, constant: 35),
 //            allergiesLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
