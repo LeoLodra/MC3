@@ -42,6 +42,7 @@
 		768368082C748CFF00FBDC95 /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 768367FC2C748CFF00FBDC95 /* Lato-Thin.ttf */; };
 		768368092C748CFF00FBDC95 /* Lato-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 768367FD2C748CFF00FBDC95 /* Lato-ThinItalic.ttf */; };
 		7683680A2C748CFF00FBDC95 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 768367FE2C748CFF00FBDC95 /* OFL.txt */; };
+		7683680C2C74986700FBDC95 /* AddLogComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7683680B2C74986700FBDC95 /* AddLogComponentView.swift */; };
 		7683680E2C75CD0700FBDC95 /* FoodInfoScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7683680D2C75CD0700FBDC95 /* FoodInfoScreenView.swift */; };
 		768368102C75D1FA00FBDC95 /* NutrientInfoComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7683680F2C75D1FA00FBDC95 /* NutrientInfoComponentView.swift */; };
 		FF3357522C73417600C3D829 /* WeightScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3357512C73417600C3D829 /* WeightScreenView.swift */; };
@@ -104,6 +105,7 @@
 		768367FC2C748CFF00FBDC95 /* Lato-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Thin.ttf"; sourceTree = "<group>"; };
 		768367FD2C748CFF00FBDC95 /* Lato-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-ThinItalic.ttf"; sourceTree = "<group>"; };
 		768367FE2C748CFF00FBDC95 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		7683680B2C74986700FBDC95 /* AddLogComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLogComponentView.swift; sourceTree = "<group>"; };
 		7683680D2C75CD0700FBDC95 /* FoodInfoScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodInfoScreenView.swift; sourceTree = "<group>"; };
 		7683680F2C75D1FA00FBDC95 /* NutrientInfoComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientInfoComponentView.swift; sourceTree = "<group>"; };
 		FF3357512C73417600C3D829 /* WeightScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightScreenView.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				5B1554FA2C6E033C00D0B3C3 /* DailyandWeeklyNutrientComponentView.swift */,
 				5B1554FE2C71A5E300D0B3C3 /* FoodCardViewComponent.swift */,
 				5B1555002C724A0A00D0B3C3 /* FoodInputSheetComponentView.swift */,
+				7683680B2C74986700FBDC95 /* AddLogComponentView.swift */,
 				FFE788EB2C75EF64007868F2 /* WeightWheelPicker.swift */,
 				FFE788ED2C75F362007868F2 /* WeightUpdateSheet.swift */,
 				5B3CF6E42C748E29007622BC /* NutrientRingComponentView.swift */,
@@ -440,6 +443,7 @@
 				768367A82C73611C00FBDC95 /* HeightInputView.swift in Sources */,
 				768368102C75D1FA00FBDC95 /* NutrientInfoComponentView.swift in Sources */,
 				5B1554F02C6C945A00D0B3C3 /* CaloriesTargetView.swift in Sources */,
+				7683680C2C74986700FBDC95 /* AddLogComponentView.swift in Sources */,
 				5B3CF6E72C7499F9007622BC /* NutrientIntakeProgressComponentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
