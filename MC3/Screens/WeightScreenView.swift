@@ -14,7 +14,7 @@ struct WeightScreenView: View {
     
     var body: some View {
         NavigationStack {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 100) {
                 // HStack {
                 //     WeightInfoCard(title: "Current", value: 47, subtitle: "1 Aug 2024")
                 //     WeightInfoCard(title: "Gain", value: 3, subtitle: "last week: 42 kg", isArrowable: true)
@@ -63,7 +63,7 @@ struct WeightGauge: View {
             case .ideal:
                 return 95
             case .underweight:
-                return 125
+                return 130
             case .overweight:
                 return 125
             case .obese:
@@ -95,6 +95,7 @@ struct WeightGauge: View {
                     Rectangle()
                         .fill(.orangewarning)
                         .frame(width: proxy.size.width * CGFloat(underweightWidthModifier))
+                        .roundedCornerWithBorder(lineWidth: 2, borderColor: .clear, radius: 10, corners: [.topLeft, .bottomLeft])
                     Rectangle()
                         .fill(.greensuccess)
                         .frame(width: proxy.size.width * CGFloat(normalweightWidthModifier))
@@ -104,9 +105,12 @@ struct WeightGauge: View {
                     Rectangle()
                         .fill(.lightredwarning)
                         .frame(width: proxy.size.width * CGFloat(obeseWidthModifier))
+                        .roundedCornerWithBorder(lineWidth: 2, borderColor: .clear, radius: 10, corners: [.topRight, .bottomRight])
+
                 }
                 .frame(height: 33)
                 .offset(y: 10 + topOffset)
+                /// Tick Label Group
                 Group {
                     RoundedRectangle(cornerRadius: 10)
                         .fill(.white)
@@ -172,6 +176,22 @@ struct WeightGauge: View {
                         .frame(width: 2, height: 45)
                         .offset(x: -1, y: 5 + topOffset)
                         .offset(x: proxy.size.width * CGFloat(calculatedWeightTickModifier))
+                }
+                /// Threshold Indicator
+                Group {
+                    Text("\(tick1treshold, specifier: "%.0f")")
+                        .font(.system(size: 10))
+                        .foregroundColor(.gray)
+                        .offset(x: proxy.size.width *  CGFloat(underweightWidthModifier) - 6, y: 105)
+                    Text("\(tick2treshold, specifier: "%.0f")")
+                        .font(.system(size: 10))
+                        .foregroundColor(.gray)
+                        .offset(x: proxy.size.width *  CGFloat(underweightWidthModifier + normalweightWidthModifier) - 6, y: 105)
+                    Text("\(tick2treshold, specifier: "%.0f")")
+                        .font(.system(size: 10))
+                        .foregroundColor(.gray)
+                        .offset(x: proxy.size.width *  CGFloat(underweightWidthModifier + normalweightWidthModifier + overweightWidthModifier) - 6, y: 105)
+                    
                 }
             }
             .frame(height: 10)
@@ -246,6 +266,24 @@ struct WeightInfoCard: View {
                         .frame(maxWidth: .infinity)
                 )
         }
+    }
+}
+
+struct RoundedCorner: Shape {
+    var radius: CGFloat = .infinity
+    var corners: UIRectCorner = .allCorners
+    
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        return Path(path.cgPath)
+    }
+}
+
+extension View {
+    func roundedCornerWithBorder(lineWidth: CGFloat, borderColor: Color, radius: CGFloat, corners: UIRectCorner) -> some View {
+        clipShape(RoundedCorner(radius: radius, corners: corners) )
+            .overlay(RoundedCorner(radius: radius, corners: corners)
+                .stroke(borderColor, lineWidth: lineWidth))
     }
 }
 
