@@ -68,6 +68,8 @@
 		FFE788EC2C75EF64007868F2 /* WeightWheelPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE788EB2C75EF64007868F2 /* WeightWheelPicker.swift */; };
 		FFE788EE2C75F362007868F2 /* WeightUpdateSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE788ED2C75F362007868F2 /* WeightUpdateSheet.swift */; };
 		FFACC9222C6CD2C700FC3A82 /* ExperimentFoodListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC9212C6CD2C700FC3A82 /* ExperimentFoodListView.swift */; };
+		FFE788EC2C75EF64007868F2 /* WeightWheelPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE788EB2C75EF64007868F2 /* WeightWheelPicker.swift */; };
+		FFE788EE2C75F362007868F2 /* WeightUpdateSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE788ED2C75F362007868F2 /* WeightUpdateSheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -134,6 +136,8 @@
 		FFE788EB2C75EF64007868F2 /* WeightWheelPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightWheelPicker.swift; sourceTree = "<group>"; };
 		FFE788ED2C75F362007868F2 /* WeightUpdateSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightUpdateSheet.swift; sourceTree = "<group>"; };
 		FFACC9212C6CD2C700FC3A82 /* ExperimentFoodListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperimentFoodListView.swift; sourceTree = "<group>"; };
+		FFE788EB2C75EF64007868F2 /* WeightWheelPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightWheelPicker.swift; sourceTree = "<group>"; };
+		FFE788ED2C75F362007868F2 /* WeightUpdateSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightUpdateSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +175,8 @@
 				5B3CF6E82C74C1BD007622BC /* FoodLogSheetComponentView.swift */,
 				5B3CF6EA2C75C125007622BC /* FoodLogListCardComponentView.swift */,
 				7683680F2C75D1FA00FBDC95 /* NutrientInfoComponentView.swift */,
+				FFE788EB2C75EF64007868F2 /* WeightWheelPicker.swift */,
+				FFE788ED2C75F362007868F2 /* WeightUpdateSheet.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
