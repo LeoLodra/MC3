@@ -9,7 +9,6 @@ import SwiftUI
 
 struct WeightScreenView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    #warning("Get Data")
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \WeightLog.logDate, ascending: false)]
     )
@@ -39,6 +38,8 @@ struct WeightScreenView: View {
         }.sorted { $0.xAxis < $1.xAxis }
     }
 
+    
+    #warning("TODO: calculate week from pregnancy times, not year time")
     // Current state
     private var currentState: (weekNumber: Int, lastUpdated: Date, newestWeight: Float) {
         let calendar = Calendar.current
@@ -70,8 +71,7 @@ struct WeightScreenView: View {
                 WeightHistoryCard(weeklyWeightEntries: weeklyWeightEntries, monthlyWeightEntries: monthlyWeightEntries)
                 Spacer()
                 AddWeightButton(action: {
-                    #warning("Pass initial value here")
-                    let weightUpdateSheet = WeightUpdateSheet(value: 50).environment(\.managedObjectContext, viewContext)
+                    let weightUpdateSheet = WeightUpdateSheet(value: currentState.newestWeight).environment(\.managedObjectContext, viewContext)
                     if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                        let window = windowScene.windows.first {
                         let hostingController = UIHostingController(rootView: weightUpdateSheet)
@@ -306,12 +306,24 @@ struct WeightGauge: View {
         case obese
     }
 
+    @State private var animatedValue: Float
+
+    init(value: Float, minValue: Float, maxValue: Float, tick1treshold: Float, tick2treshold: Float, tick3treshold: Float) {
+        self.value = value
+        self.minValue = minValue
+        self.maxValue = maxValue
+        self.tick1treshold = tick1treshold
+        self.tick2treshold = tick2treshold
+        self.tick3treshold = tick3treshold
+        self._animatedValue = State(initialValue: value)
+    }
+
     private var weightStatus: WeightStatus {
-        if value < tick1treshold {
+        if animatedValue < tick1treshold {
             return .underweight
-        } else if value < tick2treshold {
+        } else if animatedValue < tick2treshold {
             return .ideal
-        } else if value < tick3treshold {
+        } else if animatedValue < tick3treshold {
             return .overweight
         } else {
             return .obese
@@ -342,7 +354,7 @@ struct WeightGauge: View {
         return (maxValue - tick3treshold) / (maxValue - minValue)
     }
     private var calculatedWeightTickModifier: Float {
-        return max(0, min(1, (value - minValue) / (maxValue - minValue)))
+        return max(0, min(1, (animatedValue - minValue) / (maxValue - minValue)))
     }
     
     private let topOffset: CGFloat = 62
@@ -378,9 +390,11 @@ struct WeightGauge: View {
                         .overlay(
                             VStack (spacing: 0) {
                                 HStack (alignment: .lastTextBaseline, spacing: 1) {
-                                    Text("\(abs(value), specifier: value.truncatingRemainder(dividingBy: 1) == 0 ? "%.0f" : "%.1f")")
+                                    Text("\(abs(animatedValue), specifier: animatedValue.truncatingRemainder(dividingBy: 1) == 0 ? "%.0f" : "%.1f")")
                                         .bold()
                                         .font(.system(size: 28))
+                                        .contentTransition(.numericText(value: Double(animatedValue)))
+                                        .animation(.linear(duration: 0.5), value: animatedValue)
                                     Text("KG")
                                         .font(.system(size: 15))
                                 }
@@ -456,6 +470,14 @@ struct WeightGauge: View {
             .frame(height: 125)
         }
         .gaugeStyle(.accessoryCircular)
+        .onChange(of: value) { oldValue, newValue in
+            withAnimation(.linear(duration: 0.5)) {
+                animatedValue = newValue
+            }
+        }
+        .onAppear {
+            animatedValue = value
+        }
     }
 }
 
