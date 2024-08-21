@@ -8,9 +8,39 @@
 import SwiftUI
 
 struct WeightScreenView: View {
-    var current = 2.0
-    var minValue = 1.0
-    var maxValue = 3.0
+    #warning("Get Data")
+    let weeklyWeightEntries: [(xAxis: String, weight: Double)] = [
+        ("1", 50.5),
+        ("2", 49.4),
+        ("3", 50.8),
+        ("4", 51.5),
+        ("5", 51.2),
+        ("6", 51.9),
+        ("7", 52.5),
+        ("8", 52.2),
+        ("9", 52.9),
+        ("10", 53.5),
+        ("11", 53.2),
+        ("12", 53.9),
+    ]
+    let monthlyWeightEntries: [(xAxis: String, weight: Double)] = [
+        ("Jan", 50.5),
+        ("Feb", 50.4),
+        ("Mar", 50.8),
+        ("Apr", 51.5),
+        ("May", 51.5),
+        ("Jun", 58),
+    ]
+
+    #warning("Calculate the ideal weight and fetch the newest weight")
+    let newestWeight = 50
+    let gaugeMinValue = 30
+    let gaugeMaxValue = 80
+    let gaugeTick1Threshold = 40
+    let gaugeTick2Threshold = 60
+    let gaugeTick3Threshold = 70
+    let weekNumber = 3
+    let lastUpdated = Date()    
     
     var body: some View {
         NavigationStack {
@@ -21,11 +51,8 @@ struct WeightScreenView: View {
                 //     WeightInfoCard(title: "Gain Goal", value: 3, subtitle: "Week 3")
                 // }
                 // .padding(.top)
-                WeightGaugeCard(value: 48, minValue: 30, maxValue: 80, tick1threshold: 40, tick2threshold: 60, tick3threshold: 70, weekNumber: 3, lastUpdated: Date())
-                // WeightGauge(value: 50, minValue: 30, maxValue: 80, tick1treshold: 40, tick2treshold: 60, tick3treshold: 70)
-                // WeightGauge(value: 68, minValue: 30, maxValue: 80, tick1treshold: 40, tick2treshold: 60, tick3treshold: 70)
-                // WeightGauge(value: 100, minValue: 30, maxValue: 80, tick1treshold: 40, tick2treshold: 60, tick3treshold: 70)
-                WeightHistoryCard()
+                WeightGaugeCard(value: Float(newestWeight), minValue: Float(gaugeMinValue), maxValue: Float(gaugeMaxValue), tick1threshold: Float(gaugeTick1Threshold), tick2threshold: Float(gaugeTick2Threshold), tick3threshold: Float(gaugeTick3Threshold), weekNumber: weekNumber, lastUpdated: lastUpdated)
+                WeightHistoryCard(weeklyWeightEntries: weeklyWeightEntries, monthlyWeightEntries: monthlyWeightEntries)
                 Spacer()
             }
             .navigationTitle("Your Weight")
@@ -34,16 +61,36 @@ struct WeightScreenView: View {
 }
 
 struct WeightHistoryCard: View {
+    let weeklyWeightEntries: [(xAxis: String, weight: Double)]
+    let monthlyWeightEntries: [(xAxis: String, weight: Double)]
+    @State private var selectedTimeframe: Timeframe = .weekly
+    
+    enum Timeframe: String, CaseIterable {
+        case weekly = "Weekly"
+        case monthly = "Monthly"
+    }
+    
     var body: some View {
-        VStack(alignment: .center) {
+        VStack(alignment: .center, spacing: 16) {
             HStack {
                 Text("Overview")
-                    .font(.title)
+                    .font(.system(size: 19))
                     .fontWeight(.semibold)
             }
-            WeightGraph()
+            Picker("Timeframe", selection: $selectedTimeframe) {
+                ForEach(Timeframe.allCases, id: \.self) { timeframe in
+                    Text(timeframe.rawValue).tag(timeframe)
+                }
+            }
+            .pickerStyle(SegmentedPickerStyle())
+            if selectedTimeframe == .weekly {
+                WeightGraph(weightEntries: weeklyWeightEntries)
+            } else {
+                WeightGraph(weightEntries: monthlyWeightEntries)
+            }
             HStack {
-                Text("Hello")
+                #warning("Ask about this")
+                Text("Your weight gain shows throughout the time")
                     .font(.system(size: 13))
                     .foregroundStyle(.gray)
                 Spacer()
@@ -58,14 +105,9 @@ struct WeightHistoryCard: View {
 }
 
 struct WeightGraph: View {
+    let weightEntries: [(xAxis: String, weight: Double)]
+    
     var body: some View {
-        let weightEntries: [(xAxis: String, weight: Double)] = [
-            ("W1", 50.5),
-            ("W2", 50.4),
-            ("W3", 50.8), ("W4", 51.5),
-            //(5, 52.0), (6, 51.8), (7, 52.3), (8, 52.1),
-            //(9, 53)
-        ]
         GeometryReader { proxy in
             let width = proxy.size.width
             let height = proxy.size.height
