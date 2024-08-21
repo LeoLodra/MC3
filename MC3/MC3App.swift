@@ -42,7 +42,7 @@ struct MC3App: App {
 
     var body: some Scene {
         WindowGroup {
-            FoodListView()
+            WeightScreenView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
