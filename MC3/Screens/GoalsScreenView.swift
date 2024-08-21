@@ -8,7 +8,15 @@
 import SwiftUI
 
 struct GoalsScreenView: View {
+    @Environment(\.managedObjectContext) var managedObjectContext
+    @FetchRequest(
+        entity: User.entity(),
+        sortDescriptors: [NSSortDescriptor(keyPath: \User.createdAt, ascending: false)],
+        animation: .default)
+    var users: FetchedResults<User>
+    
     @State private var isExpanded = false
+    
     var body: some View {
         VStack {
             VStack (alignment: .leading){
@@ -16,7 +24,7 @@ struct GoalsScreenView: View {
                     Text("Hi ")
                         .font(.custom("Lato-Regular", size: 24))
                     +
-                    Text("Jovanna!")
+                    Text("\(users.first?.fullName ?? "Mother")!")
                         .font(.custom("Lato-Bold", size: 24))
                     Spacer()
                     Image(systemName: "person.crop.circle")
