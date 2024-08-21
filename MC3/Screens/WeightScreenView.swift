@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct WeightScreenView: View {
+    @Environment(\.managedObjectContext) private var viewContext
     #warning("Get Data")
     let weeklyWeightEntries: [(xAxis: String, weight: Double)] = [
         ("1", 50.5),
@@ -55,7 +56,8 @@ struct WeightScreenView: View {
                 WeightHistoryCard(weeklyWeightEntries: weeklyWeightEntries, monthlyWeightEntries: monthlyWeightEntries)
                 Spacer()
                 AddWeightButton(action: {
-                    let weightUpdateSheet = WeightUpdateSheet(value: 50)
+                    #warning("Pass initial value here")
+                    let weightUpdateSheet = WeightUpdateSheet(value: 50).environment(\.managedObjectContext, viewContext)
                     if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                        let window = windowScene.windows.first {
                         let hostingController = UIHostingController(rootView: weightUpdateSheet)
@@ -99,6 +101,10 @@ struct WeightHistoryCard: View {
     let monthlyWeightEntries: [(xAxis: String, weight: Double)]
     @State private var selectedTimeframe: Timeframe = .weekly
     
+    private var lastFiveWeeklyEntries: [(xAxis: String, weight: Double)] {
+        Array(weeklyWeightEntries.suffix(5))
+    }
+    
     enum Timeframe: String, CaseIterable {
         case weekly = "Weekly"
         case monthly = "Monthly"
@@ -118,7 +124,7 @@ struct WeightHistoryCard: View {
             }
             .pickerStyle(SegmentedPickerStyle())
             if selectedTimeframe == .weekly {
-                WeightGraph(weightEntries: weeklyWeightEntries)
+                WeightGraph(weightEntries: lastFiveWeeklyEntries)
             } else {
                 WeightGraph(weightEntries: monthlyWeightEntries)
             }
@@ -527,4 +533,5 @@ extension View {
 
 #Preview {
     WeightScreenView()
+        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 }

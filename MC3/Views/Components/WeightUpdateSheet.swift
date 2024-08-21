@@ -6,10 +6,14 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct WeightUpdateSheet: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.dismiss) private var dismiss
     @State var value: Float = 0
-    @State private var config:WeightWheelPicker.Config = .init(count: 100) // 100kg
+    @State private var config: WeightWheelPicker.Config = .init(count: 100) // 100kg
+    @State private var selectedDate: Date = Date()
     
     var body: some View {
         VStack (alignment: .leading) {
@@ -17,7 +21,7 @@ struct WeightUpdateSheet: View {
             HStack {
                     Text("Input date")
                     Spacer()
-                    DatePicker("", selection: .constant(Date()), displayedComponents: .date)
+                    DatePicker("", selection: $selectedDate, displayedComponents: .date)
                         .datePickerStyle(CompactDatePickerStyle())
                         .labelsHidden()
             }
@@ -36,12 +40,7 @@ struct WeightUpdateSheet: View {
                 }
                 WeightWheelPicker(config: config, value: $value)
             }
-            Button(action: {
-                // Action to save
-                let newWeight = value
-                #warning("Create log weight here")
-                print("\(Date()) : \(newWeight)")
-            }) {
+            Button(action: saveWeightLog) {
                 Text("Save")
                     .frame(maxWidth: .infinity)
                     .padding()
@@ -51,6 +50,22 @@ struct WeightUpdateSheet: View {
             }
         }
         .padding()
+    }
+    private func saveWeightLog() {
+        let newWeight = value
+        print("\(selectedDate) : \(newWeight)")
+        let newWeightLog = WeightLog(context: viewContext)
+        newWeightLog.weight = Float(newWeight)
+        newWeightLog.logDate = selectedDate
+        newWeightLog.id = UUID()
+        
+        do {
+            try viewContext.save()
+            print("Weight log saved successfully")
+            dismiss()
+        } catch {
+            print("Failed to save weight log: \(error.localizedDescription)")
+        }
     }
 }
 
