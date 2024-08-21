@@ -42,6 +42,8 @@
 		FFACC9162C6CB6E600FC3A82 /* WeightLog+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC9102C6CB6E600FC3A82 /* WeightLog+CoreDataProperties.swift */; };
 		FFACC91E2C6CBB8500FC3A82 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC91D2C6CBB8500FC3A82 /* PersistenceController.swift */; };
 		FFACC9202C6CC00000FC3A82 /* ExampleOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC91F2C6CC00000FC3A82 /* ExampleOnboardingView.swift */; };
+		FFE788EC2C75EF64007868F2 /* WeightWheelPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE788EB2C75EF64007868F2 /* WeightWheelPicker.swift */; };
+		FFE788EE2C75F362007868F2 /* WeightUpdateSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE788ED2C75F362007868F2 /* WeightUpdateSheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +83,8 @@
 		FFACC9102C6CB6E600FC3A82 /* WeightLog+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeightLog+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FFACC91D2C6CBB8500FC3A82 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		FFACC91F2C6CC00000FC3A82 /* ExampleOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleOnboardingView.swift; sourceTree = "<group>"; };
+		FFE788EB2C75EF64007868F2 /* WeightWheelPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightWheelPicker.swift; sourceTree = "<group>"; };
+		FFE788ED2C75F362007868F2 /* WeightUpdateSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightUpdateSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,8 @@
 				5B1554FA2C6E033C00D0B3C3 /* DailyandWeeklyNutrientComponentView.swift */,
 				5B1554FE2C71A5E300D0B3C3 /* FoodCardViewComponent.swift */,
 				5B1555002C724A0A00D0B3C3 /* FoodInputSheetComponentView.swift */,
+				FFE788EB2C75EF64007868F2 /* WeightWheelPicker.swift */,
+				FFE788ED2C75F362007868F2 /* WeightUpdateSheet.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -325,6 +331,8 @@
 				FFACC9072C6CA0DC00FC3A82 /* ExampleFoodListView.swift in Sources */,
 				766986FC2C6B6BA8000838A3 /* GoalsScreenView.swift in Sources */,
 				5B1554F92C6E023D00D0B3C3 /* NutrientDetailView.swift in Sources */,
+				FFE788EE2C75F362007868F2 /* WeightUpdateSheet.swift in Sources */,
+				FFE788EC2C75EF64007868F2 /* WeightWheelPicker.swift in Sources */,
 				766986EB2C6B6B5B000838A3 /* Item.swift in Sources */,
 				FFACC8F92C6C9AA500FC3A82 /* CoreDataStack.swift in Sources */,
 				766986E72C6B6B5B000838A3 /* MC3App.swift in Sources */,

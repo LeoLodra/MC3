@@ -44,19 +44,53 @@ struct WeightScreenView: View {
     
     var body: some View {
         NavigationStack {
-            VStack(alignment: .leading, spacing: 0) {
+            VStack(alignment: .center, spacing: 0) {
                 // HStack {
                 //     WeightInfoCard(title: "Current", value: 47, subtitle: "1 Aug 2024")
                 //     WeightInfoCard(title: "Gain", value: 3, subtitle: "last week: 42 kg", isArrowable: true)
                 //     WeightInfoCard(title: "Gain Goal", value: 3, subtitle: "Week 3")
                 // }
                 // .padding(.top)
-                WeightGaugeCard(value: Float(newestWeight), minValue: Float(gaugeMinValue), maxValue: Float(gaugeMaxValue), tick1threshold: Float(gaugeTick1Threshold), tick2threshold: Float(gaugeTick2Threshold), tick3threshold: Float(gaugeTick3Threshold), weekNumber: weekNumber, lastUpdated: lastUpdated)
+                WeightGaugeCard(value: Float(newestWeight), minValue: Float(gaugeMinValue), maxValue: Float(gaugeMaxValue), tick1threshold: Float(gaugeTick1Threshold), tick2threshold: Float(gaugeTick2Threshold), tick3threshold: Float(gaugeTick3Threshold), weekNumber: weekNumber, lastUpdated: lastUpdated, showChevron: false)
                 WeightHistoryCard(weeklyWeightEntries: weeklyWeightEntries, monthlyWeightEntries: monthlyWeightEntries)
                 Spacer()
+                AddWeightButton(action: {
+                    let weightUpdateSheet = WeightUpdateSheet(value: 50)
+                    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                       let window = windowScene.windows.first {
+                        let hostingController = UIHostingController(rootView: weightUpdateSheet)
+                        hostingController.modalPresentationStyle = .pageSheet
+                        
+                        if let sheet = hostingController.sheetPresentationController {
+                            sheet.detents = [.medium()]
+                            sheet.prefersGrabberVisible = true
+                        }
+                        
+                        window.rootViewController?.present(hostingController, animated: true, completion: nil)
+                    }
+                })
             }
             .navigationTitle("Your Weight")
         }
+    }
+}
+
+struct AddWeightButton: View {
+    let action: () -> Void
+    
+    var body: some View {
+        Button(action: action) {
+            HStack {
+                Image(systemName: "plus.circle.fill")
+                Text("Update Weight")
+            }
+            .frame(maxWidth: .infinity)
+            .padding()
+            .background(Color.blueprimary)
+            .foregroundColor(.white)
+            .cornerRadius(500)
+        }
+        .padding(.horizontal)
     }
 }
 
@@ -194,6 +228,7 @@ struct WeightGaugeCard: View {
     let tick3threshold: Float
     let weekNumber: Int
     let lastUpdated: Date
+    var showChevron: Bool = true
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -202,12 +237,14 @@ struct WeightGaugeCard: View {
                     .font(.title)
                     .fontWeight(.semibold)
                 Spacer()
-                HStack {
+                HStack (alignment: .firstTextBaseline) {
                     Text("Week \(weekNumber)")
                         .font(.system(size: 16))
                         .fontWeight(.light)
-                    Image(systemName: "chevron.right")
-                        .foregroundColor(.blueprimary)
+                    if showChevron {
+                        Image(systemName: "chevron.right")
+                            .foregroundColor(.blueprimary)
+                    }
                 }
             }
             WeightGauge(value: value, minValue: minValue, maxValue: maxValue, tick1treshold: tick1threshold, tick2treshold: tick2threshold, tick3treshold: tick3threshold)
