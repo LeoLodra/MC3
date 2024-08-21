@@ -14,6 +14,8 @@ struct FoodInputSheetComponentView: View {
     @State private var foodLogDate:Date = Date()
     @Binding var showingSheet:Bool
     @Environment(\.managedObjectContext) private var viewContext
+//    @State var tempFoodArray:[Food] = []
+    @ObservedObject var vm:FoodLogViewModel
     
     var body: some View {
         ZStack{
@@ -114,16 +116,10 @@ struct FoodInputSheetComponentView: View {
                 }
                 .padding(.top, 20)
                 
-                HStack{
-                    Text("Input date")
-                        .font(.title3)
-                    
-                    DatePicker("", selection: $foodLogDate, displayedComponents: [.date])
-                }
-                .padding(.top, 20)
-                
                 Button(action: {
-                    logFoodIntake(food: food)
+                    let tf = foodIntakePortion(id: UUID().uuidString, food: food, portion: foodPortion)
+                    vm.tempFoodLog.append(tf)
+                    print(vm.tempFoodLog)
                     showingSheet = false
                 }, label: {
                     ZStack{
@@ -141,8 +137,6 @@ struct FoodInputSheetComponentView: View {
                 })
             }
             .padding()
-            
-            
         }
     }
     
@@ -156,6 +150,7 @@ struct FoodInputSheetComponentView: View {
         do {
             try viewContext.save()
             print("Food intake logged successfully")
+            
         } catch {
             // Handle the error, e.g., show an alert
             print("Failed to save food intake: \(error.localizedDescription)")
