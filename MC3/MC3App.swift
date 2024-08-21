@@ -42,9 +42,19 @@ struct MC3App: App {
 
     var body: some Scene {
         WindowGroup {
-            WeightScreenView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            InitialViewControllerRepresentable()
         }
+    }
+}
+
+struct InitialViewControllerRepresentable: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> some UIViewController {
+        let navigationController = UINavigationController(rootViewController: InitialScreenView())
+        return navigationController
+    }
+
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+        
     }
 }
 
