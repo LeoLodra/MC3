@@ -10,38 +10,52 @@ import SwiftUI
 struct WeightScreenView: View {
     @Environment(\.managedObjectContext) private var viewContext
     #warning("Get Data")
-    let weeklyWeightEntries: [(xAxis: String, weight: Double)] = [
-        ("1", 50.5),
-        ("2", 49.4),
-        ("3", 50.8),
-        ("4", 51.5),
-        ("5", 51.2),
-        ("6", 51.9),
-        ("7", 52.5),
-        ("8", 52.2),
-        ("9", 52.9),
-        ("10", 53.5),
-        ("11", 53.2),
-        ("12", 53.9),
-    ]
-    let monthlyWeightEntries: [(xAxis: String, weight: Double)] = [
-        ("Jan", 50.5),
-        ("Feb", 50.4),
-        ("Mar", 50.8),
-        ("Apr", 51.5),
-        ("May", 51.5),
-        ("Jun", 58),
-    ]
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \WeightLog.logDate, ascending: false)]
+    )
+    private var weightLogs: FetchedResults<WeightLog>
+    
+    private var weeklyWeightEntries: [(xAxis: String, weight: Double)] {
+        let calendar = Calendar.current
+        let groupedByWeek = Dictionary(grouping: weightLogs) { log in
+            calendar.dateComponents([.weekOfYear, .year], from: log.logDate ?? Date())
+        }
+        return groupedByWeek.values.compactMap { logs in
+            guard let latestLog = logs.first else { return nil }
+            let weekNumber = calendar.component(.weekOfYear, from: latestLog.logDate ?? Date())
+            return ("\(weekNumber)", Double(latestLog.weight))
+        }.sorted { $0.xAxis < $1.xAxis }
+    }
+    
+    private var monthlyWeightEntries: [(xAxis: String, weight: Double)] {
+        let calendar = Calendar.current
+        let groupedByMonth = Dictionary(grouping: weightLogs) { log in
+            calendar.dateComponents([.month, .year], from: log.logDate ?? Date())
+        }
+        return groupedByMonth.values.compactMap { logs in
+            guard let latestLog = logs.first else { return nil }
+            let monthName = calendar.shortMonthSymbols[calendar.component(.month, from: latestLog.logDate ?? Date()) - 1]
+            return (monthName, Double(latestLog.weight))
+        }.sorted { $0.xAxis < $1.xAxis }
+    }
+
+    // Current state
+    private var currentState: (weekNumber: Int, lastUpdated: Date, newestWeight: Float) {
+        let calendar = Calendar.current
+        let currentDate = Date()
+        let weekNumber = calendar.component(.weekOfYear, from: currentDate)
+        let lastUpdated = weightLogs.first?.logDate ?? currentDate
+        let newestWeight = weightLogs.first?.weight ?? 0
+        
+        return (weekNumber, lastUpdated, newestWeight)
+    }
 
     #warning("Calculate the ideal weight and fetch the newest weight")
-    let newestWeight = 50
     let gaugeMinValue = 30
     let gaugeMaxValue = 80
     let gaugeTick1Threshold = 40
     let gaugeTick2Threshold = 60
     let gaugeTick3Threshold = 70
-    let weekNumber = 3
-    let lastUpdated = Date()    
     
     var body: some View {
         NavigationStack {
@@ -52,7 +66,7 @@ struct WeightScreenView: View {
                 //     WeightInfoCard(title: "Gain Goal", value: 3, subtitle: "Week 3")
                 // }
                 // .padding(.top)
-                WeightGaugeCard(value: Float(newestWeight), minValue: Float(gaugeMinValue), maxValue: Float(gaugeMaxValue), tick1threshold: Float(gaugeTick1Threshold), tick2threshold: Float(gaugeTick2Threshold), tick3threshold: Float(gaugeTick3Threshold), weekNumber: weekNumber, lastUpdated: lastUpdated, showChevron: false)
+                WeightGaugeCard(value: Float(currentState.newestWeight), minValue: Float(gaugeMinValue), maxValue: Float(gaugeMaxValue), tick1threshold: Float(gaugeTick1Threshold), tick2threshold: Float(gaugeTick2Threshold), tick3threshold: Float(gaugeTick3Threshold), weekNumber: currentState.weekNumber, lastUpdated: currentState.lastUpdated, showChevron: false)
                 WeightHistoryCard(weeklyWeightEntries: weeklyWeightEntries, monthlyWeightEntries: monthlyWeightEntries)
                 Spacer()
                 AddWeightButton(action: {

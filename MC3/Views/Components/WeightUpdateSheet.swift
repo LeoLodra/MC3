@@ -6,13 +6,12 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct WeightUpdateSheet: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
     @State var value: Float = 0
-    @State private var config: WeightWheelPicker.Config = .init(count: 100) // 100kg
+    @State private var config: WeightWheelPicker.Config = .init(count: 200) // 200kg max
     @State private var selectedDate: Date = Date()
     
     var body: some View {

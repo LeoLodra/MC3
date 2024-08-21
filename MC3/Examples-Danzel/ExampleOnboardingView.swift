@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct ExampleOnboardingView: View {
     @Environment(\.managedObjectContext) private var viewContext
