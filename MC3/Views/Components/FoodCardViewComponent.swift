@@ -12,6 +12,7 @@ struct FoodCardViewComponent: View {
     @State private var foodStatusColor:Color = .greensuccess
     @State private var foodStatusString:String = ""
     @State var showingSheet = false
+    @ObservedObject var vm:FoodLogViewModel
     
     var body: some View {
         ZStack{
@@ -63,7 +64,7 @@ struct FoodCardViewComponent: View {
         .padding()
         .frame(minHeight: 150, maxHeight: 200)
         .sheet(isPresented: $showingSheet){
-            FoodInputSheetComponentView(food: food, showingSheet: $showingSheet)
+            FoodInputSheetComponentView(food: food, showingSheet: $showingSheet, vm: vm)
                 .presentationDetents([.medium])
                 .presentationDragIndicator(.visible)
         }
