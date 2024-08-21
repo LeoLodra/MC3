@@ -34,6 +34,7 @@
 
 // MARK: Running the Example App with CoreData, uncomment this
 import SwiftUI
+import UIKit
 import CoreData
 
 @main
@@ -42,15 +43,19 @@ struct MC3App: App {
 
     var body: some Scene {
         WindowGroup {
-            WeightScreenView()
+            InitialViewControllerRepresentable()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }
 
 struct InitialViewControllerRepresentable: UIViewControllerRepresentable {
+    @Environment(\.managedObjectContext) private var viewContext
+
     func makeUIViewController(context: Context) -> some UIViewController {
-        let navigationController = UINavigationController(rootViewController: InitialScreenView())
+        let initialScreenView = InitialScreenView()
+        initialScreenView.managedContext = viewContext
+        let navigationController = UINavigationController(rootViewController: initialScreenView)
         return navigationController
     }
 
@@ -58,4 +63,5 @@ struct InitialViewControllerRepresentable: UIViewControllerRepresentable {
         
     }
 }
+
 
