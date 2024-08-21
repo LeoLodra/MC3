@@ -8,15 +8,11 @@
 import SwiftUI
 
 struct FoodCardViewComponent: View {
-    var foodName: String
-    var foodStatus: String
-    var foodCalorie: Int
-    var foodServing: Int
-    var foodProtein: Int
-    var foodFolicAcid: Int
-    var foodCalcium: Int
+    var food:Food
     @State private var foodStatusColor:Color = .greensuccess
+    @State private var foodStatusString:String = ""
     @State var showingSheet = false
+    @ObservedObject var vm:FoodLogViewModel
     
     var body: some View {
         ZStack{
@@ -27,16 +23,16 @@ struct FoodCardViewComponent: View {
                     HStack{
                         Image(systemName: "circle.fill")
                             .font(.caption)
-                        Text(foodStatus)
+                        Text(foodStatusString)
                         Spacer()
                     }
                     .foregroundStyle(foodStatusColor)
                     
-                    Text(foodName)
+                    Text(food.title)
                         .fontWeight(.bold)
                         .font(.headline)
                     
-                    Text("\(foodCalorie) kcal | \(foodServing)gr/serving")
+                    Text("\(food.calories) kcal | \(food.servingSize)gr/serving")
                         .font(.subheadline)
                         .foregroundStyle(.darkgraytext)
                     
@@ -68,28 +64,31 @@ struct FoodCardViewComponent: View {
         .padding()
         .frame(minHeight: 150, maxHeight: 200)
         .sheet(isPresented: $showingSheet){
-            FoodInputSheetComponentView(foodName: foodName, foodServingPortion: foodServing, foodCalorie: foodCalorie, foodProtein: foodProtein, foodFolicAcid: foodFolicAcid, foodCalcium: foodCalcium)
+            FoodInputSheetComponentView(food: food, showingSheet: $showingSheet, vm: vm)
                 .presentationDetents([.medium])
                 .presentationDragIndicator(.visible)
         }
         .onAppear(perform: {
-            determineStatusColor(foodStatus: foodStatus)
+            determineStatusColor(foodStatus: food.edibleStatus.rawValue)
         })
     }
 }
 
 extension FoodCardViewComponent{
     func determineStatusColor(foodStatus: String){
-        if foodStatus == "Safe"{
+        if food.edibleStatus.rawValue == "safe"{
             foodStatusColor = .greensuccess
-        } else if foodStatus == "Limited Consumption"{
+            foodStatusString = "Safe"
+        } else if food.edibleStatus.rawValue == "caution"{
             foodStatusColor = .orangewarning
+            foodStatusString = "Limited Consumption"
         } else {
             foodStatusColor = .redwarning
+            foodStatusString = "Prohibited"
         }
     }
 }
 
-#Preview {
-    FoodCardViewComponent(foodName: "Rujak Cingur Vegetarian Khas Surabaya Barat Daya", foodStatus: "Safe", foodCalorie: 257, foodServing: 300, foodProtein: 39, foodFolicAcid: 39, foodCalcium: 39)
-}
+//#Preview {
+//    FoodCardViewComponent(foodName: "Rujak Cingur Vegetarian Khas Surabaya Barat Daya", foodStatus: "safe", foodCalorie: 257, foodServing: 300, foodProtein: 39, foodFolicAcid: 39, foodCalcium: 39)
+//}

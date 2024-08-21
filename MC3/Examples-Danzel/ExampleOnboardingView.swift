@@ -25,7 +25,7 @@ struct ExampleOnboardingView: View {
             } else {
                 // If a user exists, navigate to the next view
                 NavigationView {
-                    ExampleFoodListView()
+//                    ExperimentFoodListView()
                 }
             }
         }
