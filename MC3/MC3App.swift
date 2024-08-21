@@ -48,3 +48,14 @@ struct MC3App: App {
     }
 }
 
+struct InitialViewControllerRepresentable: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> some UIViewController {
+        let navigationController = UINavigationController(rootViewController: InitialScreenView())
+        return navigationController
+    }
+
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+        
+    }
+}
+

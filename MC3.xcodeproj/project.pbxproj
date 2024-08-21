@@ -46,6 +46,7 @@
 		768368102C75D1FA00FBDC95 /* NutrientInfoComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7683680F2C75D1FA00FBDC95 /* NutrientInfoComponentView.swift */; };
 		FF3357522C73417600C3D829 /* WeightScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3357512C73417600C3D829 /* WeightScreenView.swift */; };
 		7683680C2C74986700FBDC95 /* AddLogComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7683680B2C74986700FBDC95 /* AddLogComponentView.swift */; };
+		768368132C75DF9700FBDC95 /* InputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768368122C75DF9700FBDC95 /* InputValidator.swift */; };
 		FF51EE722C6DED6D00025469 /* db_model_v1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FFACC9082C6CA4C300FC3A82 /* db_model_v1.xcdatamodeld */; };
 		FFACC8BB2C6C966300FC3A82 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC8BA2C6C966300FC3A82 /* Models.swift */; };
 		FFACC8F92C6C9AA500FC3A82 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC8F82C6C9AA500FC3A82 /* CoreDataStack.swift */; };
@@ -109,6 +110,7 @@
 		7683680F2C75D1FA00FBDC95 /* NutrientInfoComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientInfoComponentView.swift; sourceTree = "<group>"; };
 		FF3357512C73417600C3D829 /* WeightScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightScreenView.swift; sourceTree = "<group>"; };
 		7683680B2C74986700FBDC95 /* AddLogComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLogComponentView.swift; sourceTree = "<group>"; };
+		768368122C75DF9700FBDC95 /* InputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputValidator.swift; sourceTree = "<group>"; };
 		FFACC8BA2C6C966300FC3A82 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		FFACC8F82C6C9AA500FC3A82 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		FFACC8FA2C6C9AC500FC3A82 /* CoreDataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelpers.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 		766986E52C6B6B5B000838A3 /* MC3 */ = {
 			isa = PBXGroup;
 			children = (
+				768368112C75DF8800FBDC95 /* Validator */,
 				768367C32C7362AD00FBDC95 /* Info.plist */,
 				768367FF2C748CFF00FBDC95 /* Lato */,
 				FFACC9032C6C9EF600FC3A82 /* Resources */,
@@ -266,6 +269,14 @@
 				768367FE2C748CFF00FBDC95 /* OFL.txt */,
 			);
 			path = Lato;
+			sourceTree = "<group>";
+		};
+		768368112C75DF8800FBDC95 /* Validator */ = {
+			isa = PBXGroup;
+			children = (
+				768368122C75DF9700FBDC95 /* InputValidator.swift */,
+			);
+			path = Validator;
 			sourceTree = "<group>";
 		};
 		FF51EE752C6DF9C900025469 /* Examples-Danzel */ = {
@@ -433,6 +444,7 @@
 				FFACC9122C6CB6E600FC3A82 /* FoodIntake+CoreDataProperties.swift in Sources */,
 				768367C52C74849900FBDC95 /* DateInputView.swift in Sources */,
 				5B3CF6EB2C75C125007622BC /* FoodLogListCardComponentView.swift in Sources */,
+				768368132C75DF9700FBDC95 /* InputValidator.swift in Sources */,
 				FFACC9132C6CB6E600FC3A82 /* User+CoreDataClass.swift in Sources */,
 				FFACC9142C6CB6E600FC3A82 /* User+CoreDataProperties.swift in Sources */,
 				FFACC9152C6CB6E600FC3A82 /* WeightLog+CoreDataClass.swift in Sources */,
