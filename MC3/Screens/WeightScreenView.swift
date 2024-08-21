@@ -21,16 +21,66 @@ struct WeightScreenView: View {
                 //     WeightInfoCard(title: "Gain Goal", value: 3, subtitle: "Week 3")
                 // }
                 // .padding(.top)
-                WeightGauge(value: 33, minValue: 30, maxValue: 80, tick1treshold: 40, tick2treshold: 60, tick3treshold: 70)
-                WeightGauge(value: 50, minValue: 30, maxValue: 80, tick1treshold: 40, tick2treshold: 60, tick3treshold: 70)
-                WeightGauge(value: 68, minValue: 30, maxValue: 80, tick1treshold: 40, tick2treshold: 60, tick3treshold: 70)
-                WeightGauge(value: 100, minValue: 30, maxValue: 80, tick1treshold: 40, tick2treshold: 60, tick3treshold: 70)
+                WeightGaugeCard(value: 48, minValue: 30, maxValue: 80, tick1threshold: 40, tick2threshold: 60, tick3threshold: 70, weekNumber: 3, lastUpdated: Date())
+                // WeightGauge(value: 50, minValue: 30, maxValue: 80, tick1treshold: 40, tick2treshold: 60, tick3treshold: 70)
+                // WeightGauge(value: 68, minValue: 30, maxValue: 80, tick1treshold: 40, tick2treshold: 60, tick3treshold: 70)
+                // WeightGauge(value: 100, minValue: 30, maxValue: 80, tick1treshold: 40, tick2treshold: 60, tick3treshold: 70)
                 Spacer()
             }
             .navigationTitle("Your Weight")
         }
     }
 }
+
+struct WeightGaugeCard: View {
+    let title: String = "Weight"
+    let value: Float
+    let minValue: Float
+    let maxValue: Float
+    let tick1threshold: Float
+    let tick2threshold: Float
+    let tick3threshold: Float
+    let weekNumber: Int
+    let lastUpdated: Date
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            HStack {
+                Text(title)
+                    .font(.title)
+                    .fontWeight(.semibold)
+                Spacer()
+                HStack {
+                    Text("Week \(weekNumber)")
+                        .font(.system(size: 16))
+                        .fontWeight(.light)
+                    Image(systemName: "chevron.right")
+                        .foregroundColor(.blueprimary)
+                }
+            }
+            WeightGauge(value: value, minValue: minValue, maxValue: maxValue, tick1treshold: tick1threshold, tick2treshold: tick2threshold, tick3treshold: tick3threshold)
+            Text(lastUpdatedText)
+                .font(.system(size: 13))
+                .foregroundStyle(.gray)
+        }
+        .padding()
+        .background(Color.white)
+        .cornerRadius(20)
+        .shadow(radius: 1)
+        .padding()
+    }
+    
+    private var lastUpdatedText: String {
+        let calendar = Calendar.current
+        let now = Date()
+        if calendar.isDateInToday(lastUpdated) {
+            return "Last updated today"
+        } else {
+            let days = calendar.dateComponents([.day], from: lastUpdated, to: now).day ?? 0
+            return "Last updated \(days) day\(days == 1 ? "" : "s") ago"
+        }
+    }
+}   
 
 struct WeightGauge: View {
     var value: Float
@@ -115,7 +165,7 @@ struct WeightGauge: View {
                     RoundedRectangle(cornerRadius: 10)
                         .fill(.white)
                         .frame(width: tickLabelWidth, height: 62)
-                        .shadow(radius: 5)
+                        .shadow(radius: 1)
                         .overlay(
                             VStack (spacing: 0) {
                                 HStack (alignment: .lastTextBaseline, spacing: 1) {
@@ -123,6 +173,7 @@ struct WeightGauge: View {
                                         .bold()
                                         .font(.system(size: 28))
                                     Text("KG")
+                                        .font(.system(size: 15))
                                 }
                                 HStack (spacing: 4) {
                                     switch weightStatus {
@@ -180,24 +231,22 @@ struct WeightGauge: View {
                 /// Threshold Indicator
                 Group {
                     Text("\(tick1treshold, specifier: "%.0f")")
-                        .font(.system(size: 10))
+                        .font(.system(size: 13))
                         .foregroundColor(.gray)
                         .offset(x: proxy.size.width *  CGFloat(underweightWidthModifier) - 6, y: 105)
                     Text("\(tick2treshold, specifier: "%.0f")")
-                        .font(.system(size: 10))
+                        .font(.system(size: 13))
                         .foregroundColor(.gray)
                         .offset(x: proxy.size.width *  CGFloat(underweightWidthModifier + normalweightWidthModifier) - 6, y: 105)
-                    Text("\(tick2treshold, specifier: "%.0f")")
-                        .font(.system(size: 10))
+                    Text("\(tick3treshold, specifier: "%.0f")")
+                        .font(.system(size: 13))
                         .foregroundColor(.gray)
                         .offset(x: proxy.size.width *  CGFloat(underweightWidthModifier + normalweightWidthModifier + overweightWidthModifier) - 6, y: 105)
-                    
                 }
             }
-            .frame(height: 10)
+            .frame(height: 125)
         }
         .gaugeStyle(.accessoryCircular)
-        .padding()
     }
 }
 
