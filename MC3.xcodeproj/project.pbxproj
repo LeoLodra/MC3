@@ -152,6 +152,10 @@
 				5B3CF6E82C74C1BD007622BC /* FoodLogSheetComponentView.swift */,
 				5B3CF6EA2C75C125007622BC /* FoodLogListCardComponentView.swift */,
 				7683680F2C75D1FA00FBDC95 /* NutrientInfoComponentView.swift */,
+				5B3CF6E42C748E29007622BC /* NutrientRingComponentView.swift */,
+				5B3CF6E62C7499F9007622BC /* NutrientIntakeProgressComponentView.swift */,
+				5B3CF6E82C74C1BD007622BC /* FoodLogSheetComponentView.swift */,
+				5B3CF6EA2C75C125007622BC /* FoodLogListCardComponentView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
