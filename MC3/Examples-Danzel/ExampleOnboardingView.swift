@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct ExampleOnboardingView: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -26,7 +25,7 @@ struct ExampleOnboardingView: View {
             } else {
                 // If a user exists, navigate to the next view
                 NavigationView {
-                    ExampleFoodListView()
+//                    ExperimentFoodListView()
                 }
             }
         }
