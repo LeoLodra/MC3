@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import SwiftUI
+import CoreData
 
 class InitialScreenView: UIViewController {
+    
+    var managedContext: NSManagedObjectContext!
     
     let titleLabel: UILabel = {
         let label = UILabel()
@@ -93,30 +97,30 @@ class InitialScreenView: UIViewController {
     
     let dobInput = DateInputView()
     
-//    let allergiesLabel: UILabel = {
-//        let label = UILabel()
-//        label.text = "Let us know of any food allergies"
-//        label.textColor = .black
-//        label.font = UIFont(name: "Lato-Regular", size: 15)
-//        label.numberOfLines = 0
-//        return label
-//    }()
-//    
-//    let allergiesInput: UIButton = {
-//        let button = UIButton(type: .system)
-//        button.setTitle("Add Restriction", for: .normal)
-//        button.setTitleColor(.black, for: .normal)
-//        button.titleLabel?.font = UIFont(name: "Lato-Bold", size: 17)
-//        
-//        button.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
-//        button.tintColor = .black
-//        
-//        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)
-//        
-//        button.layer.borderWidth = 1.5
-//        button.layer.cornerRadius = 20
-//        return button
-//    }()
+    //    let allergiesLabel: UILabel = {
+    //        let label = UILabel()
+    //        label.text = "Let us know of any food allergies"
+    //        label.textColor = .black
+    //        label.font = UIFont(name: "Lato-Regular", size: 15)
+    //        label.numberOfLines = 0
+    //        return label
+    //    }()
+    //
+    //    let allergiesInput: UIButton = {
+    //        let button = UIButton(type: .system)
+    //        button.setTitle("Add Restriction", for: .normal)
+    //        button.setTitleColor(.black, for: .normal)
+    //        button.titleLabel?.font = UIFont(name: "Lato-Bold", size: 17)
+    //
+    //        button.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
+    //        button.tintColor = .black
+    //
+    //        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)
+    //
+    //        button.layer.borderWidth = 1.5
+    //        button.layer.cornerRadius = 20
+    //        return button
+    //    }()
     
     let divider: UIView = {
         let view = UIView()
@@ -160,11 +164,12 @@ class InitialScreenView: UIViewController {
         view.addSubview(dobLabel)
         view.addSubview(dobInput)
         
-//        view.addSubview(allergiesLabel)
-//        view.addSubview(allergiesInput)
+        //        view.addSubview(allergiesLabel)
+        //        view.addSubview(allergiesInput)
         
         view.addSubview(divider)
         view.addSubview(submitButton)
+        submitButton.addTarget(self, action: #selector(submitButtonTapped), for: .touchUpInside)
         
         disableAutoresizing()
         setupConstraints()
@@ -191,8 +196,8 @@ class InitialScreenView: UIViewController {
         dobLabel.translatesAutoresizingMaskIntoConstraints = false
         dobInput.translatesAutoresizingMaskIntoConstraints = false
         
-//        allergiesLabel.translatesAutoresizingMaskIntoConstraints = false
-//        allergiesInput.translatesAutoresizingMaskIntoConstraints = false
+        //        allergiesLabel.translatesAutoresizingMaskIntoConstraints = false
+        //        allergiesInput.translatesAutoresizingMaskIntoConstraints = false
         
         divider.translatesAutoresizingMaskIntoConstraints = false
         submitButton.translatesAutoresizingMaskIntoConstraints = false
@@ -200,7 +205,7 @@ class InitialScreenView: UIViewController {
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            titleLabel.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),
+            titleLabel.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             titleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             titleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 16),
             
@@ -257,14 +262,14 @@ class InitialScreenView: UIViewController {
             dobInput.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             dobInput.heightAnchor.constraint(equalToConstant: 44),
             
-//            allergiesLabel.centerYAnchor.constraint(equalTo: dobInput.bottomAnchor, constant: 35),
-//            allergiesLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-//            allergiesLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-//            
-//            allergiesInput.centerYAnchor.constraint(equalTo: allergiesLabel.bottomAnchor, constant: 30),
-//            allergiesInput.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-//            allergiesInput.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-//            allergiesInput.heightAnchor.constraint(equalToConstant: 45),
+            //            allergiesLabel.centerYAnchor.constraint(equalTo: dobInput.bottomAnchor, constant: 35),
+            //            allergiesLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            //            allergiesLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            //
+            //            allergiesInput.centerYAnchor.constraint(equalTo: allergiesLabel.bottomAnchor, constant: 30),
+            //            allergiesInput.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            //            allergiesInput.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            //            allergiesInput.heightAnchor.constraint(equalToConstant: 45),
             
             divider.bottomAnchor.constraint(equalTo: submitButton.topAnchor, constant: -20),
             divider.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: -8),
@@ -276,6 +281,80 @@ class InitialScreenView: UIViewController {
             submitButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             submitButton.heightAnchor.constraint(equalToConstant: 45),
         ])
+    }
+    
+    @objc func submitButtonTapped() {
+        if validateInputs() == "" {
+            saveUserData()
+            let goalsScreen = UIHostingController(rootView: GoalsScreenView().environment(\.managedObjectContext, managedContext))
+            goalsScreen.modalPresentationStyle = .fullScreen
+            present(goalsScreen, animated: true, completion: nil)
+        } else {
+            showAlert(message: validateInputs())
+        }
+    }
+    
+    func validateInputs() -> String {
+        if !InputValidator.isValidName(nameInput.text ?? "") {
+            return "Please fill your name"
+        }
+        
+        else if !InputValidator.isValidWeight(weightInput.weightValue) {
+            return "Please fill your weight before pregnancy"
+        }
+        
+        else if !InputValidator.isValidWeight(currWeightInput.weightValue) {
+            return "Please fill your current weight"
+        }
+        
+        else if !InputValidator.isValidHeight(heightInput.heightValue) {
+            return "Please fill your height"
+        }
+        
+        else if !InputValidator.isValidDate(lmpInput.selectedDate) {
+            return "Please fill the date of the first day of your LMP correctly"
+        }
+        
+        else if !InputValidator.isValidDate(dobInput.selectedDate) {
+            return "Please fill your date of birth correctly"
+        }
+        
+        return ""
+    }
+    
+    
+    func saveUserData() {
+        let name = nameInput.text
+        let weight = Float(weightInput.weightValue) ?? 0
+//        let currWeight = Float(currWeightInput.weightValue) ?? 0
+        let height = Int16(heightInput.heightValue) ?? 0
+        
+        let lmpDate = lmpInput.selectedDate
+        let dobDate = dobInput.selectedDate
+
+        let user = User(context: managedContext)
+        user.fullName = name
+        user.weight = weight
+        user.height = height
+        user.createdAt = Date()
+        user.lastHaidAt = lmpDate
+        user.birthday = dobDate
+        user.id = UUID()
+        
+        
+        do {
+            try managedContext.save()
+        } catch {
+            showAlert(message: "Failed to save user data")
+            print("Failed to save user data: \(error.localizedDescription)")
+        }
+    }
+
+    
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: "Validation Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
 }
 

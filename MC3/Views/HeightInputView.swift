@@ -8,7 +8,7 @@
 import UIKit
 
 class HeightInputView: UIView {
-
+    
     private let heightLabel: UILabel = {
         let label = UILabel()
         label.text = "Could you tell me your height?"
@@ -64,5 +64,9 @@ class HeightInputView: UIView {
             cmLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             cmLabel.centerYAnchor.constraint(equalTo: heightInput.centerYAnchor)
         ])
+    }
+    
+    var heightValue: String {
+        return heightInput.text ?? ""
     }
 }
