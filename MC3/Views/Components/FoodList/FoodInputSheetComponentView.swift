@@ -14,7 +14,6 @@ struct FoodInputSheetComponentView: View {
     @State private var foodLogDate:Date = Date()
     @Binding var showingSheet:Bool
     @Environment(\.managedObjectContext) private var viewContext
-//    @State var tempFoodArray:[Food] = []
     @ObservedObject var vm:FoodLogViewModel
     
     var body: some View {
@@ -26,19 +25,18 @@ struct FoodInputSheetComponentView: View {
             
             VStack(alignment: .leading){
                 Text("Add Food")
-                    .fontWeight(.bold)
-                    .font(.title)
+                    .font(.custom("Lato-Bold", size: 20))
                     .padding(.bottom, 20)
                     .padding(.top, 40)
                 
                 HStack(alignment: .bottom){
                     Text(food.title)
-                        .font(.title2)
-                        .fontWeight(.bold)
+                        .font(.custom("Lato-Bold", size: 24))
                     
                     Spacer()
                     
                     Text("\(food.servingSize)gr/portion")
+                        .font(.custom("Lato-Regular", size: 15))
                         .foregroundStyle(.darkgraytext)
                 }
                 
@@ -50,9 +48,9 @@ struct FoodInputSheetComponentView: View {
                         
                         VStack{
                             Text("\(food.calories * foodPortion)Kcal")
-                                .font(.headline)
-                                .fontWeight(.semibold)
+                                .font(.custom("Lato-Bold", size: 17))
                             Text("Calorie")
+                                .font(.custom("Lato-Regular", size: 17))
                         }
                     }
                     .frame(width: 100, height: 80)
@@ -66,9 +64,9 @@ struct FoodInputSheetComponentView: View {
                             VStack{
                                 Text("\(food.protein * Float(foodPortion), specifier: "%.2f")g")
                                     .fixedSize(horizontal: false, vertical: true)
-                                    .font(.subheadline)
-                                    .fontWeight(.semibold)
+                                    .font(.custom("Lato-Bold", size: 15))
                                 Text("Protein")
+                                    .font(.custom("Lato-Regular", size: 15))
                             }
                             
                             Divider()
@@ -76,9 +74,9 @@ struct FoodInputSheetComponentView: View {
                             VStack{
                                 Text("\(food.folate * Float(foodPortion), specifier: "%.2f")mg")
                                     .fixedSize(horizontal: false, vertical: true)
-                                    .font(.subheadline)
-                                    .fontWeight(.semibold)
+                                    .font(.custom("Lato-Bold", size: 15))
                                 Text("Folate")
+                                    .font(.custom("Lato-Regular", size: 15))
                             }
                             
                             Divider()
@@ -86,9 +84,9 @@ struct FoodInputSheetComponentView: View {
                             VStack{
                                 Text("\(food.calcium * Float(foodPortion), specifier: "%.2f")mg")
                                     .fixedSize(horizontal: false, vertical: true)
-                                    .font(.subheadline)
-                                    .fontWeight(.semibold)
+                                    .font(.custom("Lato-Bold", size: 15))
                                 Text("Calcium")
+                                    .font(.custom("Lato-Regular", size: 15))
                             }
                         }
                         .padding()
@@ -99,7 +97,7 @@ struct FoodInputSheetComponentView: View {
                 
                 HStack{
                     Text("Amount")
-                        .font(.title3)
+                        .font(.custom("Lato-Regular", size: 17))
                     
                     Spacer()
                     
@@ -113,6 +111,7 @@ struct FoodInputSheetComponentView: View {
                     .frame(width: 150)
                     
                     Text("portion")
+                        .font(.custom("Lato-Regular", size: 17))
                 }
                 .padding(.top, 20)
                 
@@ -128,7 +127,7 @@ struct FoodInputSheetComponentView: View {
                         HStack{
                             Image(systemName: "plus.circle.fill")
                             Text("Add Food")
-                                .fontWeight(.semibold)
+                                .font(.custom("Lato-Bold", size: 17))
                         }
                     }
                     .frame(height: 50)
@@ -137,23 +136,6 @@ struct FoodInputSheetComponentView: View {
                 })
             }
             .padding()
-        }
-    }
-    
-    private func logFoodIntake(food: Food) {
-        let newFoodIntake = FoodIntake(context: viewContext)
-        newFoodIntake.intakeAt = foodLogDate
-        newFoodIntake.foodId = Int64(food.id)
-        newFoodIntake.intakeAmount = Int64(foodPortion)
-        newFoodIntake.id = UUID()
-        
-        do {
-            try viewContext.save()
-            print("Food intake logged successfully")
-            
-        } catch {
-            // Handle the error, e.g., show an alert
-            print("Failed to save food intake: \(error.localizedDescription)")
         }
     }
 }

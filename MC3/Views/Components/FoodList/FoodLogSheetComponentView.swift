@@ -18,9 +18,8 @@ struct FoodLogSheetComponentView: View {
             VStack{
                 HStack{
                     HStack{
-                        Text("Log Food")
-                            .font(.title3)
-                            .fontWeight(.bold)
+                        Text("Food Intake")
+                            .font(.custom("Lato-Bold", size: 20))
                         
                         ZStack{
                             RoundedRectangle(cornerRadius: 5)
@@ -57,7 +56,7 @@ struct FoodLogSheetComponentView: View {
                             RoundedRectangle(cornerRadius: 9999)
                                 .foregroundStyle(.blueprimary)
                             Text("Save Food Intake")
-                                .fontWeight(.semibold)
+                                .font(.custom("Lato-Bold", size: 17))
                         }
                         .frame(height: 50)
                         .foregroundStyle(.white)
