@@ -43,7 +43,7 @@ struct MC3App: App {
 
     var body: some Scene {
         WindowGroup {
-            NutrientDetailView()
+            InitialViewControllerRepresentable()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
