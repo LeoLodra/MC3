@@ -62,4 +62,8 @@ class DateInputView: UIView {
     var selectedDate: Date {
         return dateInput.date
     }
+    
+    func setDate(value: Date) {
+        dateInput.date = value
+    }
 }

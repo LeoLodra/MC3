@@ -69,4 +69,8 @@ class HeightInputView: UIView {
     var heightValue: String {
         return heightInput.text ?? ""
     }
+    
+    func setHeightValue(value: String) {
+        heightInput.text = value
+    }
 }

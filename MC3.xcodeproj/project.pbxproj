@@ -23,6 +23,7 @@
 		764227A02C763FDB00A3BC0F /* CaloriesNutrientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7642279F2C763FDB00A3BC0F /* CaloriesNutrientView.swift */; };
 		764227A22C7640BD00A3BC0F /* WeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764227A12C7640BD00A3BC0F /* WeightView.swift */; };
 		764227A42C7648F800A3BC0F /* ProfileScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764227A32C7648F800A3BC0F /* ProfileScreenView.swift */; };
+		764227A62C7723E500A3BC0F /* EditProfileScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764227A52C7723E500A3BC0F /* EditProfileScreenView.swift */; };
 		766986E72C6B6B5B000838A3 /* MC3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766986E62C6B6B5B000838A3 /* MC3App.swift */; };
 		766986E92C6B6B5B000838A3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766986E82C6B6B5B000838A3 /* ContentView.swift */; };
 		766986EB2C6B6B5B000838A3 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766986EA2C6B6B5B000838A3 /* Item.swift */; };
@@ -96,6 +97,7 @@
 		7642279F2C763FDB00A3BC0F /* CaloriesNutrientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesNutrientView.swift; sourceTree = "<group>"; };
 		764227A12C7640BD00A3BC0F /* WeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightView.swift; sourceTree = "<group>"; };
 		764227A32C7648F800A3BC0F /* ProfileScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreenView.swift; sourceTree = "<group>"; };
+		764227A52C7723E500A3BC0F /* EditProfileScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileScreenView.swift; sourceTree = "<group>"; };
 		766986E32C6B6B5B000838A3 /* MC3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MC3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		766986E62C6B6B5B000838A3 /* MC3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC3App.swift; sourceTree = "<group>"; };
 		766986E82C6B6B5B000838A3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				FF3357512C73417600C3D829 /* WeightScreenView.swift */,
 				7683680D2C75CD0700FBDC95 /* FoodInfoScreenView.swift */,
 				764227A32C7648F800A3BC0F /* ProfileScreenView.swift */,
+				764227A52C7723E500A3BC0F /* EditProfileScreenView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 				768367C52C74849900FBDC95 /* DateInputView.swift in Sources */,
 				FFD508682C772C1F003850E9 /* WeightGraph.swift in Sources */,
 				5B3CF6EB2C75C125007622BC /* FoodLogListCardComponentView.swift in Sources */,
+				764227A62C7723E500A3BC0F /* EditProfileScreenView.swift in Sources */,
 				768368132C75DF9700FBDC95 /* InputValidator.swift in Sources */,
 				FFACC9132C6CB6E600FC3A82 /* User+CoreDataClass.swift in Sources */,
 				FFACC9142C6CB6E600FC3A82 /* User+CoreDataProperties.swift in Sources */,
