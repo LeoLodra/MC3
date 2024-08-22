@@ -9,6 +9,23 @@ import UIKit
 import SwiftUI
 import CoreData
 
+struct InitialViewControllerRepresentable: UIViewControllerRepresentable {
+    @Environment(\.managedObjectContext) private var viewContext
+
+    func makeUIViewController(context: Context) -> some UIViewController {
+        let initialScreenView = InitialScreenView()
+        initialScreenView.managedContext = viewContext
+        let navigationController = UINavigationController(rootViewController: initialScreenView)
+        return navigationController
+    }
+
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+        
+    }
+}
+
+
+
 class InitialScreenView: UIViewController {
     
     var managedContext: NSManagedObjectContext!
@@ -173,36 +190,16 @@ class InitialScreenView: UIViewController {
         
         disableAutoresizing()
         setupConstraints()
+        
+        // Add tap gesture recognizer to dismiss keyboard
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
     }
-    
-    func disableAutoresizing() {
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        nameInput.translatesAutoresizingMaskIntoConstraints = false
-        
-        weightLabel.translatesAutoresizingMaskIntoConstraints = false
-        weightInput.translatesAutoresizingMaskIntoConstraints = false
-        
-        currWeightLabel.translatesAutoresizingMaskIntoConstraints = false
-        currWeightInput.translatesAutoresizingMaskIntoConstraints = false
-        
-        heightInput.translatesAutoresizingMaskIntoConstraints = false
-        
-        lmpLabel.translatesAutoresizingMaskIntoConstraints = false
-        lmpInput.translatesAutoresizingMaskIntoConstraints = false
-        
-        dobLabel.translatesAutoresizingMaskIntoConstraints = false
-        dobInput.translatesAutoresizingMaskIntoConstraints = false
-        
-        //        allergiesLabel.translatesAutoresizingMaskIntoConstraints = false
-        //        allergiesInput.translatesAutoresizingMaskIntoConstraints = false
-        
-        divider.translatesAutoresizingMaskIntoConstraints = false
-        submitButton.translatesAutoresizingMaskIntoConstraints = false
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
-    
+
     func setupConstraints() {
         NSLayoutConstraint.activate([
             titleLabel.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
@@ -283,6 +280,34 @@ class InitialScreenView: UIViewController {
         ])
     }
     
+    func disableAutoresizing() {
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        nameInput.translatesAutoresizingMaskIntoConstraints = false
+        
+        weightLabel.translatesAutoresizingMaskIntoConstraints = false
+        weightInput.translatesAutoresizingMaskIntoConstraints = false
+        
+        currWeightLabel.translatesAutoresizingMaskIntoConstraints = false
+        currWeightInput.translatesAutoresizingMaskIntoConstraints = false
+        
+        heightInput.translatesAutoresizingMaskIntoConstraints = false
+        
+        lmpLabel.translatesAutoresizingMaskIntoConstraints = false
+        lmpInput.translatesAutoresizingMaskIntoConstraints = false
+        
+        dobLabel.translatesAutoresizingMaskIntoConstraints = false
+        dobInput.translatesAutoresizingMaskIntoConstraints = false
+        
+        //        allergiesLabel.translatesAutoresizingMaskIntoConstraints = false
+        //        allergiesInput.translatesAutoresizingMaskIntoConstraints = false
+        
+        divider.translatesAutoresizingMaskIntoConstraints = false
+        submitButton.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
     @objc func submitButtonTapped() {
         if validateInputs() == "" {
             print("Captured Name: \(nameInput.text ?? "No Name")")
@@ -328,7 +353,7 @@ class InitialScreenView: UIViewController {
     func saveUserData() {
         let name = nameInput.text
         let weight = Float(weightInput.weightValue) ?? 0
-//        let currWeight = Float(currWeightInput.weightValue) ?? 0
+        let currWeight = Float(currWeightInput.weightValue) ?? 0
         let height = Int16(heightInput.heightValue) ?? 0
         
         let lmpDate = lmpInput.selectedDate
@@ -343,6 +368,11 @@ class InitialScreenView: UIViewController {
         user.birthday = dobDate
         user.id = UUID()
         
+        // Create a new weight log entry
+        let weightLog = WeightLog(context: managedContext)
+        weightLog.weight = currWeight
+        weightLog.logDate = Date()
+        weightLog.id = UUID()
         
         do {
             try managedContext.save()
