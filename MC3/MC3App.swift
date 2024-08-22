@@ -43,24 +43,9 @@ struct MC3App: App {
 
     var body: some Scene {
         WindowGroup {
-            InitialViewControllerRepresentable()
+            ExampleOnboardingView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
-    }
-}
-
-struct InitialViewControllerRepresentable: UIViewControllerRepresentable {
-    @Environment(\.managedObjectContext) private var viewContext
-
-    func makeUIViewController(context: Context) -> some UIViewController {
-        let initialScreenView = InitialScreenView()
-        initialScreenView.managedContext = viewContext
-        let navigationController = UINavigationController(rootViewController: initialScreenView)
-        return navigationController
-    }
-
-    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-        
     }
 }
 
