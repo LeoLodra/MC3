@@ -54,4 +54,9 @@ class WeightInputView: UIView {
     
     var weightValue: String {
         return weightInput.text ?? ""
-    }}
+    }
+    
+    func setWeightValue(value: String) {
+        weightInput.text = value
+    }
+}

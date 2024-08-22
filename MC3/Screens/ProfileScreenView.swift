@@ -14,7 +14,9 @@ struct ProfileScreenView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \User.createdAt, ascending: false)],
         animation: .default)
     var users: FetchedResults<User>
-
+    
+    @State private var selectedUser: User?
+    
     var body: some View {
         if let user = users.first {
             VStack(alignment: .leading, spacing: 16) {
@@ -22,9 +24,11 @@ struct ProfileScreenView: View {
                     Text("My Profile")
                         .font(.custom("Lato-Bold", size: 28))
                     Spacer()
-                    Image(systemName: "pencil")
-                        .font(.system(size: 24))
-                        .foregroundColor(.blueprimary)
+                    NavigationLink(destination: EditProfileViewControllerRepresentable(user: $selectedUser)) {
+                        Image(systemName: "pencil")
+                            .font(.system(size: 24))
+                            .foregroundColor(.blueprimary)
+                    }
                 }
                 
                 Group {
@@ -35,7 +39,7 @@ struct ProfileScreenView: View {
                     
                     Text("Weight Before Pregnancy")
                         .font(.custom("Lato-Light", size: 15))
-                    (Text("\(user.weight)") + Text(" Kg"))
+                    (Text(String(format: "%.0f", user.weight)) + Text(" Kg"))
                         .font(.custom("Lato-Regular", size: 17))
                     
                     Text("Height")
@@ -59,10 +63,13 @@ struct ProfileScreenView: View {
                             .font(.custom("Lato-Regular", size: 17))
                     }
                 }
-                
                 Spacer()
             }
             .padding()
+            .onAppear {
+                selectedUser = user
+            }
+            
         } else {
             Text("No user data found.")
                 .padding()
@@ -73,6 +80,22 @@ struct ProfileScreenView: View {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
         return formatter
+    }
+}
+
+
+struct EditProfileViewControllerRepresentable: UIViewControllerRepresentable {
+    @Environment(\.managedObjectContext) var managedContext: NSManagedObjectContext
+    @Binding var user: User?
+    
+    func makeUIViewController(context: Context) -> EditProfileScreenView {
+        let viewController = EditProfileScreenView()
+        viewController.managedContext = managedContext
+        viewController.user = user
+        return viewController
+    }
+    
+    func updateUIViewController(_ uiViewController: EditProfileScreenView, context: Context) {
     }
 }
 
