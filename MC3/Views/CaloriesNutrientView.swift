@@ -37,9 +37,11 @@ struct CaloriesNutrientView: View {
                     .foregroundColor(.clear)
                     .frame(width: 328, height: 1)
                     .background(Color(red: 0.5, green: 0.5, blue: 0.5).opacity(0.2))
+                Spacer()
                 Text("Your Last Food")
                     .font(.custom("Lato-Bold", size: 17))
-                //Component dari Jo
+                LastEatenComponentView(food: Food(id: 1, title: "Geybok", edibleStatus: .safe, servingSizeUnit: "pcs", servingSize: 1, calories: 1, protein: 1, fiber: 1, iron: 1, calcium: 1, vitaminD: 1, vitaminA: 1, folate: 1), intakeAmount: 2)
+                Spacer()
                 NavigationLink(destination: FoodListView()) {
                     HStack {
                         Image(systemName: "plus.circle.fill")
@@ -55,7 +57,7 @@ struct CaloriesNutrientView: View {
             .padding(.horizontal, 17)
             .padding(.vertical, 18)
         }
-        .frame(width: 361, height: 423)
+        .frame(width: 361, height: 420)
     }
 }
 
