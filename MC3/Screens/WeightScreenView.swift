@@ -12,11 +12,11 @@ struct WeightScreenView: View {
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \WeightLog.logDate, ascending: false)]
     ) private var weightLogs: FetchedResults<WeightLog>
-
+    
     @FetchRequest(
         sortDescriptors: []
     ) private var users: FetchedResults<User>
-
+    
     // Current state
     private var currentState: (weekNumber: Int, lastUpdated: Date, newestWeight: Float) {
         let calendar = Calendar.current
@@ -27,19 +27,40 @@ struct WeightScreenView: View {
         
         return (weekNumber, lastUpdated, newestWeight)
     }
-
-
-    #warning("TODO: Calculate the ideal weight")
-    let gaugeMinValue = 30
-    let gaugeMaxValue = 80
-    let gaugeTick1Threshold = 40
-    let gaugeTick2Threshold = 60
-    let gaugeTick3Threshold = 70
+    
+    
+    // Calculate the ideal weight range using WeightGainCalculator
+    private var idealWeightRange: WeightGainCalculator.WeightGainRange {
+        guard let user = user else { return WeightGainCalculator.WeightGainRange(min: 0, max: 0) }
+        return WeightGainCalculator.calculateWeightGainRange(
+            weight: user.weight,
+            height: Int(user.height),
+            weeks: currentState.weekNumber,
+            isTwins: user.fetusCount > 1
+        )
+    }
+    
+    private var gaugeMinValue: Float {
+        guard let user = user else { return 0 }
+        return Float(idealWeightRange.min) + user.weight - Float(idealWeightRange.max - idealWeightRange.min) / 2
+    }
+    private var gaugeMaxValue: Float {
+        guard let user = user else { return 0 }
+        return Float(idealWeightRange.max) + user.weight + Float(idealWeightRange.max - idealWeightRange.min) / 2
+    }
+    private var gaugeTick1Threshold: Float {
+        guard let user = user else { return 0 }
+        return Float(idealWeightRange.min) + user.weight
+    }
+    private var gaugeTick2Threshold: Float {
+        guard let user = user else { return 0 }
+        return Float(idealWeightRange.max) + user.weight
+    }
     
     var body: some View {
         NavigationStack {
             VStack(alignment: .center, spacing: 0) {
-                WeightGaugeCard(value: Float(currentState.newestWeight), minValue: Float(gaugeMinValue), maxValue: Float(gaugeMaxValue), tick1threshold: Float(gaugeTick1Threshold), tick2threshold: Float(gaugeTick2Threshold), tick3threshold: Float(gaugeTick3Threshold), weekNumber: currentState.weekNumber, lastUpdated: currentState.lastUpdated, showChevron: false)
+                WeightGaugeCard(value: Float(currentState.newestWeight), minValue: Float(gaugeMinValue), maxValue: Float(gaugeMaxValue), tick1threshold: Float(gaugeTick1Threshold), tick2threshold: Float(gaugeTick2Threshold), weekNumber: currentState.weekNumber, lastUpdated: currentState.lastUpdated, showChevron: false)
                 WeightHistoryCard(weeklyWeightEntries: weeklyWeightEntries, monthlyWeightEntries: monthlyWeightEntries)
                 Spacer()
                 AddWeightButton(action: {

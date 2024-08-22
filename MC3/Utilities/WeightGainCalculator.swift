@@ -85,20 +85,20 @@ struct WeightGainCalculator {
     /// Calculates the recommended daily calorie intake for weight gain
     /// https://www.calculator.net/pregnancy-weight-gain-calculator.html
     /// - Parameters:
-    ///   - currentWeight: Current weight in kilograms
+    ///   - weight: Pre pregnancy weight in kilograms
     ///   - height: Height in centimeters
     ///   - weeks: Number of weeks pregnant
     ///   - isTwins: Whether the user is pregnant with twins
     /// - Returns: Recommended weight gain range
     static func calculateWeightGainRange(
-        currentWeight: Float,
+        weight: Float,
         height: Int,
         weeks: Int,
         isTwins: Bool
     ) -> WeightGainRange {
         // 1. Calculate BMI before pregnancy
         let heightInMeters = Double(height) / 100.0
-        let bmi = Double(currentWeight) / (heightInMeters * heightInMeters)
+        let bmi = Double(weight) / (heightInMeters * heightInMeters)
 
         // 2. Categorize BMI
         let bmiCategory: BMICategory
@@ -146,10 +146,10 @@ struct WeightGainCalculator {
                 max: weightGainRange.max * Double((weeks - 1)) / 12
             )
         } else {
-            // Week 14-40
+            // Week 14-41
             currentWeekWeightGainRange = WeightGainRange(
-                min: firstTrimesterWeightGainRanges[pregnancyType]![bmiCategory]!.min + weightGainRange.min * Double((weeks - 13)) / 27,
-                max: firstTrimesterWeightGainRanges[pregnancyType]![bmiCategory]!.max + weightGainRange.max * Double((weeks - 13)) / 27
+                min: min(firstTrimesterWeightGainRanges[pregnancyType]![bmiCategory]!.min + weightGainRange.min * Double((weeks - 13)) / 27, totalWeightGainRanges[pregnancyType]![bmiCategory]!.min),
+                max: min(firstTrimesterWeightGainRanges[pregnancyType]![bmiCategory]!.max + weightGainRange.max * Double((weeks - 13)) / 27, totalWeightGainRanges[pregnancyType]![bmiCategory]!.max)
             )
         }
         return currentWeekWeightGainRange
@@ -158,13 +158,13 @@ struct WeightGainCalculator {
 
 import SwiftUI
 #Preview {
-    let currentWeight: Float = 50.0
+    let weight: Float = 50.0
     let height: Int = 158
-    let weeks: Int = 34
+    let weeks: Int = 70
     let isTwins: Bool = false
     
     let range = WeightGainCalculator.calculateWeightGainRange(
-        currentWeight: currentWeight,
+        weight: weight,
         height: height,
         weeks: weeks,
         isTwins: isTwins

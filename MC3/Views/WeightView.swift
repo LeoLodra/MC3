@@ -20,7 +20,6 @@ struct WeightView: View {
     let maxValue: Float
     let tick1threshold: Float
     let tick2threshold: Float
-    let tick3threshold: Float
     let weekNumber: Int
     let lastUpdated: Date
     
@@ -40,7 +39,7 @@ struct WeightView: View {
                         .font(.system(size: 24))
                         .foregroundColor(.blueprimary)
                 }
-                WeightGauge(value: value, minValue: minValue, maxValue: maxValue, tick1treshold: tick1threshold, tick2treshold: tick2threshold, tick3treshold: tick3threshold)
+                WeightGauge(value: value, minValue: minValue, maxValue: maxValue, tick1treshold: tick1threshold, tick2treshold: tick2threshold)
                 Text("\(lastUpdatedText)")
                     .font(.custom("Lato-Regular", size: 13))
                 NavigationLink(destination: NutrientDetailView()) {
@@ -74,5 +73,5 @@ struct WeightView: View {
 }
 
 #Preview {
-    WeightView(value: 1, minValue: 2, maxValue: 2, tick1threshold: 1, tick2threshold: 2, tick3threshold: 2, weekNumber: 2, lastUpdated: Date())
+    WeightView(value: 1, minValue: 2, maxValue: 2, tick1threshold: 1, tick2threshold: 2, weekNumber: 2, lastUpdated: Date())
 }
