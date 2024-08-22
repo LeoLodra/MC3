@@ -20,6 +20,9 @@
 		5B3CF6ED2C75CD20007622BC /* FoodLogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3CF6EC2C75CD20007622BC /* FoodLogViewModel.swift */; };
 		5B3CF6EF2C7639D2007622BC /* NutrientTargetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3CF6EE2C7639D2007622BC /* NutrientTargetViewModel.swift */; };
 		5B3CF6F12C764C0A007622BC /* FoodEatenCardComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3CF6F02C764C0A007622BC /* FoodEatenCardComponentView.swift */; };
+		764227A02C763FDB00A3BC0F /* CaloriesNutrientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7642279F2C763FDB00A3BC0F /* CaloriesNutrientView.swift */; };
+		764227A22C7640BD00A3BC0F /* WeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764227A12C7640BD00A3BC0F /* WeightView.swift */; };
+		764227A42C7648F800A3BC0F /* ProfileScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764227A32C7648F800A3BC0F /* ProfileScreenView.swift */; };
 		766986E72C6B6B5B000838A3 /* MC3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766986E62C6B6B5B000838A3 /* MC3App.swift */; };
 		766986E92C6B6B5B000838A3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766986E82C6B6B5B000838A3 /* ContentView.swift */; };
 		766986EB2C6B6B5B000838A3 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766986EA2C6B6B5B000838A3 /* Item.swift */; };
@@ -46,6 +49,7 @@
 		7683680A2C748CFF00FBDC95 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 768367FE2C748CFF00FBDC95 /* OFL.txt */; };
 		7683680E2C75CD0700FBDC95 /* FoodInfoScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7683680D2C75CD0700FBDC95 /* FoodInfoScreenView.swift */; };
 		768368102C75D1FA00FBDC95 /* NutrientInfoComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7683680F2C75D1FA00FBDC95 /* NutrientInfoComponentView.swift */; };
+		768368132C75DF9700FBDC95 /* InputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768368122C75DF9700FBDC95 /* InputValidator.swift */; };
 		FF3357522C73417600C3D829 /* WeightScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3357512C73417600C3D829 /* WeightScreenView.swift */; };
 		FF51EE722C6DED6D00025469 /* db_model_v1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FFACC9082C6CA4C300FC3A82 /* db_model_v1.xcdatamodeld */; };
 		FFACC8BB2C6C966300FC3A82 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC8BA2C6C966300FC3A82 /* Models.swift */; };
@@ -64,6 +68,13 @@
 		FFACC91E2C6CBB8500FC3A82 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC91D2C6CBB8500FC3A82 /* PersistenceController.swift */; };
 		FFACC9202C6CC00000FC3A82 /* ExampleOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC91F2C6CC00000FC3A82 /* ExampleOnboardingView.swift */; };
 		FFACC9222C6CD2C700FC3A82 /* ExperimentFoodListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC9212C6CD2C700FC3A82 /* ExperimentFoodListView.swift */; };
+		FFD508642C772B64003850E9 /* AddWeightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD508632C772B64003850E9 /* AddWeightButton.swift */; };
+		FFD508662C772BB3003850E9 /* WeightHistoryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD508652C772BB3003850E9 /* WeightHistoryCard.swift */; };
+		FFD508682C772C1F003850E9 /* WeightGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD508672C772C1F003850E9 /* WeightGraph.swift */; };
+		FFD5086A2C772C62003850E9 /* WeightGaugeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD508692C772C62003850E9 /* WeightGaugeCard.swift */; };
+		FFD5086C2C772CB4003850E9 /* WeightGauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD5086B2C772CB4003850E9 /* WeightGauge.swift */; };
+		FFD5086E2C772CE2003850E9 /* WeightInfoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD5086D2C772CE2003850E9 /* WeightInfoCard.swift */; };
+		FFD508702C772D14003850E9 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD5086F2C772D14003850E9 /* RoundedCorner.swift */; };
 		FFE788EC2C75EF64007868F2 /* WeightWheelPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE788EB2C75EF64007868F2 /* WeightWheelPicker.swift */; };
 		FFE788EE2C75F362007868F2 /* WeightUpdateSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE788ED2C75F362007868F2 /* WeightUpdateSheet.swift */; };
 /* End PBXBuildFile section */
@@ -82,6 +93,9 @@
 		5B3CF6EC2C75CD20007622BC /* FoodLogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodLogViewModel.swift; sourceTree = "<group>"; };
 		5B3CF6EE2C7639D2007622BC /* NutrientTargetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientTargetViewModel.swift; sourceTree = "<group>"; };
 		5B3CF6F02C764C0A007622BC /* FoodEatenCardComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodEatenCardComponentView.swift; sourceTree = "<group>"; };
+		7642279F2C763FDB00A3BC0F /* CaloriesNutrientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesNutrientView.swift; sourceTree = "<group>"; };
+		764227A12C7640BD00A3BC0F /* WeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightView.swift; sourceTree = "<group>"; };
+		764227A32C7648F800A3BC0F /* ProfileScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreenView.swift; sourceTree = "<group>"; };
 		766986E32C6B6B5B000838A3 /* MC3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MC3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		766986E62C6B6B5B000838A3 /* MC3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC3App.swift; sourceTree = "<group>"; };
 		766986E82C6B6B5B000838A3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -110,6 +124,7 @@
 		768367FE2C748CFF00FBDC95 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 		7683680D2C75CD0700FBDC95 /* FoodInfoScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodInfoScreenView.swift; sourceTree = "<group>"; };
 		7683680F2C75D1FA00FBDC95 /* NutrientInfoComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientInfoComponentView.swift; sourceTree = "<group>"; };
+		768368122C75DF9700FBDC95 /* InputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputValidator.swift; sourceTree = "<group>"; };
 		FF3357512C73417600C3D829 /* WeightScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightScreenView.swift; sourceTree = "<group>"; };
 		FFACC8BA2C6C966300FC3A82 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		FFACC8F82C6C9AA500FC3A82 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -128,6 +143,13 @@
 		FFACC91D2C6CBB8500FC3A82 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		FFACC91F2C6CC00000FC3A82 /* ExampleOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleOnboardingView.swift; sourceTree = "<group>"; };
 		FFACC9212C6CD2C700FC3A82 /* ExperimentFoodListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperimentFoodListView.swift; sourceTree = "<group>"; };
+		FFD508632C772B64003850E9 /* AddWeightButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWeightButton.swift; sourceTree = "<group>"; };
+		FFD508652C772BB3003850E9 /* WeightHistoryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightHistoryCard.swift; sourceTree = "<group>"; };
+		FFD508672C772C1F003850E9 /* WeightGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightGraph.swift; sourceTree = "<group>"; };
+		FFD508692C772C62003850E9 /* WeightGaugeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightGaugeCard.swift; sourceTree = "<group>"; };
+		FFD5086B2C772CB4003850E9 /* WeightGauge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightGauge.swift; sourceTree = "<group>"; };
+		FFD5086D2C772CE2003850E9 /* WeightInfoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightInfoCard.swift; sourceTree = "<group>"; };
+		FFD5086F2C772D14003850E9 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		FFE788EB2C75EF64007868F2 /* WeightWheelPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightWheelPicker.swift; sourceTree = "<group>"; };
 		FFE788ED2C75F362007868F2 /* WeightUpdateSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightUpdateSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -150,8 +172,7 @@
 				5B1554FA2C6E033C00D0B3C3 /* DailyandWeeklyNutrientComponentView.swift */,
 				5B1554FE2C71A5E300D0B3C3 /* FoodCardViewComponent.swift */,
 				5B1555002C724A0A00D0B3C3 /* FoodInputSheetComponentView.swift */,
-				FFE788EB2C75EF64007868F2 /* WeightWheelPicker.swift */,
-				FFE788ED2C75F362007868F2 /* WeightUpdateSheet.swift */,
+				FFD508622C772B3F003850E9 /* Weight */,
 				5B3CF6E42C748E29007622BC /* NutrientRingComponentView.swift */,
 				5B3CF6E62C7499F9007622BC /* NutrientIntakeProgressComponentView.swift */,
 				5B3CF6E82C74C1BD007622BC /* FoodLogSheetComponentView.swift */,
@@ -181,6 +202,7 @@
 		766986E52C6B6B5B000838A3 /* MC3 */ = {
 			isa = PBXGroup;
 			children = (
+				768368112C75DF8800FBDC95 /* Validator */,
 				768367C32C7362AD00FBDC95 /* Info.plist */,
 				768367FF2C748CFF00FBDC95 /* Lato */,
 				FFACC9032C6C9EF600FC3A82 /* Resources */,
@@ -217,6 +239,7 @@
 				5B1554FC2C71A59B00D0B3C3 /* FoodListView.swift */,
 				FF3357512C73417600C3D829 /* WeightScreenView.swift */,
 				7683680D2C75CD0700FBDC95 /* FoodInfoScreenView.swift */,
+				764227A32C7648F800A3BC0F /* ProfileScreenView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -237,8 +260,11 @@
 				5B1554EE2C6C93FC00D0B3C3 /* Components */,
 				766987112C6B727E000838A3 /* ViewSample.swift */,
 				768367A72C73611C00FBDC95 /* HeightInputView.swift */,
+				FFE788ED2C75F362007868F2 /* WeightUpdateSheet.swift */,
 				768367A92C73613000FBDC95 /* WeightInputView.swift */,
 				768367C42C74849900FBDC95 /* DateInputView.swift */,
+				7642279F2C763FDB00A3BC0F /* CaloriesNutrientView.swift */,
+				764227A12C7640BD00A3BC0F /* WeightView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -271,6 +297,14 @@
 			path = Lato;
 			sourceTree = "<group>";
 		};
+		768368112C75DF8800FBDC95 /* Validator */ = {
+			isa = PBXGroup;
+			children = (
+				768368122C75DF9700FBDC95 /* InputValidator.swift */,
+			);
+			path = Validator;
+			sourceTree = "<group>";
+		};
 		FF51EE752C6DF9C900025469 /* Examples-Danzel */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,6 +329,7 @@
 			isa = PBXGroup;
 			children = (
 				FFACC8FD2C6C9AFC00FC3A82 /* LazyList.swift */,
+				FFD5086F2C772D14003850E9 /* RoundedCorner.swift */,
 				FFACC8FF2C6C9DB600FC3A82 /* JSONLoader.swift */,
 			);
 			path = Utilities;
@@ -320,6 +355,20 @@
 				FFACC9102C6CB6E600FC3A82 /* WeightLog+CoreDataProperties.swift */,
 			);
 			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		FFD508622C772B3F003850E9 /* Weight */ = {
+			isa = PBXGroup;
+			children = (
+				FFE788EB2C75EF64007868F2 /* WeightWheelPicker.swift */,
+				FFD508652C772BB3003850E9 /* WeightHistoryCard.swift */,
+				FFD508632C772B64003850E9 /* AddWeightButton.swift */,
+				FFD508672C772C1F003850E9 /* WeightGraph.swift */,
+				FFD5086B2C772CB4003850E9 /* WeightGauge.swift */,
+				FFD5086D2C772CE2003850E9 /* WeightInfoCard.swift */,
+				FFD508692C772C62003850E9 /* WeightGaugeCard.swift */,
+			);
+			path = Weight;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -405,19 +454,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				764227A42C7648F800A3BC0F /* ProfileScreenView.swift in Sources */,
 				5B1554FF2C71A5E300D0B3C3 /* FoodCardViewComponent.swift in Sources */,
 				5B1554FD2C71A59B00D0B3C3 /* FoodListView.swift in Sources */,
+				764227A22C7640BD00A3BC0F /* WeightView.swift in Sources */,
 				766986E92C6B6B5B000838A3 /* ContentView.swift in Sources */,
 				766987102C6B725A000838A3 /* ModelSample.swift in Sources */,
 				766986FE2C6B6EE7000838A3 /* InitialScreenView.swift in Sources */,
+				764227A02C763FDB00A3BC0F /* CaloriesNutrientView.swift in Sources */,
 				5B1555012C724A0A00D0B3C3 /* FoodInputSheetComponentView.swift in Sources */,
 				768367AA2C73613000FBDC95 /* WeightInputView.swift in Sources */,
 				FFACC9002C6C9DB600FC3A82 /* JSONLoader.swift in Sources */,
 				7683680E2C75CD0700FBDC95 /* FoodInfoScreenView.swift in Sources */,
 				FF51EE722C6DED6D00025469 /* db_model_v1.xcdatamodeld in Sources */,
+				FFD508662C772BB3003850E9 /* WeightHistoryCard.swift in Sources */,
 				FFACC8FB2C6C9AC500FC3A82 /* CoreDataHelpers.swift in Sources */,
 				766986FC2C6B6BA8000838A3 /* GoalsScreenView.swift in Sources */,
 				5B3CF6F12C764C0A007622BC /* FoodEatenCardComponentView.swift in Sources */,
+				FFD5086E2C772CE2003850E9 /* WeightInfoCard.swift in Sources */,
 				5B1554F92C6E023D00D0B3C3 /* NutrientDetailView.swift in Sources */,
 				FFE788EE2C75F362007868F2 /* WeightUpdateSheet.swift in Sources */,
 				FFE788EC2C75EF64007868F2 /* WeightWheelPicker.swift in Sources */,
@@ -431,12 +485,16 @@
 				FFACC8FE2C6C9AFC00FC3A82 /* LazyList.swift in Sources */,
 				5B3CF6ED2C75CD20007622BC /* FoodLogViewModel.swift in Sources */,
 				766987142C6B728A000838A3 /* ViewModelSample.swift in Sources */,
+				FFD508702C772D14003850E9 /* RoundedCorner.swift in Sources */,
 				FF3357522C73417600C3D829 /* WeightScreenView.swift in Sources */,
 				FFACC91E2C6CBB8500FC3A82 /* PersistenceController.swift in Sources */,
 				FFACC9112C6CB6E600FC3A82 /* FoodIntake+CoreDataClass.swift in Sources */,
 				FFACC9122C6CB6E600FC3A82 /* FoodIntake+CoreDataProperties.swift in Sources */,
+				FFD5086C2C772CB4003850E9 /* WeightGauge.swift in Sources */,
 				768367C52C74849900FBDC95 /* DateInputView.swift in Sources */,
+				FFD508682C772C1F003850E9 /* WeightGraph.swift in Sources */,
 				5B3CF6EB2C75C125007622BC /* FoodLogListCardComponentView.swift in Sources */,
+				768368132C75DF9700FBDC95 /* InputValidator.swift in Sources */,
 				FFACC9132C6CB6E600FC3A82 /* User+CoreDataClass.swift in Sources */,
 				FFACC9142C6CB6E600FC3A82 /* User+CoreDataProperties.swift in Sources */,
 				FFACC9152C6CB6E600FC3A82 /* WeightLog+CoreDataClass.swift in Sources */,
@@ -444,9 +502,11 @@
 				FFACC9202C6CC00000FC3A82 /* ExampleOnboardingView.swift in Sources */,
 				5B3CF6E92C74C1BD007622BC /* FoodLogSheetComponentView.swift in Sources */,
 				766987122C6B727E000838A3 /* ViewSample.swift in Sources */,
+				FFD508642C772B64003850E9 /* AddWeightButton.swift in Sources */,
 				768367A82C73611C00FBDC95 /* HeightInputView.swift in Sources */,
 				5B3CF6EF2C7639D2007622BC /* NutrientTargetViewModel.swift in Sources */,
 				768368102C75D1FA00FBDC95 /* NutrientInfoComponentView.swift in Sources */,
+				FFD5086A2C772C62003850E9 /* WeightGaugeCard.swift in Sources */,
 				5B1554F02C6C945A00D0B3C3 /* CaloriesTargetView.swift in Sources */,
 				5B3CF6E72C7499F9007622BC /* NutrientIntakeProgressComponentView.swift in Sources */,
 			);

@@ -35,7 +35,7 @@ struct NutrientRingComponentView: View {
                     .animation(.easeOut, value: nutrientIntake / nutrientTarget)
                 
                 Text(nutrientName)
-                    .fontWeight(.bold)
+                    .font(.custom("Lato-Bold", size: 17))
                     .foregroundStyle(.darkgraytext)
             }
 //            .frame(width: 180, height: 180)

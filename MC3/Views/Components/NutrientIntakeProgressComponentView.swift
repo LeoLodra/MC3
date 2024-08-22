@@ -19,6 +19,8 @@ struct NutrientIntakeProgressComponentView: View {
             HStack{
                 Text(nutrientName)
                     .fontWeight(.bold)
+                    .font(.custom("Lato-Bold", size: 13))
+
                 
                 Spacer()
                 
