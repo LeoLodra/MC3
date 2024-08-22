@@ -34,6 +34,7 @@ struct PersistenceController {
             user.id = UUID()
             user.fullName = "Sample User"
             user.height = 170
+            user.weight = 55
             user.lastHaidAt = Calendar.current.date(byAdding: .weekOfYear, value: -10, to: Date())!
             
             // Create some sample weight logs
@@ -43,7 +44,7 @@ struct PersistenceController {
             for i in 0..<5 {
                 let weightLog = WeightLog(context: viewContext)
                 weightLog.id = UUID()
-                weightLog.weight = Float.random(in: 60...65)
+                weightLog.weight = Float.random(in: 55...57)
                 weightLog.logDate = calendar.date(byAdding: .day, value: -i * 7, to: today)
                 weightLog.user = user
             }

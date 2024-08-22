@@ -44,9 +44,11 @@ struct GoalsScreenView: View {
                     .foregroundColor(.black)
                     
                     Spacer()
+                    Spacer()
+                    Spacer()
                     
                     NavigationLink(destination: WeightScreenView()) {
-                        WeightView(value: 90, minValue: 20, maxValue: 140, tick1threshold: 50, tick2threshold: 80, tick3threshold: 110, weekNumber: 2, lastUpdated: Date())
+                        WeightView(value: 90, minValue: 20, maxValue: 140, tick1threshold: 50, tick2threshold: 80, weekNumber: 2, lastUpdated: Date())
                     }
                     .foregroundColor(.black)
                 }
