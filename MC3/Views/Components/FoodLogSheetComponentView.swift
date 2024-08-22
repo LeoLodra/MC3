@@ -9,8 +9,6 @@ import SwiftUI
 
 struct FoodLogSheetComponentView: View {
     @State private var foodLogDate = Date()
-//    var tempFoodLog:[Food]
-//    var foodPortion:Int
     @ObservedObject var vm:FoodLogViewModel
     @Environment(\.managedObjectContext) private var viewContext
     @Binding var foodLogShowingSheet:Bool

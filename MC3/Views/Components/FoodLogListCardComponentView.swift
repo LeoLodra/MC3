@@ -12,9 +12,7 @@ struct FoodLogListCardComponentView: View {
     @State private var foodStatusString:String = ""
     var food:foodIntakePortion
     @ObservedObject var vm:FoodLogViewModel
-//    @Binding private var foodPortion:Int
     @Environment(\.managedObjectContext) private var viewContext
-//    @Binding var foodLogDate:Date
     
     var body: some View {
         ZStack{
@@ -73,40 +71,7 @@ extension FoodLogListCardComponentView{
         }
     }
     
-//    func fetchFoodIntake(for foodId: Int64) {
-//        let fetchRequest = FoodIntake.fetchRequest()
-//        
-//        // Create predicates for filtering by date and foodId
-////        let datePredicate = NSPredicate(format: "intakeAt == %@", foodLogDate as NSDate)
-////        let foodIdPredicate = NSPredicate(format: "foodId == %d", foodId)
-//        
-//        // Combine the predicates
-////        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [datePredicate, foodIdPredicate])
-//         
-//        fetchRequest.predicate = NSPredicate(format: "intakeAt == %@", foodLogDate as NSDate)
-//        
-//        do {
-//            let results = try viewContext.fetch(fetchRequest)
-//            print("hellooo")
-//            
-//            // Assuming you want the first match (if multiple results exist for the same date and foodId)
-//            if let foodIntake = results.last {
-//                print("masuk food intake")
-//                print(foodIntake.intakeAmount)
-//                print("tanggal skrg: \(Date())")
-//                print("tanggal: \(foodIntake.intakeAt ?? Date())")
-//                foodPortion = Int(foodIntake.intakeAmount)
-//                
-//                print(foodPortion)
-//            } else {
-//                print("bolonggg")
-//            }
-//        } catch {
-//            print("Failed to fetch food intake: \(error.localizedDescription)")
-//        }
-//        
-////        return nil  // Return nil if no match is found
-//    }
+    
 }
 
 //#Preview {

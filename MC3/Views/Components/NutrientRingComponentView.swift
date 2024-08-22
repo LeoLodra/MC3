@@ -40,8 +40,7 @@ struct NutrientRingComponentView: View {
             }
 //            .frame(width: 180, height: 180)
             
-            Text("**\(nutrientIntake, specifier: "%.2f")**  /\(nutrientTarget, specifier: "%.2f") \(nutrientUnit)")
-                .font(.custom("Lato-Regular", size: 13))
+            Text("**\(nutrientIntake, specifier: "%.0f")**  /\(nutrientTarget, specifier: "%.0f") \(nutrientUnit)")
                 .padding(.top)
         }
         .onAppear(perform: {

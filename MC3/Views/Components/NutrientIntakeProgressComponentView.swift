@@ -18,17 +18,16 @@ struct NutrientIntakeProgressComponentView: View {
         VStack{
             HStack{
                 Text(nutrientName)
+                    .fontWeight(.bold)
                     .font(.custom("Lato-Bold", size: 13))
-//                    .font(.subheadline)
+
                 
                 Spacer()
                 
                 Text("\(nutrientIntake, specifier: "%.1f")")
-                    .font(.custom("Lato-Bold", size: 13))
-//                    .font(.subheadline)
+                    .fontWeight(.bold)
                 Text("/\(nutrientTarget, specifier: "%.1f")\(nutrientUnit)")
-                    .font(.custom("Lato-Light", size: 13))
-//                    .font(.subheadline)
+                    .foregroundStyle(.darkgraytext)
             }
             GeometryReader { geometry in
                 ZStack(alignment: .leading) {
@@ -46,7 +45,6 @@ struct NutrientIntakeProgressComponentView: View {
                 }
             }
         }
-//        .padding()
         
     }
 }
