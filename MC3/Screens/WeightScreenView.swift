@@ -78,6 +78,7 @@ struct WeightScreenView: View {
                         window.rootViewController?.present(hostingController, animated: true, completion: nil)
                     }
                 })
+                .padding(.horizontal)
             }
             .navigationTitle("Your Weight")
         }
