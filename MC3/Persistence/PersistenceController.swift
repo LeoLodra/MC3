@@ -29,6 +29,25 @@ struct PersistenceController {
         let viewContext = controller.container.viewContext
         
         do {
+            // Create a sample user
+            let user = User(context: viewContext)
+            user.id = UUID()
+            user.fullName = "Sample User"
+            user.height = 170
+            user.lastHaidAt = Calendar.current.date(byAdding: .weekOfYear, value: -10, to: Date())!
+            
+            // Create some sample weight logs
+            let calendar = Calendar.current
+            let today = Date()
+            
+            for i in 0..<5 {
+                let weightLog = WeightLog(context: viewContext)
+                weightLog.id = UUID()
+                weightLog.weight = Float.random(in: 60...65)
+                weightLog.logDate = calendar.date(byAdding: .day, value: -i * 7, to: today)
+                weightLog.user = user
+            }
+            
             try viewContext.save()
         } catch {
             let nsError = error as NSError
