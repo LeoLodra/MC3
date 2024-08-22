@@ -51,7 +51,6 @@ struct CaloriesNutrientView: View {
                     .foregroundColor(.white)
                     .cornerRadius(500)
                 }
-                .padding(.horizontal)
             }
             .padding(.horizontal, 17)
             .padding(.vertical, 18)

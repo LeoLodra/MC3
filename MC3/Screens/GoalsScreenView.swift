@@ -26,8 +26,11 @@ struct GoalsScreenView: View {
                         Text("\(users.first?.fullName ?? "Mother")!")
                             .font(.custom("Lato-Bold", size: 24))
                         Spacer()
-                        Image(systemName: "person.crop.circle")
-                            .font(.system(size: 29))
+                        NavigationLink(destination: ProfileScreenView()) {
+                            Image(systemName: "person.crop.circle")
+                                .font(.system(size: 29))
+                        }
+                        .foregroundColor(.black)
                     }
                     Text("You're in ")
                         .font(.custom("Lato-Regular", size: 24))
@@ -43,7 +46,7 @@ struct GoalsScreenView: View {
                     Spacer()
                     
                     NavigationLink(destination: WeightScreenView()) {
-                        WeightView()
+                        WeightView(value: 90, minValue: 20, maxValue: 140, tick1threshold: 50, tick2threshold: 80, tick3threshold: 110, weekNumber: 2, lastUpdated: Date())
                     }
                     .foregroundColor(.black)
                 }
