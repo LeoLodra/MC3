@@ -285,10 +285,12 @@ class InitialScreenView: UIViewController {
     
     @objc func submitButtonTapped() {
         if validateInputs() == "" {
+            print("Captured Name: \(nameInput.text ?? "No Name")")
             saveUserData()
             let goalsScreen = UIHostingController(rootView: GoalsScreenView().environment(\.managedObjectContext, managedContext))
             goalsScreen.modalPresentationStyle = .fullScreen
             present(goalsScreen, animated: true, completion: nil)
+
         } else {
             showAlert(message: validateInputs())
         }
