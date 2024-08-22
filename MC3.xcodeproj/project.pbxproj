@@ -18,6 +18,8 @@
 		5B3CF6E92C74C1BD007622BC /* FoodLogSheetComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3CF6E82C74C1BD007622BC /* FoodLogSheetComponentView.swift */; };
 		5B3CF6EB2C75C125007622BC /* FoodLogListCardComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3CF6EA2C75C125007622BC /* FoodLogListCardComponentView.swift */; };
 		5B3CF6ED2C75CD20007622BC /* FoodLogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3CF6EC2C75CD20007622BC /* FoodLogViewModel.swift */; };
+		5B3CF6EF2C7639D2007622BC /* NutrientTargetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3CF6EE2C7639D2007622BC /* NutrientTargetViewModel.swift */; };
+		5B3CF6F12C764C0A007622BC /* FoodEatenCardComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3CF6F02C764C0A007622BC /* FoodEatenCardComponentView.swift */; };
 		766986E72C6B6B5B000838A3 /* MC3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766986E62C6B6B5B000838A3 /* MC3App.swift */; };
 		766986E92C6B6B5B000838A3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766986E82C6B6B5B000838A3 /* ContentView.swift */; };
 		766986EB2C6B6B5B000838A3 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766986EA2C6B6B5B000838A3 /* Item.swift */; };
@@ -78,6 +80,8 @@
 		5B3CF6E82C74C1BD007622BC /* FoodLogSheetComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodLogSheetComponentView.swift; sourceTree = "<group>"; };
 		5B3CF6EA2C75C125007622BC /* FoodLogListCardComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodLogListCardComponentView.swift; sourceTree = "<group>"; };
 		5B3CF6EC2C75CD20007622BC /* FoodLogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodLogViewModel.swift; sourceTree = "<group>"; };
+		5B3CF6EE2C7639D2007622BC /* NutrientTargetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientTargetViewModel.swift; sourceTree = "<group>"; };
+		5B3CF6F02C764C0A007622BC /* FoodEatenCardComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodEatenCardComponentView.swift; sourceTree = "<group>"; };
 		766986E32C6B6B5B000838A3 /* MC3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MC3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		766986E62C6B6B5B000838A3 /* MC3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC3App.swift; sourceTree = "<group>"; };
 		766986E82C6B6B5B000838A3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -153,6 +157,7 @@
 				5B3CF6E82C74C1BD007622BC /* FoodLogSheetComponentView.swift */,
 				5B3CF6EA2C75C125007622BC /* FoodLogListCardComponentView.swift */,
 				7683680F2C75D1FA00FBDC95 /* NutrientInfoComponentView.swift */,
+				5B3CF6F02C764C0A007622BC /* FoodEatenCardComponentView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -219,6 +224,7 @@
 		7669870B2C6B7200000838A3 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				5B3CF6EE2C7639D2007622BC /* NutrientTargetViewModel.swift */,
 				766987132C6B728A000838A3 /* ViewModelSample.swift */,
 				5B3CF6EC2C75CD20007622BC /* FoodLogViewModel.swift */,
 			);
@@ -411,6 +417,7 @@
 				FF51EE722C6DED6D00025469 /* db_model_v1.xcdatamodeld in Sources */,
 				FFACC8FB2C6C9AC500FC3A82 /* CoreDataHelpers.swift in Sources */,
 				766986FC2C6B6BA8000838A3 /* GoalsScreenView.swift in Sources */,
+				5B3CF6F12C764C0A007622BC /* FoodEatenCardComponentView.swift in Sources */,
 				5B1554F92C6E023D00D0B3C3 /* NutrientDetailView.swift in Sources */,
 				FFE788EE2C75F362007868F2 /* WeightUpdateSheet.swift in Sources */,
 				FFE788EC2C75EF64007868F2 /* WeightWheelPicker.swift in Sources */,
@@ -438,6 +445,7 @@
 				5B3CF6E92C74C1BD007622BC /* FoodLogSheetComponentView.swift in Sources */,
 				766987122C6B727E000838A3 /* ViewSample.swift in Sources */,
 				768367A82C73611C00FBDC95 /* HeightInputView.swift in Sources */,
+				5B3CF6EF2C7639D2007622BC /* NutrientTargetViewModel.swift in Sources */,
 				768368102C75D1FA00FBDC95 /* NutrientInfoComponentView.swift in Sources */,
 				5B1554F02C6C945A00D0B3C3 /* CaloriesTargetView.swift in Sources */,
 				5B3CF6E72C7499F9007622BC /* NutrientIntakeProgressComponentView.swift in Sources */,
