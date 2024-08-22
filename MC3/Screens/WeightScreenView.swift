@@ -28,6 +28,7 @@ struct WeightScreenView: View {
         return (weekNumber, lastUpdated, newestWeight)
     }
 
+
     #warning("TODO: Calculate the ideal weight")
     let gaugeMinValue = 30
     let gaugeMaxValue = 80
@@ -62,7 +63,7 @@ struct WeightScreenView: View {
     }
 }
 
-// MARK: Computer variables
+// MARK: Computed variables
 extension WeightScreenView {
     private var user: User? {
         users.first
@@ -109,4 +110,3 @@ extension WeightScreenView {
     WeightScreenView()
         .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 }
-

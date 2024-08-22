@@ -35,12 +35,13 @@ struct NutrientRingComponentView: View {
                     .animation(.easeOut, value: nutrientIntake / nutrientTarget)
                 
                 Text(nutrientName)
-                    .fontWeight(.bold)
+                    .font(.custom("Lato-Bold", size: 17))
                     .foregroundStyle(.darkgraytext)
             }
 //            .frame(width: 180, height: 180)
             
             Text("**\(nutrientIntake, specifier: "%.2f")**  /\(nutrientTarget, specifier: "%.2f") \(nutrientUnit)")
+                .font(.custom("Lato-Regular", size: 13))
                 .padding(.top)
         }
         .onAppear(perform: {

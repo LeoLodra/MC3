@@ -51,4 +51,7 @@ class WeightInputView: UIView {
             kgLabel.centerYAnchor.constraint(equalTo: weightInput.centerYAnchor)
         ])
     }
-}
+    
+    var weightValue: String {
+        return weightInput.text ?? ""
+    }}

@@ -18,16 +18,16 @@ struct NutrientIntakeProgressComponentView: View {
         VStack{
             HStack{
                 Text(nutrientName)
-                    .fontWeight(.bold)
+                    .font(.custom("Lato-Bold", size: 13))
 //                    .font(.subheadline)
                 
                 Spacer()
                 
                 Text("\(nutrientIntake, specifier: "%.1f")")
-                    .fontWeight(.bold)
+                    .font(.custom("Lato-Bold", size: 13))
 //                    .font(.subheadline)
                 Text("/\(nutrientTarget, specifier: "%.1f")\(nutrientUnit)")
-                    .foregroundStyle(.darkgraytext)
+                    .font(.custom("Lato-Light", size: 13))
 //                    .font(.subheadline)
             }
             GeometryReader { geometry in
