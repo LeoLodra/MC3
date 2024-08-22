@@ -75,6 +75,7 @@
 		FFD5086C2C772CB4003850E9 /* WeightGauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD5086B2C772CB4003850E9 /* WeightGauge.swift */; };
 		FFD5086E2C772CE2003850E9 /* WeightInfoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD5086D2C772CE2003850E9 /* WeightInfoCard.swift */; };
 		FFD508702C772D14003850E9 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD5086F2C772D14003850E9 /* RoundedCorner.swift */; };
+		FFD508722C77414F003850E9 /* WeightGainCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD508712C77414F003850E9 /* WeightGainCalculator.swift */; };
 		FFE788EC2C75EF64007868F2 /* WeightWheelPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE788EB2C75EF64007868F2 /* WeightWheelPicker.swift */; };
 		FFE788EE2C75F362007868F2 /* WeightUpdateSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE788ED2C75F362007868F2 /* WeightUpdateSheet.swift */; };
 /* End PBXBuildFile section */
@@ -150,6 +151,7 @@
 		FFD5086B2C772CB4003850E9 /* WeightGauge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightGauge.swift; sourceTree = "<group>"; };
 		FFD5086D2C772CE2003850E9 /* WeightInfoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightInfoCard.swift; sourceTree = "<group>"; };
 		FFD5086F2C772D14003850E9 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
+		FFD508712C77414F003850E9 /* WeightGainCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightGainCalculator.swift; sourceTree = "<group>"; };
 		FFE788EB2C75EF64007868F2 /* WeightWheelPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightWheelPicker.swift; sourceTree = "<group>"; };
 		FFE788ED2C75F362007868F2 /* WeightUpdateSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightUpdateSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -329,6 +331,7 @@
 			isa = PBXGroup;
 			children = (
 				FFACC8FD2C6C9AFC00FC3A82 /* LazyList.swift */,
+				FFD508712C77414F003850E9 /* WeightGainCalculator.swift */,
 				FFD5086F2C772D14003850E9 /* RoundedCorner.swift */,
 				FFACC8FF2C6C9DB600FC3A82 /* JSONLoader.swift */,
 			);
@@ -508,6 +511,7 @@
 				768368102C75D1FA00FBDC95 /* NutrientInfoComponentView.swift in Sources */,
 				FFD5086A2C772C62003850E9 /* WeightGaugeCard.swift in Sources */,
 				5B1554F02C6C945A00D0B3C3 /* CaloriesTargetView.swift in Sources */,
+				FFD508722C77414F003850E9 /* WeightGainCalculator.swift in Sources */,
 				5B3CF6E72C7499F9007622BC /* NutrientIntakeProgressComponentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
