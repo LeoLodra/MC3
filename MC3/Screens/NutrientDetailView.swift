@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Charts
 
 struct NutrientDetailView: View {
     @State private var period = 0
@@ -19,6 +20,9 @@ struct NutrientDetailView: View {
     @State private var foodIntakes:[FoodIntake] = []
     @State private var eatenFoods:[Food] = []
     @State private var weeklyFoodIntakes:[FoodIntake] = []
+    @State private var weeklyFoodCalories: [(Date, Int)] = []
+    @State private var weeklyEatenFoods:[Food] = []
+    @State private var currentDate:Date = Date()
     
     
     var body: some View {
@@ -54,7 +58,7 @@ struct NutrientDetailView: View {
                                 Spacer()
                                 
                                 Text("\(viewDate.formatted(date: .complete, time: .omitted))")
-                                    .fontWeight(.semibold)
+                                    .font(.custom("Lato-Bold", size: 20))
                                 
                                 Spacer()
                                 
@@ -75,11 +79,12 @@ struct NutrientDetailView: View {
                                     Image(systemName: "chevron.left")
                                         .foregroundStyle(.black)
                                 })
+                                .disabled(true)
                                 
                                 Spacer()
                                 
                                 Text("Week \(viewWeek), Trimester \(viewTrimester)")
-                                    .fontWeight(.semibold)
+                                    .font(.custom("Lato-Bold", size: 20))
                                 
                                 Spacer()
                                 
@@ -89,93 +94,149 @@ struct NutrientDetailView: View {
                                     Image(systemName: "chevron.right")
                                         .foregroundStyle(.black)
                                 })
+                                .disabled(true)
                             }
                         }
-                        
                     }
                     .padding()
                 }
                 .frame(height: 90)
                 
                 Text("Intake Summary")
-                    .font(.title2)
-                    .fontWeight(.bold)
+                    .font(.custom("Lato-Bold", size: 24))
+                    .foregroundStyle(.darktext)
                     .padding(.top)
                 
                 Text("Calories")
-                    .font(.title2)
-                    .fontWeight(.bold)
+                    .font(.custom("Lato-Bold", size: 20))
                     .foregroundStyle(.darkgraytext)
                     .padding(.top, 2)
                 
                 if period == 0{
                     HStack {
                         Spacer()
-                        NutrientRingComponentView(nutrientName: "Calories", nutrientTarget: viewTrimester == 1 ? 2430 : 2550, nutrientIntake: Float(getTotalCalories(foodLogDate: viewDate)), nutrientUnit: "Kcal")
+                        NutrientRingComponentView(nutrientName: "Calories", nutrientTarget: viewTrimester == 1 ? 2430 : 2550, nutrientIntake: Float(vm.getTotalCalories(foodLogDate: viewDate, foodIntakes: self.foodIntakes, eatenFoods: self.eatenFoods)), nutrientUnit: "Kcal")
                             .frame(width: 200, height: 200)
                         .padding(.top, 20)
                         Spacer()
                     }
-                } else {
-                    #warning("bikin chart untuk weekly total calories")
-//                    Chart {
-//                        ForEach(stats, id: \.city) { stat in
-//                            BarMark(
-//                                x: .value("City", stat.city),
-//                                y: .value("Population", stat.population)
-//                            )
-//                            .opacity(0.3)
-//                            .foregroundStyle(.red)
-//                        }
-//                    }
-                }
-                
-                Text("Nutrients")
-                    .fontWeight(.bold)
-                    .foregroundStyle(.darkgraytext)
-                    .font(.title3)
-                    .padding(.top, 20)
-                    .padding(.bottom, 8)
-                
-                ForEach(nutrientTargets){target in
-                    if(target.trimester != nil && target.trimester == viewTrimester || target.trimester == nil){
-                        if target.id <= 5{
-                            NutrientIntakeProgressComponentView(nutrientName: target.nutrientName, nutrientIntake: Float(getTotalNutrients(nutrientID: target.id)), nutrientTarget: target.nutrientTarget, nutrientUnit: target.nutrientUnit)
-                                .padding(.bottom)
-                        }
-                        
-                        if (target.nutrientName == "Calcium" && seeMoreClicked == false){
-                            HStack{
-                                Spacer()
-                                Button(action: {
-                                    seeMoreClicked = true
-                                }, label: {
-                                    HStack{
-                                        Text("See more")
-                                        Image(systemName: "chevron.down")
-                                    }
-                                    
-                                })
+                    
+                    Text("Nutrients")
+                        .font(.custom("Lato-Bold", size: 20))
+                        .foregroundStyle(.darkgraytext)
+                        .padding(.top, 20)
+                        .padding(.bottom, 8)
+                    
+                    ForEach(nutrientTargets){target in
+                        if(target.trimester != nil && target.trimester == viewTrimester || target.trimester == nil){
+                            if target.id <= 5{
+                                NutrientIntakeProgressComponentView(nutrientName: target.nutrientName, nutrientIntake: Float(vm.getTotalNutrients(nutrientID: target.id, foodIntakes: self.foodIntakes, foodEaten: self.eatenFoods)), nutrientTarget: target.nutrientTarget, nutrientUnit: target.nutrientUnit)
+                                    .padding(.bottom)
+                            }
+                            
+                            if (target.nutrientName == "Calcium" && seeMoreClicked == false){
+                                HStack{
+                                    Spacer()
+                                    Button(action: {
+                                        seeMoreClicked = true
+                                    }, label: {
+                                        HStack{
+                                            Text("See more")
+                                                .font(.custom("Lato-Regular", size: 13))
+                                            Image(systemName: "chevron.down")
+                                        }
+                                        
+                                    })
+                                }
+                            }
+                            
+                            if(seeMoreClicked && target.id >= 7){
+                                NutrientIntakeProgressComponentView(nutrientName: target.nutrientName, nutrientIntake: Float(vm.getTotalNutrients(nutrientID: target.id, foodIntakes: self.foodIntakes, foodEaten: self.eatenFoods)), nutrientTarget: target.nutrientTarget, nutrientUnit: target.nutrientUnit)
+                                    .padding(.bottom)
                             }
                         }
-                        
-                        if(seeMoreClicked && target.id >= 7){
-                            NutrientIntakeProgressComponentView(nutrientName: target.nutrientName, nutrientIntake: Float(getTotalNutrients(nutrientID: target.id)), nutrientTarget: target.nutrientTarget, nutrientUnit: target.nutrientUnit)
-                                .padding(.bottom)
+                    }
+                    
+                    Text("Food Eaten")
+                        .font(.custom("Lato-Bold", size: 24))
+                        .foregroundStyle(.darkgraytext)
+                        .padding(.top, 20)
+                        .padding(.bottom, 8)
+                    
+                    ForEach(foodIntakes) { intake in
+                        FoodEatenCardComponentView(food: vm.getFood(foodIntake: intake, eaten: eatenFoods)!, intakeAmount: Int(intake.intakeAmount))
+                            .padding(.bottom)
+                    }
+                } else {
+                    Chart(weeklyFoodCalories, id: \.0) { date, calories in
+                        BarMark(
+                            x: .value("Date", date, unit: .day),
+                            y: .value("Calories", calories)
+                        )
+                        .foregroundStyle(.blueprimary)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .annotation {
+                            Text(verbatim: calories.formatted())
+                                .font(.caption)
                         }
                     }
-                }
-                
-                Text("Food Eaten")
-                    .fontWeight(.bold)
-                    .foregroundStyle(.darkgraytext)
-                    .font(.title3)
-                    .padding(.top, 20)
-                    .padding(.bottom, 8)
-                
-                ForEach(eatenFoods) { food in
-                    FoodEatenCardComponentView(food: food, intakeAmount: getFoodIntake(foodID: food.id))
-                        .padding(.bottom)
+                    .chartXAxis {
+                        AxisMarks(values: .stride(by: .day)) {
+                            AxisValueLabel(format: .dateTime.day(.defaultDigits))
+                        }
+                    }
+                    .chartYAxis{
+                        AxisMarks(position: .leading)
+                    }
+                    .frame(height: 200)
+                    
+                    Text("Nutrients")
+                        .font(.custom("Lato-Bold", size: 20))
+                        .foregroundStyle(.darkgraytext)
+                        .padding(.top, 20)
+                        .padding(.bottom, 8)
+                    
+                    ForEach(nutrientTargets){target in
+                        if(target.trimester != nil && target.trimester == viewTrimester || target.trimester == nil){
+                            if target.id <= 5{
+                                NutrientIntakeProgressComponentView(nutrientName: target.nutrientName, nutrientIntake: Float(vm.getTotalNutrients(nutrientID: target.id, foodIntakes: self.weeklyFoodIntakes, foodEaten: self.weeklyEatenFoods)), nutrientTarget: (target.nutrientTarget * 7), nutrientUnit: target.nutrientUnit)
+                                    .padding(.bottom)
+                            }
+                            
+                            if (target.nutrientName == "Calcium" && seeMoreClicked == false){
+                                HStack{
+                                    Spacer()
+                                    Button(action: {
+                                        seeMoreClicked = true
+                                    }, label: {
+                                        HStack{
+                                            Text("See more")
+                                                .font(.custom("Lato-Regular", size: 13))
+                                            Image(systemName: "chevron.down")
+                                        }
+                                        
+                                    })
+                                }
+                            }
+                            
+                            if(seeMoreClicked && target.id >= 7){
+                                NutrientIntakeProgressComponentView(nutrientName: target.nutrientName, nutrientIntake: Float(vm.getTotalNutrients(nutrientID: target.id, foodIntakes: self.weeklyFoodIntakes, foodEaten: self.weeklyEatenFoods)), nutrientTarget: (target.nutrientTarget * 7), nutrientUnit: target.nutrientUnit)
+                                    .padding(.bottom)
+                            }
+                        }
+                    }
+                    
+                    Text("Food Eaten")
+                        .font(.custom("Lato-Bold", size: 24))
+                        .foregroundStyle(.darktext)
+                        .padding(.top, 20)
+                        .padding(.bottom, 8)
+                    
+                    ForEach(weeklyFoodIntakes) { intake in
+                        Text("\(intake.intakeAt!.formatted(date: .abbreviated, time: .omitted))")
+                        FoodEatenCardComponentView(food: vm.getFood(foodIntake: intake, eaten: weeklyEatenFoods)!, intakeAmount: Int(intake.intakeAmount))
+                            .padding(.bottom)
+                    }
                 }
             }
             .padding()
@@ -184,11 +245,14 @@ struct NutrientDetailView: View {
             nutrientTargets = vm.populateNutrientTargetData()
             foodIntakes = vm.fetchFoodIntake(foodLogDate: viewDate, viewContext: viewContext)
             eatenFoods = vm.getEatenFood(foodIntakes: foodIntakes)
-            print(eatenFoods)
             
-            weeklyFoodIntakes = vm.fetchWeeklyFoodIntake(logStartDate: viewDate, viewContext: viewContext)
+            weeklyFoodIntakes = vm.fetchWeeklyFoodIntake(foodLogDate: viewDate, viewContext: viewContext)
+            weeklyEatenFoods = vm.getEatenFood(foodIntakes: weeklyFoodIntakes)
+            weeklyFoodCalories = vm.getWeeklyCaloriesByDay(foodLogDate: viewDate, weeklyFoodIntakes: self.weeklyFoodIntakes, weeklyEatenFoods: self.weeklyEatenFoods)
         })
         .onChange(of: viewDate){
+            seeMoreClicked = false
+            
             nutrientTargets.removeAll()
             foodIntakes.removeAll()
             eatenFoods.removeAll()
@@ -197,60 +261,10 @@ struct NutrientDetailView: View {
             nutrientTargets = vm.populateNutrientTargetData()
             foodIntakes = vm.fetchFoodIntake(foodLogDate: viewDate, viewContext: viewContext)
             eatenFoods = vm.getEatenFood(foodIntakes: foodIntakes)
-            weeklyFoodIntakes = vm.fetchWeeklyFoodIntake(logStartDate: viewDate, viewContext: viewContext)
+            weeklyFoodIntakes = vm.fetchWeeklyFoodIntake(foodLogDate: viewDate, viewContext: viewContext)
+            weeklyEatenFoods = vm.getEatenFood(foodIntakes: weeklyFoodIntakes)
+            weeklyFoodCalories = vm.getWeeklyCaloriesByDay(foodLogDate: viewDate, weeklyFoodIntakes: self.weeklyFoodIntakes, weeklyEatenFoods: self.weeklyEatenFoods)
         }
-    }
-    
-    private func getFoodIntake(foodID: Int) -> Int{
-        var foodIntake = 0
-        
-        for intake in foodIntakes{
-            if intake.foodId == foodID{
-                foodIntake = Int(intake.intakeAmount)
-            }
-        }
-        
-        return foodIntake
-    }
-    
-    private func getTotalCalories(foodLogDate:Date) -> Int{
-        var calorieTotal = 0
-        
-        for intake in foodIntakes{
-            for food in eatenFoods{
-                if intake.foodId == food.id{
-                    calorieTotal += (food.calories * Int(intake.intakeAmount))
-                }
-            }
-        }
-        
-        return calorieTotal
-    }
-    
-    private func getTotalNutrients(nutrientID:Int) -> Int{
-        var nutrientTotal = 0
-        
-        for intake in foodIntakes {
-            for food in eatenFoods{
-                if intake.foodId == food.id{
-                    if nutrientID == 1 || nutrientID == 2 || nutrientID == 3{
-                        nutrientTotal += (Int(food.protein) * Int(intake.intakeAmount))
-                    } else if nutrientID == 4{
-                        nutrientTotal += (Int(food.folate) * Int(intake.intakeAmount))
-                    } else if nutrientID == 5{
-                        nutrientTotal += (Int(food.calcium) * Int(intake.intakeAmount))
-                    } else if nutrientID == 7{
-                        nutrientTotal += (Int(food.vitaminA) * Int(intake.intakeAmount))
-                    } else if nutrientID == 8{
-                        nutrientTotal += (Int(food.vitaminD) * Int(intake.intakeAmount))
-                    } else if nutrientID == 9{
-                        nutrientTotal += (Int(food.iron) * Int(intake.intakeAmount))
-                    }
-                }
-            }
-        }
-        
-        return nutrientTotal
     }
 }
 

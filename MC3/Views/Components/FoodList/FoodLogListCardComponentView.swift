@@ -24,16 +24,16 @@ struct FoodLogListCardComponentView: View {
                         Image(systemName: "circle.fill")
                             .font(.caption)
                         Text(foodStatusString)
+                            .font(.custom("Lato-Regular", size: 15))
                         Spacer()
                     }
                     .foregroundStyle(foodStatusColor)
                     
                     Text(food.food.title)
-                        .fontWeight(.bold)
-                        .font(.headline)
+                        .font(.custom("Lato-Bold", size: 17))
                     
                     Text("\(food.food.calories * food.portion) kcal | \(food.portion) serving")
-                        .font(.subheadline)
+                        .font(.custom("Lato-Regular", size: 13))
                         .foregroundStyle(.darkgraytext)
                 }
                 

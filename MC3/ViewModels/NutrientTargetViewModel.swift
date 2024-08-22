@@ -34,7 +34,7 @@ class NutrientTargetViewModel:ObservableObject{
         let folicacid = NutrientDailyTarget(id: 4, nutrientName: "Folic Acid", nutrientTarget: 600, nutrientUnit: "mcg")
         nutrientDailyTargets.append(folicacid)
         
-        let calcium = NutrientDailyTarget(id: 5, nutrientName: "Calcium", nutrientTarget: 1, nutrientUnit: "gr")
+        let calcium = NutrientDailyTarget(id: 5, nutrientName: "Calcium", nutrientTarget: 1000, nutrientUnit: "mg")
         nutrientDailyTargets.append(calcium)
         
         let zinc = NutrientDailyTarget(id: 6, nutrientName: "Zinc", nutrientTarget: 11, nutrientUnit: "mg")
@@ -71,15 +71,8 @@ class NutrientTargetViewModel:ObservableObject{
             
             if !results.isEmpty {
                 for foodIntake in results {
-                    print("masuk food intake")
-                    print(foodIntake.intakeAmount)
-                    print("tanggal skrg: \(Date())")
-                    print("tanggal: \(foodIntake.intakeAt ?? Date())")
-                    
                     dailyFoodIntake.append(foodIntake)
                 }
-            } else {
-                print("bolonggg")
             }
         } catch {
             print("Failed to fetch food intake: \(error.localizedDescription)")
@@ -103,18 +96,21 @@ class NutrientTargetViewModel:ObservableObject{
         return eatenFoods
     }
     
-    func fetchWeeklyFoodIntake(logStartDate:Date, viewContext:NSManagedObjectContext) -> [FoodIntake]{
+    func fetchWeeklyFoodIntake(foodLogDate:Date, viewContext:NSManagedObjectContext) -> [FoodIntake]{
+        let calendar = Calendar.current
+        
+        guard let startOfWeek = calendar.dateInterval(of: .weekOfYear, for: foodLogDate)?.start else {
+            return []
+        }
+        
         var weeklyFoodIntake:[FoodIntake] = []
         
-        let calendar = Calendar.current
-        let startOfDay = calendar.startOfDay(for: logStartDate)
-        
         var components = DateComponents()
-        components.day = 7
-        let endOfDay = calendar.date(byAdding: components, to: startOfDay)!
+        components.day = 6
+        let endOfWeek = calendar.date(byAdding: components, to: startOfWeek)!
         
         let fetchRequest = FoodIntake.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "intakeAt >= %@ AND intakeAt < %@", startOfDay as NSDate, endOfDay as NSDate)
+        fetchRequest.predicate = NSPredicate(format: "intakeAt >= %@ AND intakeAt < %@", startOfWeek as NSDate, endOfWeek as NSDate)
         
         do {
             let results = try viewContext.fetch(fetchRequest)
@@ -123,13 +119,97 @@ class NutrientTargetViewModel:ObservableObject{
                 for foodIntake in results {
                     weeklyFoodIntake.append(foodIntake)
                 }
-            } else {
-                print("bolonggg")
             }
         } catch {
             print("Failed to fetch food intake: \(error.localizedDescription)")
         }
         
         return weeklyFoodIntake
+    }
+    
+    func getFood(foodIntake:FoodIntake, eaten:[Food]) -> Food?{
+        
+        for food in eaten{
+            if food.id == foodIntake.foodId{
+                return food
+            }
+        }
+        
+        return nil
+    }
+    
+    func getTotalCalories(foodLogDate:Date, foodIntakes:[FoodIntake], eatenFoods:[Food]) -> Int{
+        var calorieTotal = 0
+        
+        for intake in foodIntakes{
+            for food in eatenFoods{
+                if intake.foodId == food.id{
+                    calorieTotal += (food.calories * Int(intake.intakeAmount))
+                    break
+                }
+            }
+        }
+        
+        return calorieTotal
+    }
+    
+    func getWeeklyCaloriesByDay(foodLogDate: Date, weeklyFoodIntakes:[FoodIntake], weeklyEatenFoods:[Food]) -> [(Date, Int)] {
+        let calendar = Calendar.current
+        
+        guard let startOfWeek = calendar.dateInterval(of: .weekOfYear, for: foodLogDate)?.start else {
+            return []
+        }
+        
+        var dailyCalories: [Date: Int] = [:]
+        
+        for dayOffset in 0..<7 {
+            if let currentDate = calendar.date(byAdding: .day, value: dayOffset, to: startOfWeek) {
+                dailyCalories[currentDate] = 0
+                
+                for intake in weeklyFoodIntakes {
+                    if let intakeDate = intake.intakeAt, calendar.isDate(intakeDate, inSameDayAs: currentDate) {
+                        for food in weeklyEatenFoods {
+                            if intake.foodId == food.id {
+                                dailyCalories[currentDate]! += (food.calories * Int(intake.intakeAmount))
+                                break
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return dailyCalories.sorted(by: { $0.key < $1.key })
+    }
+    
+    func getTotalNutrients(nutrientID:Int, foodIntakes:[FoodIntake], foodEaten:[Food]) -> Int{
+        var nutrientTotal = 0
+        
+        for intake in foodIntakes {
+            for food in foodEaten{
+                if intake.foodId == food.id{
+                    if nutrientID == 1 || nutrientID == 2 || nutrientID == 3{
+                        nutrientTotal += (Int(food.protein) * Int(intake.intakeAmount))
+                        break
+                    } else if nutrientID == 4{
+                        nutrientTotal += (Int(food.folate) * Int(intake.intakeAmount))
+                        break
+                    } else if nutrientID == 5{
+                        nutrientTotal += (Int(food.calcium) * Int(intake.intakeAmount))
+                        break
+                    } else if nutrientID == 7{
+                        nutrientTotal += (Int(food.vitaminA) * Int(intake.intakeAmount))
+                        break
+                    } else if nutrientID == 8{
+                        nutrientTotal += (Int(food.vitaminD) * Int(intake.intakeAmount))
+                        break
+                    } else if nutrientID == 9{
+                        nutrientTotal += (Int(food.iron) * Int(intake.intakeAmount))
+                        break
+                    }
+                }
+            }
+        }
+        
+        return nutrientTotal
     }
 }
