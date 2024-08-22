@@ -14,7 +14,6 @@ struct WeightGaugeCard: View {
     let maxValue: Float
     let tick1threshold: Float
     let tick2threshold: Float
-    let tick3threshold: Float
     let weekNumber: Int
     let lastUpdated: Date
     var showChevron: Bool = true
@@ -36,7 +35,7 @@ struct WeightGaugeCard: View {
                     }
                 }
             }
-            WeightGauge(value: value, minValue: minValue, maxValue: maxValue, tick1treshold: tick1threshold, tick2treshold: tick2threshold, tick3treshold: tick3threshold)
+            WeightGauge(value: value, minValue: minValue, maxValue: maxValue, tick1treshold: tick1threshold, tick2treshold: tick2threshold)
             Text(lastUpdatedText)
                 .font(.system(size: 13))
                 .foregroundStyle(.gray)
@@ -62,5 +61,5 @@ struct WeightGaugeCard: View {
 
 
 #Preview {
-    WeightGaugeCard(value: 48, minValue: 10, maxValue: 100, tick1threshold: 20, tick2threshold: 50, tick3threshold: 70, weekNumber: 10, lastUpdated: Date())
+    WeightGaugeCard(value: 48, minValue: 0, maxValue: 100, tick1threshold: 5, tick2threshold: 50, weekNumber: 10, lastUpdated: Date())
 }

@@ -13,7 +13,6 @@ struct WeightGauge: View {
     var maxValue: Float
     var tick1treshold: Float
     var tick2treshold: Float
-    var tick3treshold: Float
 
     enum WeightStatus {
         case ideal
@@ -24,13 +23,12 @@ struct WeightGauge: View {
 
     @State private var animatedValue: Float
 
-    init(value: Float, minValue: Float, maxValue: Float, tick1treshold: Float, tick2treshold: Float, tick3treshold: Float) {
+    init(value: Float, minValue: Float, maxValue: Float, tick1treshold: Float, tick2treshold: Float) {
         self.value = value
         self.minValue = minValue
         self.maxValue = maxValue
         self.tick1treshold = tick1treshold
         self.tick2treshold = tick2treshold
-        self.tick3treshold = tick3treshold
         self._animatedValue = State(initialValue: value)
     }
 
@@ -39,16 +37,14 @@ struct WeightGauge: View {
             return .underweight
         } else if animatedValue < tick2treshold {
             return .ideal
-        } else if animatedValue < tick3treshold {
+        }  else {
             return .overweight
-        } else {
-            return .obese
         }
     }
     private var tickLabelWidth: CGFloat {
         switch weightStatus {
             case .ideal:
-                return 95
+                return 120
             case .underweight:
                 return 130
             case .overweight:
@@ -64,10 +60,7 @@ struct WeightGauge: View {
         return (tick2treshold - tick1treshold) / (maxValue - minValue)
     }
     private var overweightWidthModifier: Float {
-        return (tick3treshold - tick2treshold) / (maxValue - minValue)
-    }
-    private var obeseWidthModifier: Float {
-        return (maxValue - tick3treshold) / (maxValue - minValue)
+        return (maxValue - tick2treshold) / (maxValue - minValue)
     }
     private var calculatedWeightTickModifier: Float {
         return max(0, min(1, (animatedValue - minValue) / (maxValue - minValue)))
@@ -89,9 +82,6 @@ struct WeightGauge: View {
                     Rectangle()
                         .fill(.orangewarning)
                         .frame(width: proxy.size.width * CGFloat(overweightWidthModifier))
-                    Rectangle()
-                        .fill(.lightredwarning)
-                        .frame(width: proxy.size.width * CGFloat(obeseWidthModifier))
                         .roundedCornerWithBorder(lineWidth: 2, borderColor: .clear, radius: 10, corners: [.topRight, .bottomRight])
 
                 }
@@ -120,21 +110,21 @@ struct WeightGauge: View {
                                         Image(systemName: "circle.fill")
                                             .foregroundColor(.greensuccess)
                                             .font(.system(size: 8))
-                                        Text("Ideal")
+                                        Text("Optimal")
                                             .foregroundStyle(.greensuccess)
                                             .bold()
                                     case .underweight:
                                         Image(systemName: "circle.fill")
                                             .foregroundColor(.orangewarning)
                                             .font(.system(size: 8))
-                                        Text("Underweight")
+                                        Text("Deficient")
                                             .foregroundStyle(.orangewarning)
                                             .bold()
                                     case .overweight:
                                         Image(systemName: "circle.fill")
                                             .foregroundColor(.orangewarning)
                                             .font(.system(size: 8))
-                                        Text("Overweight")
+                                        Text("Excessive")
                                             .foregroundStyle(.orangewarning)
                                             .bold()
                                     case .obese:
@@ -169,18 +159,14 @@ struct WeightGauge: View {
                 }
                 /// Threshold Indicator
                 Group {
-                    Text("\(tick1treshold, specifier: "%.0f")")
+                    Text("\(tick1treshold, specifier: "%.1f")")
                         .font(.system(size: 13))
                         .foregroundColor(.gray)
                         .offset(x: proxy.size.width *  CGFloat(underweightWidthModifier) - 6, y: 105)
-                    Text("\(tick2treshold, specifier: "%.0f")")
+                    Text("\(tick2treshold, specifier: "%.1f")")
                         .font(.system(size: 13))
                         .foregroundColor(.gray)
                         .offset(x: proxy.size.width *  CGFloat(underweightWidthModifier + normalweightWidthModifier) - 6, y: 105)
-                    Text("\(tick3treshold, specifier: "%.0f")")
-                        .font(.system(size: 13))
-                        .foregroundColor(.gray)
-                        .offset(x: proxy.size.width *  CGFloat(underweightWidthModifier + normalweightWidthModifier + overweightWidthModifier) - 6, y: 105)
                 }
             }
             .frame(height: 125)
@@ -199,5 +185,5 @@ struct WeightGauge: View {
 
 
 #Preview {
-    WeightGauge(value: 48, minValue: 10, maxValue: 100, tick1treshold: 30, tick2treshold: 50, tick3treshold: 70)
+    WeightGauge(value: 48, minValue: 10, maxValue: 100, tick1treshold: 30, tick2treshold: 50)
 }
