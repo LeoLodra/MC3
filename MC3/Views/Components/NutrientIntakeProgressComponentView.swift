@@ -21,13 +21,12 @@ struct NutrientIntakeProgressComponentView: View {
                     .fontWeight(.bold)
                     .font(.custom("Lato-Bold", size: 13))
 
-                
                 Spacer()
                 
-                Text("\(nutrientIntake, specifier: "%.1f")")
-                    .fontWeight(.bold)
-                Text("/\(nutrientTarget, specifier: "%.1f")\(nutrientUnit)")
-                    .foregroundStyle(.darkgraytext)
+                Text("\(nutrientIntake, specifier: "%.0f")")
+                    .font(.custom("Lato-Bold", size: 13))
+                Text("/\(nutrientTarget, specifier: "%.0f")\(nutrientUnit)")
+                    .font(.custom("Lato-Regular", size: 13))
             }
             GeometryReader { geometry in
                 ZStack(alignment: .leading) {
