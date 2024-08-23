@@ -27,6 +27,7 @@ struct WeightScreenView: View {
                 AddWeightButton(action: {
                     isShowingWeightUpdateSheet = true
                 })
+                .padding(.horizontal)
             }
             .navigationTitle("Your Weight")
             .sheet(isPresented: $isShowingWeightUpdateSheet) {

@@ -315,7 +315,7 @@ class InitialScreenView: UIViewController {
             let goalsScreen = UIHostingController(rootView: GoalsScreenView().environment(\.managedObjectContext, managedContext))
             goalsScreen.modalPresentationStyle = .fullScreen
             present(goalsScreen, animated: true, completion: nil)
-
+            
         } else {
             showAlert(message: validateInputs())
         }
@@ -358,7 +358,7 @@ class InitialScreenView: UIViewController {
         
         let lmpDate = lmpInput.selectedDate
         let dobDate = dobInput.selectedDate
-
+        
         let user = User(context: managedContext)
         user.fullName = name
         user.weight = weight
@@ -381,7 +381,7 @@ class InitialScreenView: UIViewController {
             print("Failed to save user data: \(error.localizedDescription)")
         }
     }
-
+    
     
     func showAlert(message: String) {
         let alert = UIAlertController(title: "Validation Error", message: message, preferredStyle: .alert)

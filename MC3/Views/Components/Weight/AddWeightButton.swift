@@ -16,13 +16,12 @@ struct AddWeightButton: View {
                 Image(systemName: "plus.circle.fill")
                 Text("Update Weight")
             }
-            .frame(maxWidth: .infinity)
+            .frame(maxWidth: .infinity, maxHeight: 9)
             .padding()
             .background(Color.blueprimary)
             .foregroundColor(.white)
             .cornerRadius(500)
         }
-        .padding(.horizontal)
     }
 }
 

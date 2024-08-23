@@ -8,20 +8,57 @@
 import SwiftUI
 
 struct WeightView: View {
-//    @Environment(\.managedObjectContext) private var viewContext
-//    @FetchRequest(
-//        sortDescriptors: [NSSortDescriptor(keyPath: \WeightLog.logDate, ascending: false)]
-//    )
-//    private var weightLogs: FetchedResults<WeightLog>
+    @Environment(\.managedObjectContext) var viewContext
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \WeightLog.logDate, ascending: false)]
+    ) private var weightLogs: FetchedResults<WeightLog>
+    @FetchRequest(
+        entity: User.entity(),
+        sortDescriptors: [NSSortDescriptor(keyPath: \User.createdAt, ascending: false)],
+        animation: .default)
+    var users: FetchedResults<User>
     
-    let title: String = "Weight"
-    let value: Float
-    let minValue: Float
-    let maxValue: Float
-    let tick1threshold: Float
-    let tick2threshold: Float
-    let weekNumber: Int
-    let lastUpdated: Date
+    private var user: User? {
+        users.first
+    }
+    
+    private var currentState: (weekNumber: Int, lastUpdated: Date, newestWeight: Float) {
+        let calendar = Calendar.current
+        let currentDate = Date()
+        let weekNumber = calendar.dateComponents([.weekOfYear], from: user?.lastHaidAt ?? currentDate, to: currentDate).weekOfYear ?? 0
+        let lastUpdated = weightLogs.first?.logDate ?? currentDate
+        let newestWeight = weightLogs.first?.weight ?? 0
+        
+        return (weekNumber, lastUpdated, newestWeight)
+    }
+    
+    // Calculate the ideal weight range using WeightGainCalculator
+    private var idealWeightRange: WeightGainCalculator.WeightGainRange {
+        guard let user = user else { return WeightGainCalculator.WeightGainRange(min: 0, max: 0) }
+        return WeightGainCalculator.calculateWeightGainRange(
+            weight: user.weight,
+            height: Int(user.height),
+            weeks: currentState.weekNumber,
+            isTwins: user.fetusCount > 1
+        )
+    }
+    
+    private var gaugeMinValue: Float {
+        guard let user = user else { return 0 }
+        return Float(idealWeightRange.min) + user.weight - Float(idealWeightRange.max - idealWeightRange.min) / 2
+    }
+    private var gaugeMaxValue: Float {
+        guard let user = user else { return 0 }
+        return Float(idealWeightRange.max) + user.weight + Float(idealWeightRange.max - idealWeightRange.min) / 2
+    }
+    private var gaugeTick1Threshold: Float {
+        guard let user = user else { return 0 }
+        return Float(idealWeightRange.min) + user.weight
+    }
+    private var gaugeTick2Threshold: Float {
+        guard let user = user else { return 0 }
+        return Float(idealWeightRange.max) + user.weight
+    }
     
     var body: some View {
         
@@ -33,26 +70,30 @@ struct WeightView: View {
                     Text("Weight")
                         .font(.custom("Lato-Bold", size: 24))
                     Spacer()
-                    Text("Week \(weekNumber)")
+                    Text("Week \(currentState.weekNumber)")
                         .font(.custom("Lato-Regular", size: 17))
                     Image(systemName: "chevron.forward")
                         .font(.system(size: 24))
                         .foregroundColor(.blueprimary)
                 }
-                WeightGauge(value: value, minValue: minValue, maxValue: maxValue, tick1treshold: tick1threshold, tick2treshold: tick2threshold)
+                WeightGauge(value: Float(currentState.newestWeight), minValue: Float(gaugeMinValue), maxValue: Float(gaugeMaxValue), tick1treshold: Float(gaugeTick1Threshold), tick2treshold: Float(gaugeTick2Threshold))
                 Text("\(lastUpdatedText)")
                     .font(.custom("Lato-Regular", size: 13))
-                NavigationLink(destination: NutrientDetailView()) {
-                    HStack {
-                        Image(systemName: "plus.circle.fill")
-                        Text("Update Weight")
+                AddWeightButton(action: {
+                    let weightUpdateSheet = WeightUpdateSheet(value: currentState.newestWeight).environment(\.managedObjectContext, viewContext)
+                    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                       let window = windowScene.windows.first {
+                        let hostingController = UIHostingController(rootView: weightUpdateSheet)
+                        hostingController.modalPresentationStyle = .pageSheet
+                        
+                        if let sheet = hostingController.sheetPresentationController {
+                            sheet.detents = [.medium()]
+                            sheet.prefersGrabberVisible = true
+                        }
+                        
+                        window.rootViewController?.present(hostingController, animated: true, completion: nil)
                     }
-                    .frame(maxWidth: .infinity, maxHeight: 9)
-                    .padding()
-                    .background(Color.blueprimary)
-                    .foregroundColor(.white)
-                    .cornerRadius(500)
-                }
+                })
             }
             .padding(.horizontal, 17)
             .padding(.vertical, 18)
@@ -63,15 +104,11 @@ struct WeightView: View {
     private var lastUpdatedText: String {
         let calendar = Calendar.current
         let now = Date()
-        if calendar.isDateInToday(lastUpdated) {
+        if calendar.isDateInToday(currentState.lastUpdated) {
             return "Last updated today"
         } else {
-            let days = calendar.dateComponents([.day], from: lastUpdated, to: now).day ?? 0
+            let days = calendar.dateComponents([.day], from: currentState.lastUpdated, to: now).day ?? 0
             return "Last updated \(days) day\(days == 1 ? "" : "s") ago"
         }
     }
-}
-
-#Preview {
-    WeightView(value: 1, minValue: 2, maxValue: 2, tick1threshold: 1, tick2threshold: 2, weekNumber: 2, lastUpdated: Date())
 }
