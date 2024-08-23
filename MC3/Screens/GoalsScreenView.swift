@@ -48,7 +48,7 @@ struct GoalsScreenView: View {
                     Text("You're in ")
                         .font(.custom("Lato-Regular", size: 24))
                     +
-                    Text("Week 3")
+                    Text("Week \(currentState.weekNumber)")
                         .font(.custom("Lato-Bold", size: 24))
                     
                     Group {
