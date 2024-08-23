@@ -37,7 +37,7 @@ struct FoodCardViewComponent: View {
                         .foregroundStyle(.darkgraytext)
                     
                     NavigationLink{
-                        #warning("Panggil food detail page disini")
+                        FoodInfoScreenView(food: food)
                     } label: {
                         HStack{
                             Text("See details")
