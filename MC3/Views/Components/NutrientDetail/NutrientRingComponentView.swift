@@ -35,17 +35,20 @@ struct NutrientRingComponentView: View {
                     .animation(.easeOut, value: nutrientIntake / nutrientTarget)
                 
                 Text(nutrientName)
-                    .font(.custom("Lato-Bold", size: 17))
+                    .font(.custom("Lato-Bold", size: 24))
                     .foregroundStyle(.darkgraytext)
             }
-//            .frame(width: 180, height: 180)
             
             Text("**\(nutrientIntake, specifier: "%.0f")**  /\(nutrientTarget, specifier: "%.0f") \(nutrientUnit)")
+                .font(.custom("Lato-Regular", size: 15))
                 .padding(.top)
         }
         .onAppear(perform: {
             determineRingColor()
         })
+        .onChange(of: nutrientIntake){
+            determineRingColor()
+        }
     }
     
     private func determineRingColor(){
@@ -59,6 +62,6 @@ struct NutrientRingComponentView: View {
     }
 }
 
-#Preview {
-    NutrientRingComponentView(nutrientName: "Calories", nutrientTarget: 2257, nutrientIntake: 2256, nutrientUnit: "Kcal")
-}
+//#Preview {
+//    NutrientRingComponentView(nutrientName: "Calories", nutrientTarget: 2257, nutrientIntake: 2256, nutrientUnit: "Kcal")
+//}

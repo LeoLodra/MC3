@@ -21,11 +21,13 @@ struct ExampleOnboardingView: View {
         VStack {
             if users.isEmpty {
                 // If no users exist, show the form to create a new user
-                formView
+                InitialViewControllerRepresentable()
+                    .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
+                    
             } else {
-                // If a user exists, navigate to the next view
+                // If a user exists, navigate to main screen
                 NavigationView {
-//                    ExperimentFoodListView()
+                   GoalsScreenView()
                 }
             }
         }

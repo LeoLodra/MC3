@@ -23,6 +23,7 @@ struct FoodListView: View {
             VStack{
                 HStack {
                     TextField("Search Menu", text: $searchQuery)
+                        .font(.custom("Lato-Regular", size: 17))
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.leading)
                     
@@ -44,7 +45,6 @@ struct FoodListView: View {
                                 .font(.caption2)
                                 .offset(x: 4, y: -5)
                         }
-                        
                     }
                 }
                 ScrollView{
@@ -56,7 +56,6 @@ struct FoodListView: View {
                 }
             }
         }
-//        .searchable(text: $searchQuery, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search Menu")
         .onChange(of: searchQuery) { newValue in
             filterFoods()
         }
