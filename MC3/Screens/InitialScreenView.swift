@@ -354,7 +354,6 @@ class InitialScreenView: UIViewController {
         let name = nameInput.text
         let weight = Float(weightInput.weightValue) ?? 0
         let currWeight = Float(currWeightInput.weightValue) ?? 0
-        let currWeight = Float(currWeightInput.weightValue) ?? 0
         let height = Int16(heightInput.heightValue) ?? 0
         
         let lmpDate = lmpInput.selectedDate
