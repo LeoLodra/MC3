@@ -115,7 +115,7 @@ struct NutrientDetailView: View {
                 if period == 0{
                     HStack {
                         Spacer()
-                        NutrientRingComponentView(nutrientName: "Calories", nutrientTarget: viewTrimester == 1 ? 2430 : 2550, nutrientIntake: Float(vm.getTotalCalories(foodLogDate: viewDate, foodIntakes: self.foodIntakes, eatenFoods: self.eatenFoods)), nutrientUnit: "Kcal")
+                        NutrientRingComponentView(nutrientName: "Calories", nutrientTarget: viewTrimester == 1 ? 2430 : 2550, nutrientIntake: Float(vm.getTotalCalories(foodLogDate: viewDate, foodIntakes: self.foodIntakes, eatenFoods: self.eatenFoods)), nutrientUnit: "Kcal", caloriesLabelSize: 24)
                             .frame(width: 200, height: 200)
                         .padding(.top, 20)
                         Spacer()

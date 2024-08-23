@@ -12,6 +12,7 @@ struct NutrientRingComponentView: View {
     var nutrientTarget:Float
     var nutrientIntake:Float
     var nutrientUnit:String
+    var caloriesLabelSize: Int
     @State private var statusColor = Color.blueprimary
     
     var body: some View {
@@ -35,7 +36,7 @@ struct NutrientRingComponentView: View {
                     .animation(.easeOut, value: nutrientIntake / nutrientTarget)
                 
                 Text(nutrientName)
-                    .font(.custom("Lato-Bold", size: 24))
+                    .font(.custom("Lato-Bold", size: CGFloat(caloriesLabelSize)))
                     .foregroundStyle(.darkgraytext)
             }
             

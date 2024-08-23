@@ -32,7 +32,7 @@ struct CaloriesNutrientView: View {
                         .foregroundColor(.blueprimary)
                 }
                 HStack {
-                    NutrientRingComponentView(nutrientName: "Calories", nutrientTarget: viewTrimester == 1 ? 2430 : 2550, nutrientIntake: Float(getTotalCalories(foodLogDate: viewDate)), nutrientUnit: "Kcal")
+                    NutrientRingComponentView(nutrientName: "Calories", nutrientTarget: viewTrimester == 1 ? 2430 : 2550, nutrientIntake: Float(getTotalCalories(foodLogDate: viewDate)), nutrientUnit: "Kcal", caloriesLabelSize: 17)
                         .frame(width: 130)
                     Spacer()
                     VStack {
