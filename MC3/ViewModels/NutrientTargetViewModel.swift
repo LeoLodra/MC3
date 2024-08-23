@@ -96,21 +96,28 @@ class NutrientTargetViewModel:ObservableObject{
         return eatenFoods
     }
     
-    func fetchWeeklyFoodIntake(foodLogDate:Date, viewContext:NSManagedObjectContext) -> [FoodIntake]{
-        let calendar = Calendar.current
+    func fetchWeeklyFoodIntake(userLastHaid:Date?, viewContext:NSManagedObjectContext, week:Int) -> [FoodIntake]{
+//        let calendar = Calendar.current
+//        
+//        guard let startOfWeek = calendar.dateInterval(of: .weekOfYear, for: foodLogDate)?.start else {
+//            return []
+//        }
         
-        guard let startOfWeek = calendar.dateInterval(of: .weekOfYear, for: foodLogDate)?.start else {
-            return []
+        var calendar = Calendar.current
+        if let lastHaidAt = userLastHaid {
+            let weekdayComponent = calendar.component(.weekday, from: lastHaidAt)
+            calendar.firstWeekday = weekdayComponent
         }
         
+        let currentStartofWeek = calendar.date(byAdding: .weekOfYear, value: week, to: userLastHaid ?? Date()) ?? Date()
         var weeklyFoodIntake:[FoodIntake] = []
         
         var components = DateComponents()
-        components.day = 6
-        let endOfWeek = calendar.date(byAdding: components, to: startOfWeek)!
+        components.day = 7
+        let endOfWeek = calendar.date(byAdding: components, to: currentStartofWeek)!
         
         let fetchRequest = FoodIntake.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "intakeAt >= %@ AND intakeAt < %@", startOfWeek as NSDate, endOfWeek as NSDate)
+        fetchRequest.predicate = NSPredicate(format: "intakeAt >= %@ AND intakeAt <= %@", currentStartofWeek as NSDate, endOfWeek as NSDate)
         
         do {
             let results = try viewContext.fetch(fetchRequest)
@@ -153,17 +160,18 @@ class NutrientTargetViewModel:ObservableObject{
         return calorieTotal
     }
     
-    func getWeeklyCaloriesByDay(foodLogDate: Date, weeklyFoodIntakes:[FoodIntake], weeklyEatenFoods:[Food]) -> [(Date, Int)] {
-        let calendar = Calendar.current
-        
-        guard let startOfWeek = calendar.dateInterval(of: .weekOfYear, for: foodLogDate)?.start else {
-            return []
+    func getWeeklyCaloriesByDay(userLastHaid: Date?, weeklyFoodIntakes:[FoodIntake], weeklyEatenFoods:[Food], week:Int) -> [(Date, Int)] {
+        var calendar = Calendar.current
+        if let lastHaidAt = userLastHaid {
+            let weekdayComponent = calendar.component(.weekday, from: lastHaidAt)
+            calendar.firstWeekday = weekdayComponent
         }
         
+        let currentStartofWeek = calendar.date(byAdding: .weekOfYear, value: week, to: userLastHaid ?? Date()) ?? Date()
         var dailyCalories: [Date: Int] = [:]
         
         for dayOffset in 0..<7 {
-            if let currentDate = calendar.date(byAdding: .day, value: dayOffset, to: startOfWeek) {
+            if let currentDate = calendar.date(byAdding: .day, value: dayOffset, to: currentStartofWeek) {
                 dailyCalories[currentDate] = 0
                 
                 for intake in weeklyFoodIntakes {

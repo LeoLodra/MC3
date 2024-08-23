@@ -23,6 +23,11 @@ struct NutrientDetailView: View {
     @State private var weeklyFoodCalories: [(Date, Int)] = []
     @State private var weeklyEatenFoods:[Food] = []
     @State private var currentDate:Date = Date()
+    @FetchRequest(
+        entity: User.entity(),
+        sortDescriptors: [NSSortDescriptor(keyPath: \User.createdAt, ascending: false)],
+        animation: .default)
+    var users: FetchedResults<User>
     
     
     var body: some View {
@@ -54,6 +59,7 @@ struct NutrientDetailView: View {
                                     Image(systemName: "chevron.left")
                                         .foregroundStyle(.black)
                                 })
+                                .disabled(viewDate == user?.lastHaidAt)
                                 
                                 Spacer()
                                 
@@ -63,7 +69,13 @@ struct NutrientDetailView: View {
                                 Spacer()
                                 
                                 Button(action: {
-                                    viewDate = Calendar.current.date(byAdding: .day, value: 1, to: viewDate) ?? viewDate
+                                    var calendar = Calendar.current
+                                    if let lastHaidAt = user?.lastHaidAt {
+                                        let weekdayComponent = calendar.component(.weekday, from: lastHaidAt)
+                                        calendar.firstWeekday = weekdayComponent
+                                    }
+                                    viewDate = calendar.date(byAdding: .day, value: 1, to: viewDate) ?? viewDate
+                                    print("viewdate: \(viewDate)")
                                     
                                 }, label: {
                                     Image(systemName: "chevron.right")
@@ -74,12 +86,14 @@ struct NutrientDetailView: View {
                         } else {
                             HStack{
                                 Button(action: {
-                                    
+                                    if viewWeek > 1 {
+                                        viewWeek -= 1
+                                    }
                                 }, label: {
                                     Image(systemName: "chevron.left")
-                                        .foregroundStyle(.black)
+                                        .foregroundStyle(viewWeek == 1 ? .gray : .black)
                                 })
-                                .disabled(true)
+                                .disabled(viewWeek == 1)
                                 
                                 Spacer()
                                 
@@ -89,12 +103,12 @@ struct NutrientDetailView: View {
                                 Spacer()
                                 
                                 Button(action: {
-                                    
+                                    viewWeek += 1
                                 }, label: {
                                     Image(systemName: "chevron.right")
-                                        .foregroundStyle(.black)
+                                        .foregroundStyle(viewWeek == currentWeek ? .gray : .black)
                                 })
-                                .disabled(true)
+                                .disabled(viewWeek == currentWeek)
                             }
                         }
                     }
@@ -242,13 +256,14 @@ struct NutrientDetailView: View {
             .padding()
         }
         .onAppear(perform: {
+            viewWeek = currentWeek
             nutrientTargets = vm.populateNutrientTargetData()
             foodIntakes = vm.fetchFoodIntake(foodLogDate: viewDate, viewContext: viewContext)
             eatenFoods = vm.getEatenFood(foodIntakes: foodIntakes)
             
-            weeklyFoodIntakes = vm.fetchWeeklyFoodIntake(foodLogDate: viewDate, viewContext: viewContext)
+            weeklyFoodIntakes = vm.fetchWeeklyFoodIntake(userLastHaid: user?.lastHaidAt, viewContext: viewContext, week: viewWeek)
             weeklyEatenFoods = vm.getEatenFood(foodIntakes: weeklyFoodIntakes)
-            weeklyFoodCalories = vm.getWeeklyCaloriesByDay(foodLogDate: viewDate, weeklyFoodIntakes: self.weeklyFoodIntakes, weeklyEatenFoods: self.weeklyEatenFoods)
+            weeklyFoodCalories = vm.getWeeklyCaloriesByDay(userLastHaid: user?.lastHaidAt, weeklyFoodIntakes: self.weeklyFoodIntakes, weeklyEatenFoods: self.weeklyEatenFoods, week: viewWeek)
         })
         .onChange(of: viewDate){
             seeMoreClicked = false
@@ -261,10 +276,43 @@ struct NutrientDetailView: View {
             nutrientTargets = vm.populateNutrientTargetData()
             foodIntakes = vm.fetchFoodIntake(foodLogDate: viewDate, viewContext: viewContext)
             eatenFoods = vm.getEatenFood(foodIntakes: foodIntakes)
-            weeklyFoodIntakes = vm.fetchWeeklyFoodIntake(foodLogDate: viewDate, viewContext: viewContext)
-            weeklyEatenFoods = vm.getEatenFood(foodIntakes: weeklyFoodIntakes)
-            weeklyFoodCalories = vm.getWeeklyCaloriesByDay(foodLogDate: viewDate, weeklyFoodIntakes: self.weeklyFoodIntakes, weeklyEatenFoods: self.weeklyEatenFoods)
         }
+        .onChange(of: viewWeek){
+            nutrientTargets.removeAll()
+            weeklyFoodIntakes.removeAll()
+            weeklyEatenFoods.removeAll()
+            
+            nutrientTargets = vm.populateNutrientTargetData()
+            weeklyFoodIntakes = vm.fetchWeeklyFoodIntake(userLastHaid: user?.lastHaidAt, viewContext: viewContext, week: viewWeek)
+            weeklyEatenFoods = vm.getEatenFood(foodIntakes: weeklyFoodIntakes)
+            weeklyFoodCalories = vm.getWeeklyCaloriesByDay(userLastHaid: user?.lastHaidAt, weeklyFoodIntakes: self.weeklyFoodIntakes, weeklyEatenFoods: self.weeklyEatenFoods, week: viewWeek)
+        }
+    }
+}
+
+extension NutrientDetailView{
+    private var user: User? {
+        users.first
+    }
+    
+    private var currentWeek: Int {
+        let calendar = Calendar.current
+        let currentDate = Date()
+        let weekNumber = calendar.dateComponents([.weekOfYear], from: user?.lastHaidAt ?? currentDate, to: currentDate).weekOfYear ?? 0
+        
+        return weekNumber
+    }
+    
+    private var startOfTheWeek:Date {
+        
+        var calendar = Calendar.current
+        if let lastHaidAt = user?.lastHaidAt {
+            let weekdayComponent = calendar.component(.weekday, from: lastHaidAt)
+            calendar.firstWeekday = weekdayComponent
+        }
+        let currentStartofWeek = calendar.date(byAdding: .weekOfYear, value: viewWeek, to: user?.lastHaidAt ?? Date()) ?? Date()
+            
+        return currentStartofWeek
     }
 }
 
